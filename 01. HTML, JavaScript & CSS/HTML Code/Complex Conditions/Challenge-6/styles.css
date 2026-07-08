@@ -1,0 +1,99 @@
+/* Challenge 8 - Dark Mode Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  transition: all 0.5s ease;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: #333;
+}
+
+.light-mode .container {
+  background: white;
+  color: #333;
+}
+
+.light-mode .toggle-btn {
+  background: #333;
+  color: white;
+}
+
+.light-mode .toggle-btn:hover {
+  background: #555;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #eee;
+}
+
+.dark-mode .container {
+  background: #0f3460;
+  color: #eee;
+}
+
+.dark-mode .toggle-btn {
+  background: #e94560;
+  color: white;
+}
+
+.dark-mode .toggle-btn:hover {
+  background: #c23a52;
+}
+
+/* Common Styles */
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 1.8em;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.toggle-btn:active {
+  transform: scale(0.95);
+}

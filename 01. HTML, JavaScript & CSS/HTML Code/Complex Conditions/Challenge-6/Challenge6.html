@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge 8 - Dark Mode Toggle</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="light-mode">
+  <button class="toggle-btn" onclick="toggleMode()">🌙 Toggle Dark Mode</button>
+
+  <div class="container">
+    <!-- Light Mode Content - Displayed on Website -->
+    <div id="lightContent">
+      <h1>The History of Light Mode</h1>
+
+      <p>Light mode, also known as "day mode," has been the default display setting for most devices since the dawn of computing. When personal computers first became popular in the 1980s, they featured bright text on dark backgrounds because early monitors were limited in their display capabilities.</p>
+
+      <h2>The Evolution</h2>
+
+      <p>As technology advanced, graphical user interfaces (GUIs) emerged, and designers chose white backgrounds to mimic the appearance of paper documents. This made digital content feel more familiar and readable to users who were accustomed to reading printed materials.</p>
+
+      <p>Microsoft Windows, released in 1985, popularized the light mode aesthetic with its white windows and light grey backgrounds. Apple followed suit with its Macintosh operating system, establishing light mode as the industry standard.</p>
+
+      <h2>The Science Behind It</h2>
+
+      <p>Light mode is generally considered easier to read in well-lit environments. The high contrast between dark text and light backgrounds reduces eye strain when there's plenty of ambient light. This is why books, newspapers, and most printed materials use dark ink on light paper.</p>
+
+      <h2>Modern Day Usage</h2>
+
+      <p>Today, light mode remains the default setting for most applications and websites. However, the rise of dark mode has given users more choices based on their preferences, lighting conditions, and specific needs. Many people switch between modes depending on the time of day or their environment.</p>
+
+      <p>Whether you prefer light mode or dark mode, the most important thing is to choose what's comfortable for your eyes and fits your personal style!</p>
+    </div>
+
+    <!-- Dark Mode Content- Displayed on Website-->
+    <div id="darkContent" style="display: none;">
+      <h1>The Rise of Dark Mode</h1>
+
+      <p>Dark mode has become one of the most requested features in modern apps and websites. While it might seem like a recent trend, dark interfaces actually have deep roots in computing history, dating back to the very first computer terminals!</p>
+
+      <h2>Back to the Beginning</h2>
+
+      <p>The first computer monitors in the 1970s and early 1980s displayed green or amber text on black screens. This wasn't a design choice—it was a technical limitation! These "monochrome" displays were easier and cheaper to produce. Programmers and early computer users spent hours staring at glowing green text on dark backgrounds.</p>
+
+      <p>When graphical interfaces arrived, designers shifted to light backgrounds to mimic paper. But in 2018, dark mode made a major comeback when Apple introduced it in macOS Mojave, followed by iOS 13 in 2019.</p>
+
+      <h2>Why People Love Dark Mode</h2>
+
+      <p>Dark mode reduces eye strain in low-light environments, making it perfect for nighttime browsing. It can also save battery life on devices with OLED screens, since black pixels are actually turned off! Many developers and designers prefer dark mode because it reduces screen glare during long coding sessions.</p>
+
+      <h2>Modern Popularity</h2>
+
+      <p>Today, nearly every major app and operating system offers dark mode: Twitter, YouTube, Discord, Instagram, and many more. Some studies suggest that 80% of users prefer using dark mode when available. It's become so popular that some people exclusively use dark themes across all their devices!</p>
+
+      <p>Dark mode isn't just a trend—it's a powerful accessibility feature that helps millions of people use technology more comfortably!</p>
+    </div>
+  </div>
+
+  <script>
+    // State variable to track current mode
+    let mode = "light";
+    function toggleMode(){
+      if (mode==="light"){
+        switchToDark();
+        mode="dark"
+      }
+      else if (mode==="dark"){
+        switchToLight();
+        mode="light"
+      }
+
+
+      //code the toggleMod() function to check which mode is saved and call the correct function
+
+    }
+    
+
+    //These are the functions your code needs to call to make the switch.
+    function switchToDark()
+    {
+      document.body.classList.remove("light-mode");
+      document.body.classList.add("dark-mode");
+      document.querySelector(".toggle-btn").textContent = "☀️ Toggle Light Mode";
+
+      // Hide light content, show dark content
+      document.getElementById("lightContent").style.display = "none";
+      document.getElementById("darkContent").style.display = "block";
+    }
+
+    function switchToLight()
+    {
+      document.body.classList.remove("dark-mode");
+      document.body.classList.add("light-mode");
+      document.querySelector(".toggle-btn").textContent = "🌙 Toggle Dark Mode";
+
+      // Show light content, hide dark content
+      document.getElementById("lightContent").style.display = "block";
+      document.getElementById("darkContent").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
