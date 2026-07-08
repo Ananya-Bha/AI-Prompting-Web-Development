@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge 2 - Puppy Love Test</title>
+  <link rel="stylesheet" href="../global-styles.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 50%, #e17055 100%);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>🐶 The Puppy Love Test 🐶</h1>
+  <p>Are you a true puppy lover? Let's find out!</p>
+
+  <button onclick="puppyTest()">Take the Test</button>
+
+  <script>
+    function puppyTest()
+    {
+      const userChoice = prompt("Do you love puppies? [yes or no]");
+
+      if (userChoice === "yes")
+      {
+        alert("Yes, you have passed the test.");
+        alert("You are definitely a human!");
+      }
+      else if(userChoice==="no"){
+        alert("No? Are you sure you aren't a robot?");
+        alert("Robot's don't have hearts to love puppies!");
+      }
+
+      else
+      {
+        alert("Invalid choice, only yes or no.");
+      }
+    }
+  </script>
+
+</body>
+</html>
