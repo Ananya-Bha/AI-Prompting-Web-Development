@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge 5 - Visual Effects</title>
+  <link rel="stylesheet" href="../global-styles.css">
+  <style>
+    #effectCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .controls {
+      position: relative;
+      z-index: 1001;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container controls">
+    <h1>✨ Visual Effects Studio ✨</h1>
+    <p>Choose an effect and watch the magic happen!</p>
+
+    <select id="effectSelect">
+      <option value="">-- Select an Effect --</option>
+      <option value="fireworks">🎆 Fireworks</option>
+      <option value="shimmer">✨ Shimmer</option>
+      <option value="upsideDown">🔄 Upside Down</option>
+      <option value="stars">⭐ Stars</option>
+      <option value="confetti">🎉 Confetti</option>
+      <option value="matrixRain">💚 Matrix Rain</option>
+      <option value="colorPulse">🌈 Color Pulse</option>
+    </select>
+    <br>
+    <button onclick="triggerEffect()">See Effect</button>
+    <button onclick="resetEffects()">Reset</button>
+  </div>
+
+  <canvas id="effectCanvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById("effectCanvas");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let currentEffect = null;
+
+    function triggerEffect()
+    {
+      const choice = document.getElementById("effectSelect").value;
+
+      if (choice === "fireworks")
+      {
+        fireworks();
+      }
+      else if (choice === "shimmer")
+      {
+        shimmer();
+      }
+      else if (choice === "upsideDown")
+      {
+        upsideDown();
+      }
+      else if (choice === "stars")
+      {
+        stars();
+      }
+      else if (choice === "confetti")
+      {
+        confetti();
+      }
+      else if (choice === "matrixRain")
+      {
+        matrixRain();
+      }
+      else if (choice === "colorPulse")
+      {
+        colorPulse();
+      }
+      //Insert else if statements for when the user chooses other options
+
+    }
+
+
+
+    //Below are the functions for all of the effects. You don't need to edit them but feel free to read! 
+    function resetEffects()
+    {
+      if (currentEffect) {
+        clearInterval(currentEffect);
+        currentEffect = null;
+      }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      document.body.style.transform = "";
+      document.body.style.animation = "";
+    }
+
+    // Effect 1: Fireworks
+    function fireworks()
+    {
+      resetEffects();
+      let particles = [];
+
+      class Particle {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+          this.vx = (Math.random() - 0.5) * 8;
+          this.vy = (Math.random() - 0.5) * 8;
+          this.alpha = 1;
+          this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vy += 0.1;
+          this.alpha -= 0.01;
+        }
+
+        draw() {
+          ctx.globalAlpha = this.alpha;
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      function createFirework() {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height * 0.5;
+        for (let i = 0; i < 50; i++) {
+          particles.push(new Particle(x, y));
+        }
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles = particles.filter(p => p.alpha > 0);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+
+        if (Math.random() < 0.05) {
+          createFirework();
+        }
+      }
+
+      currentEffect = setInterval(animate, 30);
+    }
+
+    // Effect 2: Shimmer
+    function shimmer()
+    {
+      resetEffects();
+      let sparkles = [];
+
+      function createSparkle() {
+        return {
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 4 + 1,
+          alpha: Math.random(),
+          speed: Math.random() * 0.05 + 0.02
+        };
+      }
+
+      for (let i = 0; i < 100; i++) {
+        sparkles.push(createSparkle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        sparkles.forEach(s => {
+          s.alpha += s.speed;
+          if (s.alpha > 1 || s.alpha < 0) s.speed *= -1;
+          ctx.globalAlpha = s.alpha;
+          ctx.fillStyle = "white";
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      currentEffect = setInterval(animate, 30);
+    }
+
+    // Effect 3: Upside Down
+    function upsideDown()
+    {
+      resetEffects();
+      document.body.style.transition = "transform 2s";
+      document.body.style.transform = "rotate(180deg)";
+    }
+
+    // Effect 4: Stars
+    function stars()
+    {
+      resetEffects();
+      let starArray = [];
+
+      class Star {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 2 + 1;
+          this.twinkleSpeed = Math.random() * 0.1 + 0.05;
+          this.alpha = Math.random();
+        }
+
+        draw() {
+          this.alpha += this.twinkleSpeed;
+          if (this.alpha > 1 || this.alpha < 0.3) {
+            this.twinkleSpeed *= -1;
+          }
+          ctx.globalAlpha = this.alpha;
+          ctx.fillStyle = "yellow";
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < 150; i++) {
+        starArray.push(new Star());
+      }
+
+      function animate() {
+        ctx.fillStyle = "rgba(0, 0, 50, 0.1)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        starArray.forEach(star => star.draw());
+      }
+
+      currentEffect = setInterval(animate, 30);
+    }
+
+    // Effect 5: Confetti
+    function confetti()
+    {
+      resetEffects();
+      let confettiPieces = [];
+
+      class ConfettiPiece {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = -10;
+          this.size = Math.random() * 8 + 5;
+          this.speedY = Math.random() * 3 + 2;
+          this.speedX = Math.random() * 2 - 1;
+          this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+          this.rotation = Math.random() * 360;
+          this.rotationSpeed = Math.random() * 10 - 5;
+        }
+
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          this.rotation += this.rotationSpeed;
+          if (this.y > canvas.height) {
+            this.y = -10;
+            this.x = Math.random() * canvas.width;
+          }
+        }
+
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rotation * Math.PI / 180);
+          ctx.fillStyle = this.color;
+          ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+          ctx.restore();
+        }
+      }
+
+      for (let i = 0; i < 100; i++) {
+        confettiPieces.push(new ConfettiPiece());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confettiPieces.forEach(piece => {
+          piece.update();
+          piece.draw();
+        });
+      }
+
+      currentEffect = setInterval(animate, 30);
+    }
+
+    // Effect 6: Matrix Rain
+    function matrixRain()
+    {
+      resetEffects();
+      const fontSize = 16;
+      const columns = canvas.width / fontSize;
+      const drops = [];
+
+      for (let i = 0; i < columns; i++) {
+        drops[i] = 1;
+      }
+
+      const chars = "01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン";
+
+      function animate() {
+        ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = "#0F0";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+      }
+
+      currentEffect = setInterval(animate, 50);
+    }
+
+    // Effect 7: Color Pulse
+    function colorPulse()
+    {
+      resetEffects();
+      document.body.style.animation = "colorPulse 3s infinite";
+
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes colorPulse {
+          0% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+          25% { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+          50% { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+          75% { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+          100% { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    // Resize canvas on window resize
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+
+</body>
+</html>
