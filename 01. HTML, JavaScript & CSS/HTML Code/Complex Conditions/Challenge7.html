@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge 7 - Calculator</title>
+  <link rel="stylesheet" href="../global-styles.css">
+  <style>
+    .calculator-container {
+      max-width: 400px;
+      margin: 20px auto;
+    }
+
+    input[type="number"] {
+      width: 150px;
+    }
+
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      color: #667eea;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🔢 Super Calculator</h1>
+    <p>Enter two numbers and choose an operation!</p>
+
+    <div class="calculator-container">
+      <input type="number" id="number1" placeholder="First number">
+
+      <select id="operator">
+        <option value="">-- Choose --</option>
+        <option value="+">+ Add</option>
+        <option value="-">- Subtract</option>
+        <option value="*">× Multiply</option>
+        <option value="/">÷ Divide</option>
+      </select>
+
+      <input type="number" id="number2" placeholder="Second number">
+      <br><br>
+
+      <button onclick="calculate()">Calculate</button>
+
+      <div id="output" class="output-box">
+        <span id="result">Your answer will appear here!</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculate()
+    {
+      const num1 = Number(document.getElementById("number1").value);
+      const num2 = Number(document.getElementById("number2").value);
+      const operator = document.getElementById("operator").value;
+      const resultBox = document.getElementById("result");
+
+      if (operator === "+")
+      {
+        const answer = num1 + num2;
+        resultBox.textContent = num1 + " + " + num2 + " = " + answer;
+      }
+      else if (operator ==="-"){
+        const answer= num1-num2;
+        resultBox.textContent= num1 +" - "+num2 + " = "+answer;
+      }
+      else if (operator ==="*"){
+        const answer= num1*num2;
+        resultBox.textContent= num1 +" x "+num2 + " = "+answer;
+      }
+      else if (operator ==="/"){
+        const answer= num1/num2;
+        resultBox.textContent= num1 +" / "+num2 + " = "+answer;
+      }
+
+      //Add else if statements for the rest of the operations and do the calculations.
+
+      else
+      {
+        resultBox.textContent = "Please select an operator!";
+      }
+    }
+  </script>
+
+</body>
+</html>
