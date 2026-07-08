@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge 3 - Secret Password</title>
+  <link rel="stylesheet" href="../global-styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>🔐 Secret Password Challenge</h1>
+    <p>Enter the secret password to gain access!</p>
+
+    <input type="password" id="passwordInput" placeholder="Enter password...">
+    <br>
+    <button onclick="checkPassword()">Enter Password</button>
+  </div>
+
+  <script>
+    function checkPassword()
+    {
+      const password = document.getElementById("passwordInput").value;
+      if (password==="secretCode123"){
+        window.location.href="success.html"
+      }
+
+      //Insert an if statement and present a message if the user answers with correct password
+      
+      else
+      {
+        window.location.href = "failure.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
