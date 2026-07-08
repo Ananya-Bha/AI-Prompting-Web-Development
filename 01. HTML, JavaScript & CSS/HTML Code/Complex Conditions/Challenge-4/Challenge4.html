@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge 4 - Animal Explorer</title>
+  <link rel="stylesheet" href="../global-styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>🦁 Animal Explorer 🐾</h1>
+    <p>Choose an animal to learn more about it!</p>
+
+    <select id="animalSelect">
+      <option value="">-- Select an Animal --</option>
+      <option value="rats">Rats</option>
+      <option value="cats">Cats</option>
+      <option value="dogs">Dogs</option>
+      <option value="fleas">Fleas</option>
+      <option value="ticks">Ticks</option>
+      <option value="muffins">Muffins</option>
+      <option value="ocelots">Ocelots</option>
+      <option value="pygmy-shrews">Pygmy Shrews</option>
+    </select>
+    <br>
+    <button onclick="visitPage()">Visit Page</button>
+  </div>
+
+  <script>
+    function visitPage()
+    {
+      const choice = document.getElementById("animalSelect").value;
+
+      if (choice === "rats")
+      {
+        window.location.href = "rats.html";
+      }
+      else if (choice === "dogs")
+      {
+        window.location.href = "dogs.html";
+      }
+      else if (choice === "cats")
+      {
+        window.location.href = "cats.html";
+      }
+      else if (choice === "fleas")
+      {
+        window.location.href = "fleas.html";
+      }
+      else if (choice === "muffins")
+      {
+        window.location.href = "muffins.html";
+      }
+      else if (choice === "ocelots")
+      {
+        window.location.href = "ocelots.html";
+      }
+      else if (choice === "pygmy-shrews")
+      {
+        window.location.href = "pygmy-shrews.html";
+      }
+      else if (choice === "ticks")
+      {
+        window.location.href = "ticks.html";
+      }
+      //Insert else if statements if the user chooses other options
+
+      else
+      {
+        alert("Please select an animal first!");
+      }
+    }
+  </script>
+
+</body>
+</html>
