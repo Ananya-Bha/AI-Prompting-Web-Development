@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lochal Storage Viewer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Local Storage Viewer</h1>
+
+    <section class="input-row">
+      <label class="field">
+        <span>Key</span>
+        <input id="keyInput" type="text" placeholder="Key" />
+      </label>
+
+      <label class="field">
+        <span>Value</span>
+        <input id="valueInput" type="text" placeholder="Value" />
+      </label>
+
+      <button id="submitButton" type="button">Submit</button>
+    </section>
+
+    <section class="storage-panel" aria-live="polite">
+      <h2>Stored Values</h2>
+      <ul id="storageList" class="storage-list"></ul>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
