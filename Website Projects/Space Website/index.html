@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Holes - Journey into the Unknown</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-color: #0a0a0a;
+            --secondary-color: #1a1a1a;
+            --accent-color: #7b2cbf;
+            --text-color: #ffffff;
+        }
+
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('image.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--accent-color);
+        }
+
+        .content-box {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .content-text {
+            flex: 1;
+        }
+
+        .content-image {
+            flex: 1;
+        }
+
+        .content-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .characteristics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .characteristic-card {
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .characteristic-card img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--secondary-color);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .social-icons {
+            margin: 1rem 0;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .content-box {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">BlackHoles</div>
+            <div class="nav-links">
+                <a href="#intro">Introduction</a>
+                <a href="#types">Types</a>
+                <a href="#characteristics">Characteristics</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Explore Black Holes</h1>
+            <p>Journey into the most mysterious objects in our universe</p>
+        </div>
+    </section>
+
+    <section id="intro">
+        <h2 class="section-title">What are Black Holes?</h2>
+        <div class="content-box">
+            <div class="content-text">
+                <p>Black holes are regions in space where gravity is so intense that nothing, not even light, can escape. They are formed when massive stars collapse at the end of their lives, or potentially through other still-unknown processes.</p>
+            </div>
+            <div class="content-image">
+                <img src="blackhole.jpeg" alt="Black Hole">
+            </div>
+        </div>
+    </section>
+
+    <section id="types">
+        <h2 class="section-title">Types of Black Holes</h2>
+        <div class="content-box">
+            <div class="content-text">
+                <h3>Stellar-Mass Black Holes</h3>
+                <p>Formation: These black holes are formed from the collapsed cores of massive stars after they exhaust their fuel and undergo a supernova explosion.</p>
+                <p>Mass: They typically range from a few to dozens of times the mass of our Sun.</p>
+                <p>Location: They are scattered throughout galaxies, including our Milky Way.</p>
+            </div>
+            <div class="content-image">
+                <img src="Stellar-Mass.jpeg" alt="Stellar-Mass Black Hole">
+            </div>
+        </div>
+        <!-- Similar content-box divs for other types... -->
+    </section>
+
+    <section id="characteristics">
+        <h2 class="section-title">Characteristics of Black Holes</h2>
+        <div class="characteristics-grid">
+            <div class="characteristic-card">
+                <h3>Formation</h3>
+                <img src="Formation.jpeg" alt="Black Hole Formation">
+                <p>Black holes are formed when the cores of massive stars collapse under their own gravity, often resulting in a supernova explosion.</p>
+            </div>
+            <!-- Similar characteristic-card divs for other characteristics... -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2023 Black Holes Explorer. All rights reserved.</p>
+    </footer>
+</body>
+</html>
