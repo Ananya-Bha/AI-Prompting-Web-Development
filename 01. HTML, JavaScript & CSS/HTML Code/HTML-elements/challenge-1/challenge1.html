@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <style>
+            #minimal-button {
+                background-color: #e0e0e0;
+                color: #333;
+                padding: 10px 20px;
+                border: none;
+                font-size: 14px;
+            }
+
+            #vibrant-button {
+                background-color: #ff6b6b;
+                color: white;
+                padding: 15px 30px;
+                border: none;
+                border-radius: 25px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            #elegant-button {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 12px 24px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
+    <body>
+        <!--Create your button here-->
+        <button id ="minimal-button" onclick="greet()"> Click to Greet</button>
+
+        <script>
+            // code your greet() function here
+            function greet(){
+                const name= prompt("What is your name?")
+                alert("Hello "+name+"!")
+
+            }
+        </script>
+    </body>
+</html>
