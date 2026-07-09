@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Game - Computer Science Edition</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      overflow: hidden;
+      height: 100vh;
+    }
+    #game-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .falling-word {
+      position: absolute;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid #fff;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      user-select: none;
+      pointer-events: none;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    #input-area {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px 0 20px 0;
+      background: linear-gradient(to top, #111 90%, transparent 100%);
+      z-index: 10;
+    }
+    #word-input {
+      width: 260px;
+      padding: 12px 18px;
+      border-radius: 25px;
+      border: none;
+      font-size: 1.1rem;
+      background: #222;
+      color: #fff;
+      outline: none;
+      border: 2px solid #444;
+      transition: border 0.2s;
+    }
+    #word-input:focus {
+      border: 2px solid #fff;
+    }
+    #score {
+      position: absolute;
+      top: 18px;
+      right: 32px;
+      font-size: 1.3rem;
+      background: #222;
+      padding: 8px 18px;
+      border-radius: 20px;
+      border: 1px solid #fff;
+      z-index: 20;
+      letter-spacing: 1px;
+    }
+    #alert {
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      background: #fff;
+      color: #111;
+      padding: 10px 30px;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      z-index: 30;
+    }
+    #alert.show {
+      opacity: 1;
+    }
+    #game-over-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    #game-over-modal.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    #game-over-modal h1 {
+      color: #fff;
+      font-size: 2.5rem;
+      margin-bottom: 18px;
+    }
+    #game-over-modal p {
+      color: #fff;
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+    }
+    #restart-btn {
+      background: #fff;
+      color: #111;
+      border: none;
+      border-radius: 25px;
+      padding: 14px 38px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s;
+    }
+    #restart-btn:hover {
+      background: #222;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container"></div>
+  <div id="score">Score: 0</div>
+  <div id="input-area">
+    <input id="word-input" type="text" placeholder="Type a word.." autocomplete="off" />
+  </div>
+  <div id="alert">Please enter a valid word</div>
+  <div id="game-over-modal">
+    <h1>Game Over</h1>
+    <p id="final-score"></p>
+    <button id="restart-btn">Restart</button>
+  </div>
+  <script>
+    // Web development real words
+    const WORDS = [
+      'html','css','grid','flex','div','span','form','ajax','json','rest','api','node','react','vue','next','nav','main','aside','footer','input','label','link','meta','head','body','title','style','class','id','href','src','alt','img','ul','li','ol','map','area','svg','path','view','port','host','url','slug','auth','user','post','get','put','fetch','font','icon','menu','item','page','site','blog','shop','cart','prod','hero','card','list','item','wrap','row','col','btn','tab','pane','root','base','file','edit','save','load','send','type','text','date','time','file','data','json','yaml','sass','less','lint','test','mock','ajax','push','pull','repo','git','npm','yarn','vite','gulp','sass','link','nav','main','wrap','grid','flex','box','gap','row','col','span','pad','mar','gap','z','x','y','top','left','right','down','up','show','hide','open','close','drop','drag','sort','copy','cut','paste','undo','redo','zoom','fit','fill','crop','clip','mask','fade','slide','flip','hover','focus','click','tap','press','swipe','scroll','snap','lock','key','hash','slug','path','root','base','host','port','url','site','page','view','form','auth','user','pass','mail','code','dev','prod','test','mock','lint','bug','fix','feat','ref','log','warn','info','err','fail','pass','done','todo','note','tip','help','doc','api','rest','json','yaml','xml','svg','png','jpg','gif','webp','ico','map','area','nav','menu','item','tab','pane','card','hero','list','wrap','grid','flex','box','gap','row','col','span','pad','mar','gap','z','x','y','top','left','right','down','up'
+    ];
+
+    const gameContainer = document.getElementById('game-container');
+    const wordInput = document.getElementById('word-input');
+    const scoreDisplay = document.getElementById('score');
+    const alertBox = document.getElementById('alert');
+    const gameOverModal = document.getElementById('game-over-modal');
+    const finalScore = document.getElementById('final-score');
+    const restartBtn = document.getElementById('restart-btn');
+
+    let fallingWords = [];
+    let score = 0;
+    let gameActive = true;
+    let wordId = 0;
+    let spawnInterval, moveInterval;
+
+    function randomWord() {
+      return WORDS[Math.floor(Math.random() * WORDS.length)];
+    }
+
+    function randomX() {
+      // Keep words within the screen
+      return Math.random() * (window.innerWidth - 120);
+    }
+
+    function spawnWord() {
+      if (!gameActive) return;
+      const word = randomWord();
+      const x = randomX();
+      const el = document.createElement('div');
+      el.className = 'falling-word';
+      el.textContent = word;
+      el.style.left = x + 'px';
+      el.style.top = '-40px';
+      el.dataset.word = word;
+      el.dataset.id = wordId;
+      gameContainer.appendChild(el);
+      fallingWords.push({
+        id: wordId++,
+        word,
+        el,
+        y: -40,
+        speed: 0.35 + Math.random() * 0.35 // px per frame, slower
+      });
+    }
+
+    function moveWords() {
+      if (!gameActive) return;
+      for (let i = fallingWords.length - 1; i >= 0; i--) {
+        const fw = fallingWords[i];
+        fw.y += fw.speed;
+        fw.el.style.top = fw.y + 'px';
+        if (fw.y > window.innerHeight - 60) {
+          // Word reached bottom
+          endGame();
+          return;
+        }
+      }
+    }
+
+    function removeWordByText(text) {
+      for (let i = 0; i < fallingWords.length; i++) {
+        if (fallingWords[i].word.toLowerCase() === text.toLowerCase()) {
+          gameContainer.removeChild(fallingWords[i].el);
+          fallingWords.splice(i, 1);
+          return true;
+        }
+      }
+      return false;
+    }
+
+    function showAlert(msg) {
+      alertBox.textContent = msg;
+      alertBox.classList.add('show');
+      setTimeout(() => {
+        alertBox.classList.remove('show');
+      }, 1000);
+    }
+
+    function updateScore() {
+      scoreDisplay.textContent = 'Score: ' + score;
+    }
+
+    function endGame() {
+      gameActive = false;
+      clearInterval(spawnInterval);
+      clearInterval(moveInterval);
+      gameOverModal.classList.add('active');
+      finalScore.textContent = `You scored ${score} point${score === 1 ? '' : 's'}!`;
+    }
+
+    function resetGame() {
+      // Remove all words
+      fallingWords.forEach(fw => {
+        if (fw.el.parentNode) fw.el.parentNode.removeChild(fw.el);
+      });
+      fallingWords = [];
+      score = 0;
+      updateScore();
+      wordInput.value = '';
+      gameOverModal.classList.remove('active');
+      gameActive = true;
+      wordId = 0;
+      startGame();
+    }
+
+    function startGame() {
+      spawnInterval = setInterval(() => {
+        if (Math.random() < 0.7) spawnWord();
+      }, 900);
+      moveInterval = setInterval(moveWords, 18);
+    }
+
+    wordInput.addEventListener('keydown', function(e) {
+      if (!gameActive) return;
+      if (e.key === 'Enter') {
+        const val = wordInput.value.trim();
+        if (!val) return;
+        if (removeWordByText(val)) {
+          score++;
+          updateScore();
+          wordInput.value = '';
+        } else {
+          showAlert('Please enter a valid word');
+          wordInput.value = '';
+        }
+      }
+    });
+
+    restartBtn.addEventListener('click', resetGame);
+
+    // Responsive: Remove words if window resizes
+    window.addEventListener('resize', () => {
+      fallingWords.forEach(fw => {
+        if (parseInt(fw.el.style.left) > window.innerWidth - 120) {
+          fw.el.style.left = randomX() + 'px';
+        }
+      });
+    });
+
+    // Start the game
+    startGame();
+    wordInput.focus();
+  </script>
+</body>
+</html>
