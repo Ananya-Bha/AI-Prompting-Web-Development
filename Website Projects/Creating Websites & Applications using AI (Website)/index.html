@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creating Websites & Applications using AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0a0a0a;
+            --secondary: #1a1a1a;
+            --accent: #6366f1;
+            --text: #ffffff;
+            --card-gradient-1: linear-gradient(135deg, #6366f1, #8b5cf6);
+            --card-gradient-2: linear-gradient(135deg, #3b82f6, #60a5fa);
+            --card-gradient-3: linear-gradient(135deg, #8b5cf6, #d946ef);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            padding: 1rem;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(99, 102, 241, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('image.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            color: #ffffff;
+        }
+
+        /* Story Section */
+        .story {
+            padding: 7rem 2rem;
+            background: var(--secondary);
+        }
+
+        .story-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text);
+            position: relative;
+            display: inline-block;
+        }
+
+        .story-content h2::before,
+        .story-content h2::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 50px;
+            background: var(--accent);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .story-content h2::before {
+            right: 100%;
+            margin-right: 15px;
+        }
+
+        .story-content h2::after {
+            left: 100%;
+            margin-left: 15px;
+        }
+
+        .story-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .story-text p:not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
+
+        /* AI Platforms Section */
+        .platforms {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 50px;
+            background: var(--accent);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .section-title::before {
+            right: 100%;
+            margin-right: 15px;
+        }
+
+        .section-title::after {
+            left: 100%;
+            margin-left: 15px;
+        }
+
+        .platforms .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .platform-info h3 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .platform-card {
+            display: flex;
+            align-items: start;
+            background: var(--secondary);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+            padding: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .platform-info {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .platform-image {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .platform-card {
+                flex-direction: column;
+            }
+
+            .platform-info {
+                padding-right: 0;
+                padding-bottom: 2rem;
+            }
+
+            .platform-image {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .key-feature {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .key-feature h4 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .best-for {
+            font-size: 1.2rem;
+            background: rgba(99, 102, 241, 0.15);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .strength-item {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .strength-item:hover {
+            transform: translateY(-5px);
+            background: rgba(99, 102, 241, 0.2);
+        }
+
+        .strength-item i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            border-radius: 15px;
+            min-height: 180px;
+            width: 250px;
+        }
+
+        .feature-card:nth-child(1) {
+            background: var(--card-gradient-1);
+        }
+
+        .feature-card:nth-child(2) {
+            background: var(--card-gradient-2);
+        }
+
+        .feature-card:nth-child(3) {
+            background: var(--card-gradient-3);
+        }
+
+        .feature-card h3 {
+            color: white;
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card i {
+            color: white;
+            font-size: 1.8rem;
+            margin: 0.5rem 0;
+        }
+
+        .learn-more-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border: 1px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .learn-more-btn:hover {
+            background: white;
+            color: var(--accent);
+        }
+
+        /* Feature Cards Section */
+        .features {
+            position: relative;
+            padding: 8rem 2rem;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--accent), 
+                transparent
+            );
+        }
+
+        .feature-cards {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .platform-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .platform-image {
+                margin: 0 auto;
+            }
+
+            .feature-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .feature-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            color: var(--text);
+            font-size: 1.8rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#story">Our Story</a>
+                <a href="#platforms">AI Platforms</a>
+                <a href="#features">Features</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Creating Websites & Applications using Artificial Intelligence</h1>
+            <p>Learn how to create websites using AI platforms!</p>
+        </div>
+    </section>
+
+    <section class="story" id="story">
+        <div class="story-content">
+            <h2>Our Story</h2>
+            <div class="story-text">
+                <p>We believe building a website should be simple — and with AI, it finally is. What started as a small project to make web design easier has grown into a platform that teaches anyone, no matter their skill level, how to create stunning websites using artificial intelligence.</p>
+                <p>Our mission is to empower you with the tools and knowledge to bring your ideas online — smarter, faster, and without the tech overwhelm.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="platforms" id="platforms">
+        <h2 class="section-title">AI Platforms</h2>
+        
+        <div class="platform-card">
+            <div class="platform-info">
+                <h3>Cursor AI</h3>
+                <p class="platform-description">What it is: A new AI-powered code editor built on top of VS Code.</p>
+                
+                <div class="key-feature">
+                    <h4>Key Feature</h4>
+                    <p>You can chat with your code like ChatGPT — ask it to explain bugs, generate features, or refactor code right inside your project.</p>
+                </div>
+                
+                <div class="strengths-grid">
+                    <div class="strength-item">
+                        <i class="fas fa-brain"></i>
+                        <p>Super smart autocompletion</p>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-comments"></i>
+                        <p>Built-in AI chat that understands your codebase</p>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-code"></i>
+                        <p>Great for people who already know a bit of coding</p>
+                    </div>
+                </div>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong> Intermediate to advanced developers who want deep AI coding help while working in a familiar VS Code-like environment.
+                </div>
+            </div>
+            <img src="cursor.webp" alt="Cursor AI" class="platform-image">
+        </div>
+
+        <div class="platform-card">
+            <div class="platform-info">
+                <h3>Visual Studio Code</h3>
+                <p class="platform-description">What it is: An AI assistant inside Visual Studio Code, powered by GitHub Copilot (which uses OpenAI's models).</p>
+                
+                <div class="key-feature">
+                    <h4>Key Feature</h4>
+                    <p>As you type, it auto-suggests whole lines or blocks of code — like autocomplete on steroids.</p>
+                </div>
+                
+                <div class="strengths-grid">
+                    <div class="strength-item">
+                        <i class="fas fa-language"></i>
+                        <p>Works in many languages (HTML, CSS, JS, Python, etc.)</p>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-comment-code"></i>
+                        <p>Suggests code based on comments or context</p>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-puzzle-piece"></i>
+                        <p>Well integrated into the VS Code editor</p>
+                    </div>
+                </div>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong> Beginners to pros — great for speeding up coding and learning from AI suggestions.
+                </div>
+            </div>
+            <img src="VS Code.jpeg" alt="VS Code" class="platform-image">
+        </div>
+
+        <div class="platform-card">
+            <div class="platform-info">
+                <h3>Replit Ghostwriter</h3>
+                <p class="platform-description">What it is: An AI coding assistant built into Replit, an online coding platform.</p>
+                
+                <div class="key-feature">
+                    <h4>Key Feature</h4>
+                    <p>Helps you build entire web apps in the browser, with real-time AI code suggestions, explanations, and debugging.</p>
+                </div>
+                
+                <div class="strengths-grid">
+                    <div class="strength-item">
+                        <i class="fas fa-cloud"></i>
+                        <p>You don't need to install anything — just go to the website and start coding</p>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p>Great for beginners, students, and people who want to prototype quickly</p>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-wrench"></i>
+                        <p>Has "Explain Code" and "Fix Code" features</p>
+                    </div>
+                </div>
+                
+                <div class="best-for">
+                    <strong>Best For:</strong> Students, solo developers, or anyone learning to build websites or apps easily in the cloud.
+                </div>
+            </div>
+            <img src="Replit.jpeg" alt="Replit" class="platform-image">
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h2 class="section-title">Visit Their Websites</h2>
+        <div class="feature-cards">
+            <div class="feature-card">
+                <h3>Cursor</h3>
+                <i class="fas fa-code fa-3x"></i>
+                <a href="https://www.cursor.com" class="learn-more-btn">Learn More</a>
+            </div>
+            <div class="feature-card">
+                <h3>Visual Studio Code</h3>
+                <i class="fas fa-terminal fa-3x"></i>
+                <a href="https://code.visualstudio.com/" class="learn-more-btn">Learn More</a>
+            </div>
+            <div class="feature-card">
+                <h3>Replit Ghostwriter</h3>
+                <i class="fas fa-ghost fa-3x"></i>
+                <a href="https://replit.com/learn/intro-to-ghostwriter" class="learn-more-btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023 Creating Websites & Applications using AI. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

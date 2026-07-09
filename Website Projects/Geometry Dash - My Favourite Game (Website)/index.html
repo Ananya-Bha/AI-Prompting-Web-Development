@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry Dash</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container nav-container">
+                <div class="logo">Geometry Dash</div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">Learn About the Game</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#thoughts">Personal Thoughts</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1>Geometry Dash</h1>
+                <h2>Jump, Dodge, and Groove to the Beat!</h2>
+            </div>
+        </section>
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2>Learn About the Game</h2>
+                <p>Geometry Dash is a rhythm-based game, where players control a jumping icon to navigate through music-synced levels filled with different types of obstacles.</p>
+            </div>
+        </section>
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Platforming Action</h3>
+                        <p>Players primarily jump to avoid obstacles like spikes and hazards. (Fantasy)</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Rhythm-Based Movement</h3>
+                        <p>The game's pace and your movement is influenced by music, creating a rhythmic flow. (Sensation)</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Icon Customization</h3>
+                        <p>By completing checkpoints in levels, players can collect game currency to unlock different icons, and customization options for their character. (Discovery)</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Create Your Own</h3>
+                        <p>Players can create and navigate through their own levels which they can add obstacles to to vary difficulty for themselves and others. (Expression, Fellowship)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="thoughts" class="thoughts-section">
+            <div class="container">
+                <h2>Personal Thoughts</h2>
+                <div class="thoughts-card">
+                    <ul>
+                        <li>It's a fun, eye-catching game that always keeps me invested.</li>
+                        <li>Levels are easy but challenging at the same time so they keep the user focused and time flies by. (Challenge)</li>
+                        <li>It has a practice mode, through which the players can practice playing the levels, without having the need to start from the beginning each time.</li>
+                        <li>The musical aspect is very soothing and is perfectly synced with each time a player should make a move in the game, which is great for assistance. (Sensation)</li>
+                        <li>The music changes each level so it's not boring.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Geometry Dash Fan Page. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
