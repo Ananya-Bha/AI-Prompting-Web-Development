@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wired Up Quiz</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="screen start-screen" id="start-screen">
+      <div class="card sketch-card">
+        <div class="hero-top centered-title">
+          <div>
+            <h1>WIRED UP <span class="accent">QUIZ</span></h1>
+            <p class="subtitle">7 Questions on HTML, CSS and JavaScript!</p> <!-- Change subtitle information and class name -->
+          </div>
+        </div>
+
+        <div class="code-window">
+          <pre><code><span class="token-tag">&lt;html&gt;</span>
+  <span class="token-tag">&lt;head&gt;</span>
+    <span class="token-tag">&lt;title&gt;</span><span class="token-string">Code Quiz</span><span class="token-tag">&lt;/title&gt;</span>
+  <span class="token-tag">&lt;/head&gt;</span>
+  <span class="token-tag">&lt;body&gt;</span>
+    <span class="token-tag">&lt;h1&gt;</span><span class="token-string">Challenge Yourself</span><span class="token-tag">&lt;/h1&gt;</span>
+    <span class="token-tag">&lt;script&gt;</span><span class="token-tag">&lt;/script&gt;</span>
+  <span class="token-tag">&lt;/body&gt;</span>
+<span class="token-tag">&lt;/html&gt;</span></code></pre>
+        </div>
+
+        <button class="start-button" id="start-button">START</button>
+      </div>
+    </section>
+
+    <section class="screen question-screen hidden" id="question-screen">
+      <div class="card sketch-card">
+        <div class="question-progress">
+          <div class="question-progress-fill" id="question-progress-fill"></div>
+          <span class="question-progress-label" id="question-progress-label">1/7</span>
+        </div>
+
+        <div class="question-header">
+          <span class="label">QUESTION</span>
+          <div class="question-prompt" id="question-prompt"></div>
+        </div>
+
+        <div class="question-body">
+          <div class="question-code-panel">
+            <div class="code-display">
+              <pre><code id="code-snippet">// code appears here</code></pre>
+            </div>
+          </div>
+
+          <div class="question-answers-panel">
+            <div class="answer-grid" id="answer-grid"></div>
+          </div>
+        </div>
+
+        <button class="next-button" id="next-button">Next</button>
+      </div>
+    </section>
+
+    <section class="screen results-screen hidden" id="results-screen">
+      <div class="card sketch-card">
+        <div class="result-header">
+          <div>
+            <h1>QUIZ <span class="accent">COMPLETE</span></h1>
+            <p class="subtitle">You scored:</p>
+          </div>
+        </div>
+
+        <div class="result-body">
+          <div class="score-card" id="score-card">
+            <span class="score-value" id="score-percentage">0%</span>
+          </div>
+          <p class="score-text" id="score-text">0 out of 7 correct</p>
+        </div>
+
+        <div class="result-actions">
+          <button class="action-button" id="review-button">Review Answers</button>
+          <button class="action-button" id="home-button">Back to Home</button>
+          <button class="try-again-button" id="try-again-button">Try Again</button>
+          <button class="action-button" id="how-made-button">How I Made This...</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen make-screen hidden" id="make-screen">
+      <div class="card sketch-card review-card">
+        <div class="markdown-content" id="markdown-content"></div>
+
+        <button class="action-button" id="back-results-button">Back to Results</button>
+      </div>
+    </section>
+
+    <section class="screen review-screen hidden" id="review-screen">
+      <div class="card sketch-card review-card">
+        <div class="review-header">
+          <h1>Review Answers</h1>
+          <p>See the correct answer and your choice.</p>
+        </div>
+
+        <div class="review-list" id="review-list"></div>
+
+        <button class="start-button home-cta" id="review-home-button">Back to Home</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
