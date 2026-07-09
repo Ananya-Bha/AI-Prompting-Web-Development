@@ -1,0 +1,129 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #F5F5F5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.home-page {
+    background-image: url('https://example.com/cookie-background.jpg'); /* Replace with your actual cookie image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.overlay {
+    background-color: rgba(255, 255, n255, 0.8); /* White overlay with 80% opacity*/
+    min-height: 100vh;
+}
+
+header {
+    background-color: #FFFFFF;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: 'Georgia', serif;
+    color: #333333;
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+nav {
+    background-color: #FFFFFF;
+    padding: 10px;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #333333;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #8B4513;
+}
+
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+.cookie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.cookie-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.cookie-item:hover {
+    transform: translateY(-5px);
+}
+
+.cookie-item img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+h2 {
+    color: #333333;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+}
+
+h3 {
+    color: #8B4513;
+    font-family: 'Georgia', serif;
+}
+
+.welcome {
+    text-align: center;
+    color: #333333;
+    padding: 50px 0;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #8B4513;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #6B3E0A;
+}

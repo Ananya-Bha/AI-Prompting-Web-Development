@@ -1,0 +1,606 @@
+/* Global Styles */
+:root {
+    --primary-color: #1e88e5;
+    --secondary-color: #7c4dff;
+    --accent-color: #ffd54f;
+    --text-color: #ffffff;
+    --background-color: #000033;
+    --mercury-color: #8c7e6e;
+    --venus-color: #e6b88a;
+    --earth-color: #4ca6ff;
+    --mars-color: #d35400;
+    --jupiter-color: #e0ae6f;
+    --saturn-color: #f0e4bb;
+    --uranus-color: #b3ffff;
+    --neptune-color: #4b70dd;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    background-image: url('home.jpeg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+    margin-bottom: 1rem;
+}
+
+header h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header h2 {
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+nav ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+
+nav ul li a:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+nav ul li a.active {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+/* Main Content Styles */
+main {
+    padding: 2rem 0;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/solar-system-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hero * {
+    position: relative;
+    z-index: 1;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    padding: 0.7rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #ffc107;
+}
+
+/* Planet Preview Styles */
+.planet-preview {
+    padding: 4rem 0;
+}
+
+.planet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.planet-card {
+    background: linear-gradient(45deg, rgba(30, 136, 229, 0.7), rgba(124, 77, 255, 0.7));
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.planet-card:hover {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(45deg, rgba(124, 77, 255, 0.7), rgba(30, 136, 229, 0.7));
+}
+
+.planet-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.planet-card .planet-info {
+    padding: 1rem;
+}
+
+.planet-card h3 {
+    margin: 0;
+    color: var(--accent-color);
+}
+
+.planet-card p {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+}
+
+/* Our Solar System Page Styles */
+.solar-system-image {
+    max-width: 100%;
+    margin-bottom: 2rem;
+}
+
+.solar-system-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    background-color: rgba(13, 71, 161, 0.7);
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-item h3 {
+    color: var(--accent-color);
+    margin-top: 0;
+}
+
+.fun-facts {
+    padding: 4rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.fun-facts ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.fun-facts li {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.fun-facts li:hover {
+    transform: translateX(10px);
+}
+
+/* Planets Page Styles */
+.planets-page {
+    display: flex;
+}
+
+.planet-nav {
+    width: 200px;
+    background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+    padding: 1.5rem;
+    border-radius: 15px;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+}
+
+.planet-nav h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--accent-color);
+}
+
+.planet-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.planet-nav ul li {
+    margin-bottom: 1rem;
+}
+
+.planet-nav ul li a {
+    font-family: 'Space Mono', monospace;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.planet-nav ul li a:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.planet-info {
+    flex: 1;
+    padding: 0 2rem;
+}
+
+.planet-info article {
+    margin-bottom: 3rem;
+    background: linear-gradient(45deg, rgba(30, 136, 229, 0.7), rgba(124, 77, 255, 0.7));
+    padding: 2rem;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.planet-info article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+.planet-info h2 {
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.planet-info img {
+    max-width: 100%;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.planet-info p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.planet-info ul {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.planet-info li {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.planet-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.planet-diagram {
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.planet-details ul {
+    width: 50%;
+}
+
+.planet-comparison {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Planet-specific styles */
+#mercury { background: linear-gradient(45deg, rgba(140, 126, 110, 0.7), rgba(124, 77, 255, 0.7)); }
+#venus { background: linear-gradient(45deg, rgba(230, 184, 138, 0.7), rgba(124, 77, 255, 0.7)); }
+#earth { background: linear-gradient(45deg, rgba(76, 166, 255, 0.7), rgba(124, 77, 255, 0.7)); }
+#mars { background: linear-gradient(45deg, rgba(211, 84, 0, 0.7), rgba(124, 77, 255, 0.7)); }
+#jupiter { background: linear-gradient(45deg, rgba(224, 174, 111, 0.7), rgba(124, 77, 255, 0.7)); }
+#saturn { background: linear-gradient(45deg, rgba(240, 228, 187, 0.7), rgba(124, 77, 255, 0.7)); }
+#uranus { background: linear-gradient(45deg, rgba(179, 255, 255, 0.7), rgba(124, 77, 255, 0.7)); }
+#neptune { background: linear-gradient(45deg, rgba(75, 112, 221, 0.7), rgba(124, 77, 255, 0.7)); }
+
+/* Footer Styles */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .planets-page {
+        flex-direction: column;
+    }
+
+    .planet-nav {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .planet-info {
+        padding: 0;
+    }
+}
+
+/* Add these new styles to your existing CSS file */
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/solar-system-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+}
+
+.featured-planet {
+    padding: 4rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.featured-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.featured-image {
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.featured-text {
+    width: 50%;
+}
+
+.planet-preview {
+    padding: 4rem 0;
+}
+
+.fun-facts {
+    padding: 4rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.fun-facts ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.fun-facts li {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.fun-facts li:hover {
+    transform: translateX(10px);
+}
+
+@media (max-width: 768px) {
+    .featured-content {
+        flex-direction: column;
+    }
+
+    .featured-image,
+    .featured-text {
+        width: 100%;
+    }
+}
+
+.home-page {
+    background-image: url('images/space-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.planet-card {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    background: linear-gradient(45deg, rgba(30, 136, 229, 0.7), rgba(124, 77, 255, 0.7));
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.planet-card:hover {
+    transform: scale(1.05) rotate(3deg);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(45deg, rgba(124, 77, 255, 0.7), rgba(30, 136, 229, 0.7));
+}
+
+.planet-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.planet-card .planet-info {
+    padding: 1rem;
+}
+
+.planet-card h3 {
+    margin: 0;
+    color: var(--accent-color);
+}
+
+.planet-card p {
+    margin: 0.5rem 0 0;
+    font-size: 0.9rem;
+}
+
+/* Solar System Page Styles */
+.solar-system-page {
+    background-image: url('images/galaxy-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.solar-system-hero {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/solar-system-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    color: var(--text-color);
+}
+
+.solar-system-hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.solar-system-overview {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.solar-system-image {
+    flex: 1;
+}
+
+.solar-system-description {
+    flex: 1;
+}
+
+.solar-system-facts {
+    padding: 4rem 0;
+}
+
+.component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.component-item {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.component-item:hover {
+    transform: translateY(-5px);
+}
+
+.component-item img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.explore-more {
+    text-align: center;
+    padding: 4rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+    .solar-system-overview {
+        flex-direction: column;
+    }
+
+    .solar-system-image,
+    .solar-system-description {
+        width: 100%;
+    }
+}

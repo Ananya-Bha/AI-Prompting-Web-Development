@@ -1,0 +1,175 @@
+body {
+    font-family: 'https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap';
+    margin: 0;
+    padding: 0;
+    background-color: #16f2fe; /* Bright yellow background */
+    color: #333;
+}
+
+header {
+    background-color: #fe7c7c; /* Coral red */
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #14fbff; /* Bright teal on hover */
+    transform: scale(1.1);
+}
+
+nav ul li a.active {
+    border-bottom: 3px solid #18ffe4;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.home {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url('labrador background.jpg'); /* Add this line */
+    background-size: cover; /* This ensures the image covers the entire area */
+    background-position: center; /* This centers the image */
+    position: relative;
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 81, 68, 0.233); /* Adjust the last value (0.6) to change opacity */
+    z-index: 1;
+}
+
+.home h1, .home p {
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.home h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.home p {
+    font-size: 1.5rem;
+}
+
+.toy-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.toy {
+    background-color: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 1rem;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.toy:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.toy img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.adopt-button {
+    background-color: #18baff; /* Bright teal */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.2rem;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.adopt-button:hover {
+    background-color: #45B7AA;
+    transform: scale(1.05);
+}
+
+footer {
+    background-color: #fe7700; /* Coral red */
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* New styles for the importance page */
+.importance-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.importance-item {
+    background-color: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.importance-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.importance-item img {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.importance-item h2 {
+    color: #FF6B6B;
+}

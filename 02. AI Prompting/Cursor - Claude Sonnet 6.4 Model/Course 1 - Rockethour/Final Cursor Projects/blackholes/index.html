@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Holes - Cosmic Mysteries</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #030303;
+            color: #ffffff;
+            line-height: 1.8;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(3, 3, 3, 0.95);
+            padding: 1.2rem 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00aaff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('image.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.8) 100%);
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.1;
+            background: linear-gradient(45deg, #ffffff, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            margin-bottom: 4rem;
+            text-align: center;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: -1px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #00aaff;
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* What are Black Holes Section */
+        .intro-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0, 170, 255, 0.1);
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.2);
+            transition: transform 0.5s ease;
+        }
+
+        .intro-image img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Types of Black Holes Section */
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .type-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 3rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 170, 255, 0.03));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .type-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 170, 255, 0.2);
+        }
+
+        .type-card:hover::before {
+            opacity: 1;
+        }
+
+        .type-card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .type-card h3 {
+            color: #00aaff;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .type-card p {
+            color: #e0e0e0;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .type-card strong {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Characteristics Section */
+        .characteristics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .characteristic-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .characteristic-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 170, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .characteristic-card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .characteristic-card h3 {
+            color: #00aaff;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .characteristic-card p {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: rgba(3, 3, 3, 0.98);
+            padding: 5rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links {
+            margin-bottom: 2.5rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.8rem;
+            margin: 0 1.5rem;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .social-links a:hover {
+            color: #00aaff;
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .characteristics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .intro-section {
+                grid-template-columns: 1fr;
+                padding: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .characteristics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+
+        /* Scroll Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">BlackHoles</a>
+            <div class="nav-links">
+                <a href="#intro">Overview</a>
+                <a href="#types">Classifications</a>
+                <a href="#characteristics">Properties</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Universe's Most Enigmatic Phenomena</h1>
+            <p>Explore the mysteries of cosmic singularities that challenge our understanding of space and time</p>
+        </div>
+    </section>
+
+    <!-- What are Black Holes Section -->
+    <section id="intro" class="intro-section fade-in-up">
+        <div class="intro-text">
+            <h2 class="section-title">What are Black Holes?</h2>
+            <p>Black holes are regions in space where gravity is so intense that nothing, not even light, can escape. They are formed when massive stars collapse at the end of their lives, or potentially through other still-unknown processes. These cosmic phenomena continue to challenge our understanding of physics and the universe itself.</p>
+        </div>
+        <div class="intro-image">
+            <img src="blackhole.jpeg" alt="Black Hole Visualization">
+        </div>
+    </section>
+
+    <!-- Types of Black Holes Section -->
+    <section id="types">
+        <h2 class="section-title">Classifications of Black Holes</h2>
+        <div class="types-grid">
+            <div class="type-card fade-in-up">
+                <img src="Stellar-Mass.jpeg" alt="Stellar-Mass Black Hole">
+                <h3>Stellar-Mass Black Holes</h3>
+                <p><strong>Formation:</strong> These black holes are formed from the collapsed cores of massive stars after they exhaust their fuel and undergo a supernova explosion.</p>
+                <p><strong>Mass:</strong> They typically range from a few to dozens of times the mass of our Sun.</p>
+                <p><strong>Location:</strong> They are scattered throughout galaxies, including our Milky Way.</p>
+            </div>
+
+            <div class="type-card fade-in-up">
+                <img src="Supermassive.jpeg" alt="Supermassive Black Hole">
+                <h3>Supermassive Black Holes</h3>
+                <p><strong>Formation:</strong> The origin of supermassive black holes is still a mystery, but they are thought to form either through the direct collapse of gas clouds or by merging with other black holes.</p>
+                <p><strong>Mass:</strong> They can be millions to billions of times more massive than our Sun.</p>
+                <p><strong>Location:</strong> They reside at the centers of most galaxies.</p>
+            </div>
+
+            <div class="type-card fade-in-up">
+                <img src="Intermediate.jpg" alt="Intermediate-Mass Black Hole">
+                <h3>Intermediate-Mass Black Holes</h3>
+                <p><strong>Formation:</strong> Their formation is less understood, and they may be formed by the merging of stellar-mass black holes or the direct collapse of larger gas clouds.</p>
+                <p><strong>Mass:</strong> They have masses between stellar-mass and supermassive black holes.</p>
+                <p><strong>Location:</strong> They are thought to be found in globular clusters and dwarf galaxies.</p>
+            </div>
+
+            <div class="type-card fade-in-up">
+                <img src="Primordial.jpg" alt="Primordial Black Hole">
+                <h3>Primordial Black Holes</h3>
+                <p><strong>Formation:</strong> These are hypothetical black holes that are thought to have formed in the very early universe.</p>
+                <p><strong>Mass:</strong> They are believed to be extremely small, potentially as small as an atom or smaller.</p>
+                <p><strong>Detection:</strong> They have not been directly observed, and their existence is still debated.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Characteristics Section -->
+    <section id="characteristics">
+        <h2 class="section-title">Properties of Black Holes</h2>
+        <div class="characteristics-grid">
+            <div class="characteristic-card fade-in-up">
+                <img src="Formation.jpeg" alt="Black Hole Formation">
+                <h3>Formation</h3>
+                <p>Black holes are formed when the cores of massive stars collapse under their own gravity, often resulting in a supernova explosion.</p>
+            </div>
+
+            <div class="characteristic-card fade-in-up">
+                <img src="Density.jpeg" alt="Black Hole Density">
+                <h3>Density</h3>
+                <p>Black holes are incredibly dense regions, with an enormous amount of mass compressed into a tiny space.</p>
+            </div>
+
+            <div class="characteristic-card fade-in-up">
+                <img src="Event_Horizon.jpeg" alt="Event Horizon">
+                <h3>Event Horizon</h3>
+                <p>The event horizon is the boundary around a black hole where the escape velocity equals the speed of light. Anything that crosses this boundary is forever trapped within.</p>
+            </div>
+
+            <div class="characteristic-card fade-in-up">
+                <img src="Invisible Nature.jpeg" alt="Invisible Nature">
+                <h3>Invisible Nature</h3>
+                <p>Black holes are invisible because no light can escape their gravitational pull. Scientists detect them through their effects on surrounding matter.</p>
+            </div>
+
+            <div class="characteristic-card fade-in-up">
+                <img src="Mass.jpeg" alt="Black Hole Mass">
+                <h3>Mass</h3>
+                <p>The mass of a black hole determines its size and the strength of its gravitational field, ranging from stellar to supermassive scales.</p>
+            </div>
+
+            <div class="characteristic-card fade-in-up">
+                <img src="Spine.jpeg" alt="Black Hole Spin">
+                <h3>Spin</h3>
+                <p>The rotation of a black hole can dramatically affect spacetime around it, creating unique phenomena like frame dragging.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Black Holes | Exploring the Mysteries of the Universe</p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Observe all elements with fade-in-up class
+        document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html> 

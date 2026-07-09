@@ -1,0 +1,8 @@
+Create a fun,interactive word guessing game.Create the js,css and html files for this website game.The project should do the following:
+1.Generate a random 5 letter word
+2.Ask the user for a guess on what they think the word could be
+3.Highlight the letters in the word in:
+-red:if the letters in the users geuss are not in the word
+-green:if the letter in the users guess is in the word and at the correct place
+-yellow:if the letter in the users geuss is in the word but not in the correct position
+4.The user should only be given 6 tries to guess a word and should not be given a random word every time they answer but only after the game ends and resarsts
