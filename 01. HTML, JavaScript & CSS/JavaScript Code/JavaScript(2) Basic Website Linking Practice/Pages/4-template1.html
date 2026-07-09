@@ -1,0 +1,30 @@
+  <title>My First Button Page</title>
+</head>
+
+<body>
+
+  <h1>Welcome!</h1>
+  <p>Click the button and answer the question.</p>
+  <button onclick="askQuestion()"> Click me</button>
+
+  <script>
+    function askQuestion() {
+      const userChoice = prompt("Do you prefer winter or summer?");
+      if (userChoice === "winter") {
+        alert("I love indoor heating!");
+        window.location.href = "moon.html"
+      }
+
+      else if (userChoice === "summer") {
+        alert("The days are longer!");
+        window.location.href = "sun.html"
+      }
+
+      else {
+        alert("You can only reply 'winter' or 'summer'!");
+      }
+    }
+  </script>
+
+</body>
+</html>

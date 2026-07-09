@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Button Page</title>
+</head>
+
+<body>
+
+  <!-- Page content -->
+  <h1>Welcome!</h1>
+  <p>Click the button and answer the question.</p>
+  <button onclick="askQuestion()">Click me</button>
+
+  <script>
+    function askQuestion() {
+      const userChoice = prompt("What is the secret password?");
+      if (userChoice === "WinterIsKing") {
+        alert("Correct Password!");
+      }
+      else {
+        alert("Incorrect Password!");
+      }
+    }
+  </script>
+
+
+
+</body>
+</html>
