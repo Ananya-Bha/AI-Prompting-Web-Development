@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Button of Doom</title>
+    </head>
+    <body>
+        <h1 id="pageHeading">Cats are the best!</h1>
+        <p id="pageParagraph">The are lovely and independent</p>
+        <button id="pageButton" onclick="runScript()"> I love dogs! </button>
+
+        <script>
+            function runScript() {
+                const headingConstant= document.getElementById("pageHeading")
+                headingConstant.innerText="Dogs are Excellent Pets!"
+
+                // Code your headingConstant to use the element id and change the inner text
+                
+                // Code your paragraphConstant to use the element id and change the inner text
+                const paragraphConstant= document.getElementById("pageParagraph")
+                paragraphConstant.innerText="They are friendly and love playing:)"
+
+            }
+        </script>
+    </body>
+</html>

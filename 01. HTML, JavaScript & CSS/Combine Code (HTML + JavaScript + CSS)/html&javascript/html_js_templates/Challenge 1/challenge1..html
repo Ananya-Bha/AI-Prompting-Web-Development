@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Button of Doom</title>
+    </head>
+    <body>
+        <h1 id="pageHeading">Do not click the button 😡!</h1>
+        <button id="pageButton" onclick="runScript()"> The Button of Doom ☠️ </button>
+
+        <script>
+            function runScript() {
+                alert("What have you done, you fool!");
+                const headingConstant=document.getElementById("pageHeading")
+                headingConstant.innerText = "Magical Unicorn has been set free!"
+                // Code your headingConstant to use the element id and change the inner text
+            }
+        </script>
+    </body>
+</html>

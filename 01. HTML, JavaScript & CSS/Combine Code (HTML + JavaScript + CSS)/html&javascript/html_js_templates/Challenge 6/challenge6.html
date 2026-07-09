@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <title>The Ultimate Quiz</title>
+    </head>
+    <body>
+        <h1 id="pageHeading">🧠 The Ultimate Quiz! 🧠</h1>
+        <p id="pageParagraph">Think you're smart? Let's find out!</p>
+        <button id="startButton" onclick="startQuiz()">
+            Start Quiz! 🎯
+        </button>
+
+        <div id="resultBadDiv" style="display: none;">
+            <h2>😅 Keep Practicing!</h2>
+            <p>You got 0-2 correct. Don't worry, practice makes perfect!</p>
+            <img src="keep_practicing.png" alt="Try again image" width="200"> 
+        </div>
+
+        <div id="resultGoodDiv" style="display: none;">
+            <h2>🎉 Nice Work!</h2>
+            <p>You got 3-4 correct. You're getting there!</p>
+            <img src="nice_work.png" alt="Good job image" width="200"> 
+        </div>
+
+        <div id="resultPerfectDiv" style="display: none;">
+            <h2>🏆 PERFECT SCORE! 🏆</h2>
+            <p>You got all 5 correct! You're a genius!</p>
+            <img src="perfect.png" alt="Trophy image" width="200"> 
+        </div>
+
+        <script>
+            let score = 0; //We use let instead of const since we will update this variable as we go.
+
+            function startQuiz() {
+                // This hides the start button after you start.
+                const startButtonConstant = document.getElementById("startButton");
+                startButtonConstant.style.display = "none";
+
+                score = 0; //This resets the score each time the game starts. 
+
+                // Question 1
+                const answer1 = prompt("Question 1: What is 5 + 3?");
+                if (answer1 === "8") {
+                    score = score + 1;
+                }
+
+                // Code the answer variables for question 2-5 and the if statements to check if the answers are correct
+
+            }
+        </script>
+    </body>
+</html>

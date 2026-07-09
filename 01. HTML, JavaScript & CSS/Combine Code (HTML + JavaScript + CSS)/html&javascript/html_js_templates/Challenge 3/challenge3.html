@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Poem Reveal</title>
+    </head>
+    <body>
+        <h1 id="pageHeading">Welcome to the Poetry Corner</h1>
+        <p id="pageParagraph">Click the button to see if you're worthy of a poem...</p>
+        <button id="pageButton" onclick="runScript()"> Reveal a Poem? 🎭</button>
+
+        <script>
+            function runScript() {
+
+                const answer = prompt("Would you like to see a poem? (yes or no)"); 
+
+                const headingConstant = document.getElementById("pageHeading");
+                const paragraphConstant = document.getElementById("pageParagraph");
+                
+                // Code your if statement to check if the user answered yes or not. Change the innerText if the answer is yes. 
+                if (answer==="yes"){
+                    headingConstant.innerText="A poem for you⭐"
+                    paragraphConstant.innerText="Roses are red, violets are blue, coding is fun, and so are you!"
+                }
+                else if (answer==="no"){
+                    alert("Maybe Next time!")
+                }
+                
+            }
+        </script>
+    </body>
+</html>

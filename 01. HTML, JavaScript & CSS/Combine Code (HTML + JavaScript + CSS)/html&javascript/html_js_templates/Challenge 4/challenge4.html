@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Mystery Image</title>
+    </head>
+    <body>
+        <h1 id="pageHeading">What Would You Like to See?</h1>
+        <p id="pageParagraph">Choose wisely...</p>
+        <img id="pageImage" src="image.png" alt="Mystery image will appear here" width="300">
+        <button id="pageButton" onclick="runScript()"> Show Me Something! 👀</button>
+
+        <script>
+            function runScript() {
+                const answer = prompt("Would you like to see: ugly, pretty, or crazy?").toLowerCase()
+
+                // Code your answer variable to prompt the user for an answer
+                const imageConstant=document.getElementById("pageImage")
+                const paragraphConstant=document.getElementById("pageParagraph")
+
+                // Code your imageConstant and paragraphConstant to use the element id
+                
+                // Code your if statement to check if the user answered ugly, pretty, crazy or anything else
+                if (answer==="ugly"){
+                    paragraphConstant.innerText="Ewww! You asked for it! 🤢"
+                    imageConstant.src = "ugly.png"
+                }
+                else if (answer==="pretty"){
+                    paragraphConstant.innerText="Ooooh how lovely! ✨"
+                    imageConstant.src = "pretty.png"
+                }
+                else if (answer==='crazy'){
+                    paragraphConstant.innerText="WHOA! That's wild! 🤪"
+                    imageConstant.src="wild.png"
+                }
+
+            }
+        </script>
+    </body>
+</html>

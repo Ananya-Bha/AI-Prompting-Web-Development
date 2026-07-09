@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Adventure Game</title>
+    </head>
+    <body>
+        <h1>Choose Your Destination! 🗺️</h1>
+        <p>Where would you like to go?</p>
+        <button id="pageButton" onclick="runScript()">
+            Start Adventure! 🚀
+        </button>
+
+        <div id="valleyDiv" style="display: none;">
+            <h2>BUG Valley</h2>
+            <p>The code is rotting. Every line you fix spawns three more errors, spreading like infection through your project. You've been here for hours. Maybe days. The bugs aren't in the code anymore — they're in your head.</p>
+        </div>
+
+        <div id="hotelDiv" style="display: none;">
+            <h2>🏨 Homework Hotel 🏨</h2>
+            <p>Check in anytime you like. The lobby promises comfort, rest, everything you've earned. But the doors don't unlock until the work is done. The other guests have been here for weeks. Some of them have stopped trying to leave.</p>
+        </div>
+
+        <div id="cryptDiv" style="display: none;">
+            <h2>🎰 The Chores Crypt 🎰</h2>
+            <p>They're waiting for you. The dishes have grown something alive. The laundry pile breathes in the corner. Your parents' voices echo from somewhere far away, repeating the same words on loop. You can't remember the last time you saw sunlight.</p>
+        </div>
+
+        <script>
+            function runScript() {
+
+                //Create the constants
+                console.log("Function is working")
+                const valleyConstant = document.getElementById("valleyDiv");
+                const hotelConstant=document.getElementById("hotelDiv");
+                const cryptConstant=document.getElementById("cryptDiv"); //Example
+                //create the hotelConstant and the cryptConstant
+
+
+                //Hide all divs
+
+                valleyConstant.style.display = "none"; 
+                hotelConstant.style.display="none";
+                cryptConstant.style.display="none";//Example no the button is not prompting t
+                //hide the hotelConstant and the cryptConstant
+
+
+               
+                // Code your answer variable to prompt the user for an answer
+                const answer = prompt("Where would you like to go? (valley,hotel or crypt)")
+
+
+
+                //If / Else-IF / Else Section
+                if (answer === "valley") {
+                    valleyConstant.style.display = "block"; //this shows the div!
+                }
+                else if(answer==="hotel"){
+                    hotelConstant.style.display="block";
+                }
+                else if(answer==="crypt"){
+                    cryptConstant.style.display="block";
+                }
+                // add the else if statements to check for hotel, crypt, or anything else
+            }
+        </script>
+    </body>
+</html>
