@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Functions</title>
+</head>
+
+<body>
+
+  <h1>JavaScript Functions!</h1>
+  <p>Click the next button to explore what different functions can do!</p>
+
+  <!-- BUTTONS -->
+  <button onclick="challenge1()">First Button </button>
+  <button onclick="challenge2()">Second Button</button>
+  <button onclick="challenge3()">Third Button</button>
+  <button onclick="challenge4()">Fourth Button</button>
+  <button onclick="challenge5()">Fifth Button</button>
+  <button onclick="challenge6()">Sixth Button</button>
+  <script>
+    function challenge1() {
+      alert("how are you?")
+    }
+    
+    function challenge2() {
+      alert("This is the 1st message!")
+      alert("This is the 2nd message!")
+      alert("This is the 3rd message!")
+      alert("This is the last message!")
+    }  
+    
+    function challenge3() {
+      const name= prompt("What is your name?")
+      alert("Hello " + name + " you look great today!")
+    }
+
+    function challenge4() {
+      const colour= prompt("Choose a colour:")
+      const animal= prompt("Choose an animal:")
+      alert("Look! I see a " + colour + " "+ animal)
+    }
+
+    function challenge5() {
+      const height= prompt("What is the height of your cuboid in cm?")
+      const width= prompt("What is the width of your cuboid in cm?")
+      const length= prompt("What is the length of your cuboid in cm?")
+      const volume= height*width*length
+      alert("The total volumne of your cuboid is "+ volume+ " cubic centimeters!") }
+
+    function challenge6() {
+      const start= promt("How many apples did you start with?")
+      const eaten= prompt("How many apples have you eaten?")
+      const days= prompt("How many days left until you buy more?")
+      const rate= (start-eaten)/days
+      alert("You can eat "+rate+" apples a day!") }
+  </script>
+
+</body>
+</html>
