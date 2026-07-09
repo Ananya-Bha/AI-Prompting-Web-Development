@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISSION GOLF - Secret Unlock</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e2e8f0;
+            padding: 1.5rem;
+        }
+        .container {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            max-width: 1100px;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+        }
+        .mission-id {
+            color: #818cf8;
+            font-size: 0.8125rem;
+            font-weight: 500;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1.75fr 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .key-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+        }
+        .key-icon { width: 100px; height: 100px; transition: all 0.3s ease; }
+        .key-icon.locked path { fill: #475569; stroke: #475569; }
+        .key-icon.unlocked path { fill: #10b981; stroke: #10b981; }
+        .key-icon.wrong path { fill: #f59e0b; stroke: #f59e0b; }
+        .key-icon.unlocked { animation: unlock 0.4s ease; filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.4)); }
+        .key-icon.wrong { animation: shake 0.4s ease; filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.3)); }
+        @keyframes unlock { 0% { transform: scale(1) rotate(0deg); } 50% { transform: scale(1.1) rotate(5deg); } 100% { transform: scale(1) rotate(0deg); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
+        .key-label { font-size: 0.8125rem; font-weight: 600; color: #cbd5e1; text-transform: uppercase; }
+        .key-status {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.375rem 0.875rem;
+            border-radius: 0.25rem;
+            text-transform: uppercase;
+        }
+        .key-status.locked { background: #1e293b; color: #64748b; border: 1px solid #334155; }
+        .key-status.unlocked { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .key-status.wrong { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .status-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            min-height: 180px;
+        }
+        .message { font-size: 1.125rem; font-weight: 600; color: #cbd5e1; text-align: center; }
+        .password-display {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #0f172a;
+            border-radius: 0.5rem;
+            border: 2px solid #10b981;
+            display: none;
+            text-align: center;
+        }
+        .password-display.show { display: block; animation: reveal 0.5s ease; }
+        @keyframes reveal { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
+        .password-label { font-size: 0.75rem; font-weight: 600; color: #64748b; margin-bottom: 0.75rem; text-transform: uppercase; }
+        .password-value { font-size: 2rem; font-weight: 700; color: #10b981; letter-spacing: 0.2em; font-family: 'Monaco', 'Courier New', monospace; }
+        .instructions {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            font-size: 0.8125rem;
+            color: #94a3b8;
+            text-align: center;
+        }
+        .instructions strong { color: #cbd5e1; font-weight: 600; }
+        .instructions code {
+            background: #1e293b;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #818cf8;
+            border: 1px solid #334155;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Mission Golf</h1>
+            <div class="mission-id">MISSION-ID: mission-golf</div>
+        </div>
+        <div class="main-content">
+            <div class="key-item">
+                <svg class="key-icon locked" id="key1-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                    <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div class="key-label">Key 1</div>
+                <div class="key-status locked" id="key1-status">LOCKED</div>
+            </div>
+            <div class="status-center">
+                <div class="message" id="status-message">Waiting for key files...</div>
+                <div class="password-display" id="password-display">
+                    <div class="password-label">Password</div>
+                    <div class="password-value" id="password-value">---</div>
+                </div>
+            </div>
+            <div class="key-item">
+                <svg class="key-icon locked" id="key2-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+                    <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div class="key-label">Key 2</div>
+                <div class="key-status locked" id="key2-status">LOCKED</div>
+            </div>
+        </div>
+        <div class="instructions">
+            <strong>📋 Instructions:</strong> Place the two key files in the same folder as this HTML file.<br>
+            Files needed: <code>key1-sierra.js</code> and <code>key2-romeo.js</code>
+        </div>
+    </div>
+    <script>
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+        const puzzle = {
+            id: 'mission-golf',
+            expectedKey1Hash: 'baa12b10c103b3e82416b19eca138a4048dd8662b741fb0779d8585aff5ebc39',
+            expectedKey2Hash: 'bb6a385e3cc6a9104c13498926037cd697e6dd2ca3982a4d4e5812573405151f',
+            expectedPasswordHash: '52f55046a155ad468fc8a95ffed422eddd11fceb4bf92355fad8494704052c7b',
+            passwordParts: {},
+            keysValidated: {}
+        };
+        window.puzzleValidator = {
+            register: async function(keyName, puzzleId, passwordFragment) {
+                console.log(`Key registration attempt: ${keyName} for puzzle ${puzzleId}`);
+                if (puzzleId !== puzzle.id) {
+                    console.warn(`Key ${keyName} is for puzzle "${puzzleId}", but this is puzzle "${puzzle.id}"`);
+                    markKeyAsWrong(keyName);
+                    updateStatusMessage();
+                    return;
+                }
+                const actualHash = await sha256(passwordFragment);
+                const expectedHash = keyName === 'key1' ? puzzle.expectedKey1Hash : puzzle.expectedKey2Hash;
+                if (actualHash !== expectedHash) {
+                    console.warn(`Key ${keyName} has wrong password fragment.`);
+                    console.warn(`Expected hash: ${expectedHash}`);
+                    console.warn(`Got hash: ${actualHash}`);
+                    markKeyAsWrong(keyName);
+                    updateStatusMessage();
+                    return;
+                }
+                puzzle.keysValidated[keyName] = true;
+                puzzle.passwordParts[keyName] = passwordFragment;
+                console.log(`✓ Key ${keyName} validated and registered successfully`);
+                unlockKey(keyName);
+                updateUI();
+            }
+        };
+        function updateUI() {
+            updateStatusMessage();
+            if (puzzle.keysValidated.key1 && puzzle.keysValidated.key2) {
+                validateAndShowPassword();
+            }
+        }
+        function updateStatusMessage() {
+            const key1Valid = puzzle.keysValidated.key1 || false;
+            const key2Valid = puzzle.keysValidated.key2 || false;
+            const msg = document.getElementById('status-message');
+            if (!key1Valid && !key2Valid) msg.textContent = 'Waiting for key files...';
+            else if (key1Valid && !key2Valid) msg.textContent = 'Key 1 unlocked! Waiting for Key 2...';
+            else if (!key1Valid && key2Valid) msg.textContent = 'Key 2 unlocked! Waiting for Key 1...';
+            else msg.textContent = 'Validating password combination...';
+        }
+        function unlockKey(keyName) {
+            const icon = document.getElementById(keyName + '-icon');
+            const status = document.getElementById(keyName + '-status');
+            icon.classList.remove('locked', 'wrong');
+            icon.classList.add('unlocked');
+            status.classList.remove('locked', 'wrong');
+            status.classList.add('unlocked');
+            status.textContent = 'UNLOCKED';
+        }
+        function markKeyAsWrong(keyName) {
+            const icon = document.getElementById(keyName + '-icon');
+            const status = document.getElementById(keyName + '-status');
+            icon.classList.remove('locked', 'unlocked');
+            icon.classList.add('wrong');
+            status.classList.remove('locked', 'unlocked');
+            status.classList.add('wrong');
+            status.textContent = 'WRONG KEY';
+        }
+        async function validateAndShowPassword() {
+            const assembled = (puzzle.passwordParts.key1 || '') + (puzzle.passwordParts.key2 || '');
+            const actualHash = await sha256(assembled);
+            if (actualHash === puzzle.expectedPasswordHash) {
+                document.getElementById('status-message').textContent = 'Mission Unlocked Successfully!';
+                document.getElementById('password-value').textContent = assembled;
+                document.getElementById('password-display').classList.add('show');
+            } else {
+                markKeyAsWrong('key1');
+                markKeyAsWrong('key2');
+                document.getElementById('status-message').textContent = '❌ Wrong key combination!';
+            }
+        }
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                if (!puzzle.keysValidated.key1 && !puzzle.keysValidated.key2) {
+                    console.log('No keys detected. Waiting for key files...');
+                }
+            }, 100);
+        });
+    </script>
+    <script src="key1-sierra.js"></script>
+    <script src="key2-romeo.js"></script>
+</body>
+</html>
