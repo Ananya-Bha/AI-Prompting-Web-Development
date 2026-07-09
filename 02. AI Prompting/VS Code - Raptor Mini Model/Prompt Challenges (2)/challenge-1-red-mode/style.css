@@ -1,0 +1,45 @@
+#page {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: Arial, sans-serif;
+  padding: 40px 20px;
+}
+
+.app {
+  width: 320px;
+  margin: 0 auto;
+  padding: 25px;
+  border: 3px solid #000000;
+  border-radius: 20px;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0 0 15px;
+}
+
+.tagline {
+  font-size: 18px;
+  margin: 0 0 25px;
+}
+
+.btn {
+  display: inline-block;
+  width: 120px;
+  padding: 12px 0;
+  margin: 0 8px;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.theme {
+  /* Base theme class for page elements. */
+}

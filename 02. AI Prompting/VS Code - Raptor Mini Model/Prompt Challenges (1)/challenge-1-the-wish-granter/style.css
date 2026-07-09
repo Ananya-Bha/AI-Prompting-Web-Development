@@ -1,0 +1,66 @@
+#page {
+  background-color: #ffe62e;
+  color: #0b1840;
+  font-family: 'Arial', sans-serif;
+  padding: 40px 20px;
+}
+
+#app {
+  background-color: #00d1ff;
+  width: 360px;
+  margin: 30px auto;
+  padding: 30px 20px;
+  border: 6px solid #ff2b70;
+  border-radius: 24px;
+}
+
+#title {
+  color: #ff2b70;
+  font-size: 36px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+#tagline {
+  color: #101040;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+#wishBox {
+  display: block;
+  width: 88%;
+  padding: 14px 12px;
+  font-size: 16px;
+  border: 4px solid #fdff5c;
+  border-radius: 16px;
+  margin: 0 auto 18px;
+}
+
+#grant {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #ff2b70;
+  color: #ffffff;
+  border: 4px solid #101040;
+  border-radius: 16px;
+  margin: 0 auto 22px;
+}
+
+#verdict {
+  text-align: center;
+  color: #101040;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 12px 10px;
+  border: 4px solid #fdff5c;
+  border-radius: 16px;
+  background-color: #fff5a0;
+  line-height: 1.4;
+}

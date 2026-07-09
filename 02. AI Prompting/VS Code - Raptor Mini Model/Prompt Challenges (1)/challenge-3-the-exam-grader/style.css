@@ -1,0 +1,67 @@
+#page {
+  background-color: #d8eef1;
+  color: #1f3f45;
+  font-family: 'Arial', sans-serif;
+  padding: 30px 20px;
+}
+
+#app {
+  background-color: #f7fcfb;
+  width: 360px;
+  margin: 30px auto;
+  padding: 24px;
+  border: 2px solid #9dd6cf;
+  border-radius: 18px;
+}
+
+#title {
+  color: #144445;
+  font-size: 34px;
+  font-weight: 800;
+  text-align: left;
+  margin: 0 0 10px;
+}
+
+#tagline {
+  color: #2e6a6e;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+  margin: 0 0 22px;
+}
+
+#score {
+  display: block;
+  width: 92%;
+  padding: 12px 10px;
+  font-size: 16px;
+  border: 2px solid #bfe6e1;
+  border-radius: 14px;
+  margin: 0 auto 18px;
+  background-color: #ebf8f7;
+}
+
+#grade {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #6ab7b1;
+  color: #f7fcfb;
+  border: 2px solid #4d9d98;
+  border-radius: 16px;
+  margin: 0 auto 22px;
+}
+
+#verdict {
+  text-align: center;
+  color: #144445;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 14px 12px;
+  border: 2px solid #bfe6e1;
+  border-radius: 16px;
+  background-color: #eef8f7;
+  line-height: 1.4;
+}
