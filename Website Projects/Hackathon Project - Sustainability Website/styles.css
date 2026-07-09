@@ -1,0 +1,606 @@
+/* ===========================================
+   EcoQuest - Material Design CSS
+   Colors: #53DB04, #088501, #23FA8B, #CFFFEB, #FFFFFF
+   =========================================== */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #FFFFFF;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===========================================
+   HEADER SECTION
+   =========================================== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(8, 133, 1, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Team Name with Logo */
+.team-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #53DB04, #23FA8B);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(83, 219, 4, 0.3);
+    transition: all 0.3s ease;
+}
+
+.leaf-icon {
+    color: #FFFFFF;
+    font-size: 24px;
+    animation: leafSway 2s ease-in-out infinite;
+}
+
+@keyframes leafSway {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+}
+.team-text {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* Slogan */
+.slogan {
+    text-align: center;
+    flex: 1;
+}
+
+.slogan p {
+    color: #CFFFEB;
+    font-size: 1rem;
+    font-weight: 300;
+    font-style: italic;
+}
+
+/* Header Button */
+.btn-learn-more {
+    background: linear-gradient(135deg, #53DB04, #23FA8B);
+    color: #FFFFFF;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(83, 219, 4, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-learn-more:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(83, 219, 4, 0.4);
+}
+
+.btn-learn-more:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(83, 219, 4, 0.3);
+}
+
+/* ===========================================
+   MAIN CONTENT - MODERN DARK THEME
+   =========================================== */
+.main-content {
+    flex: 1;
+    position: relative;
+    min-height: 100vh;
+    background-image: url('background_landing.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Subtle overlay for better text readability */
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* Abstract Background Shapes - Simplified */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: gentleFloat 8s ease-in-out infinite;
+    opacity: 0.6;
+}
+
+.shape-1 {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(83, 219, 4, 0.15) 0%, rgba(35, 250, 139, 0.1) 50%, transparent 80%);
+    top: 15%;
+    right: 20%;
+    animation-delay: 0s;
+}
+
+.shape-2 {
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(35, 250, 139, 0.2) 0%, rgba(8, 133, 1, 0.15) 50%, transparent 80%);
+    bottom: 25%;
+    right: 15%;
+    animation-delay: 3s;
+}
+
+.shape-3 {
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(207, 255, 235, 0.1) 0%, rgba(83, 219, 4, 0.15) 50%, transparent 80%);
+    top: 65%;
+    left: 15%;
+    animation-delay: 6s;
+}
+
+@keyframes gentleFloat {
+    0%, 100% { 
+        transform: translateY(0px) scale(1); 
+        opacity: 0.6;
+    }
+    50% { 
+        transform: translateY(-15px) scale(1.05); 
+        opacity: 0.8;
+    }
+}
+
+/* ===========================================
+   HERO SECTION - MODERN LAYOUT
+   =========================================== */
+.hero-section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    z-index: 10;
+    position: relative;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    min-height: 80vh;
+}
+
+/* Left Side Content */
+.hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+    line-height: 1.1;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Hero Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #53DB04, #23FA8B);
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(83, 219, 4, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(83, 219, 4, 0.4);
+}
+
+/* Right Side Content */
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.hero-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #53DB04, #23FA8B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(83, 219, 4, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.hero-icon .material-icons {
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #53DB04;
+    margin: 0;
+}
+
+.hero-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    max-width: 400px;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* ===========================================
+   FOOTER SECTION - THIN HORIZONTAL FORMAT
+   =========================================== */
+.footer {
+    background: linear-gradient(135deg, #088501, #53DB04);
+    color: #FFFFFF;
+    padding: 1rem 0;
+    margin-top: auto;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.footer-section {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ===========================================
+   TEAM INFO BUTTON AND POPUP
+   =========================================== */
+.team-info-btn {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #53DB04, #23FA8B);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(83, 219, 4, 0.4);
+    transition: all 0.3s ease;
+    animation: leafSway 2s ease-in-out infinite;
+}
+
+.team-info-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(83, 219, 4, 0.6);
+}
+
+.team-info-btn .material-icons {
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+.team-popup {
+    position: absolute;
+    bottom: 100px;
+    right: 30px;
+    background: rgba(8, 133, 1, 0.95);
+    border-radius: 16px;
+    padding: 1.5rem;
+    min-width: 250px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 999;
+    transform: scale(0) translateX(20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    transform-origin: bottom right;
+}
+
+.team-popup.show {
+    transform: scale(1) translateX(0);
+    opacity: 1;
+}
+
+.popup-content h3 {
+    color: #CFFFEB;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.team-list {
+    margin-bottom: 1rem;
+}
+
+.team-list p {
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    padding: 0.25rem 0;
+    text-align: center;
+}
+
+.competition-info {
+    color: #53DB04;
+    font-weight: 500;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 0.75rem;
+    margin-top: 0.75rem;
+}
+
+/* ===========================================
+   ANIMATIONS
+   =========================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes wave {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Wave effect for buttons */
+.wave-effect {
+    animation: wave 0.3s ease-in-out;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - MODERN LAYOUT
+   =========================================== */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .team-name {
+        order: 1;
+    }
+    
+    .slogan {
+        order: 2;
+    }
+    
+    .header-actions {
+        order: 3;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-right {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .hero-description {
+        max-width: 100%;
+    }
+    
+    .hero-buttons {
+        justify-content: center;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .footer-section {
+        font-size: 0.8rem;
+    }
+    
+    .team-info-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .team-info-btn .material-icons {
+        font-size: 1.5rem;
+    }
+    
+    .team-popup {
+        bottom: 80px;
+        right: 20px;
+        min-width: 200px;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .shape-1,
+    .shape-2,
+    .shape-3 {
+        display: none;
+    }
+}
+
+/* ===========================================
+   MATERIAL DESIGN ENHANCEMENTS
+   =========================================== */
+/* Card shadows and elevation */
+.material-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Button ripple effect */
+.btn-learn-more::before,
+.btn-hero-learn-more::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-learn-more:active::before,
+.btn-hero-learn-more:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Focus states for accessibility */
+.btn-learn-more:focus,
+.btn-hero-learn-more:focus {
+    outline: 2px solid #CFFFEB;
+    outline-offset: 2px;
+}

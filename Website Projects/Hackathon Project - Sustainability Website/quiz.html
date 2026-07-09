@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sustainability Quiz - EcoQuest</title>
+    <link rel="stylesheet" href="quiz-styles.css">
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for pie chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="quiz-header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="material-icons">eco</span>
+                <span class="logo-text">EcoQuest</span>
+            </div>
+            <div class="quiz-info">
+                <span class="quiz-title">Sustainability Assessment</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text">
+            <span id="progressText">Question 1 of 16</span>
+            <span id="progressPercentage">6%</span>
+        </div>
+        <!-- Progress Dots Indicator -->
+        <div class="progress-dots" id="progressDots">
+            <!-- Dots will be generated dynamically -->
+        </div>
+    </div>
+
+    <!-- Quiz Container -->
+    <main class="quiz-main">
+        <div class="quiz-container">
+            
+            <!-- Question Card -->
+            <div class="question-card" id="questionCard">
+                <div class="question-header">
+                    <div class="category-badge" id="categoryBadge">
+                        <span class="material-icons" id="categoryIcon">restaurant</span>
+                        <span id="categoryName">Diet</span>
+                    </div>
+                    <div class="question-number">
+                        <span id="questionNumber">1</span><span>/16</span>
+                    </div>
+                </div>
+                
+                <div class="question-content">
+                    <h2 class="question-title" id="questionTitle">
+                        How often do you consume meat and dairy products?
+                    </h2>
+                    
+                    <div class="answer-options" id="answerOptions">
+                        <!-- Options will be dynamically generated -->
+                    </div>
+                </div>
+                
+                <div class="question-navigation">
+                    <button class="nav-btn prev-btn" id="prevBtn" disabled>
+                        <span class="material-icons">arrow_back</span>
+                        <span>Previous</span>
+                    </button>
+                    
+                    <button class="nav-btn next-btn" id="nextBtn" disabled>
+                        <span>Next</span>
+                        <span class="material-icons">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Completion -->
+            <div class="completion-card hidden" id="completionCard">
+                <div class="completion-content">
+                    <span class="material-icons completion-icon">check_circle</span>
+                    <h2>Quiz Complete!</h2>
+                    <p>Calculating your sustainability score...</p>
+                    <button class="complete-btn" id="completeBtn">
+                        <span>View Results</span>
+                        <span class="material-icons">insights</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Results Modal -->
+    <div class="results-modal hidden" id="resultsModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Your Sustainability Score</h2>
+                <button class="close-btn" id="closeResults">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            
+            <div class="results-content">
+                <div class="score-section">
+                    <div class="score-display">
+                        <div class="score-circle" id="scoreCircle">
+                            <span class="score-percentage" id="scorePercentage">0%</span>
+                            <span class="score-label" id="scoreLabel">Low Footprint</span>
+                        </div>
+                        <div class="score-details">
+                            <p class="score-description" id="scoreDescription">
+                                Very eco-conscious lifestyle. Excellent sustainability practices.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-section">
+                    <h3>Category Breakdown</h3>
+                    <div class="chart-container">
+                        <canvas id="resultsChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="action-section">
+                    <button class="learn-more-btn" id="learnMoreBtn">
+                        <span>Learn More</span>
+                        <span class="material-icons">school</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="quiz-script.js"></script>
+</body>
+</html>

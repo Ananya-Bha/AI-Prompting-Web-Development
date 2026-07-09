@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Dashboard - EcoQuest</title>
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Google APIs for Calendar integration -->
+    <script src="https://apis.google.com/js/api.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="material-icons">eco</span>
+                <span class="logo-text">EcoQuest</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="home.html" class="nav-link">
+                    <span class="material-icons">home</span>
+                    <span>Home</span>
+                </a>
+                <a href="quiz.html" class="nav-link">
+                    <span class="material-icons">quiz</span>
+                    <span>Retake Quiz</span>
+                </a>
+                <a href="#" class="nav-link active">
+                    <span class="material-icons">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+            </nav>
+            <div class="user-info">
+                <div class="user-profile" id="userProfile">
+                    <div class="profile-avatar" id="profileAvatar">
+                        <span class="material-icons">account_circle</span>
+                    </div>
+                    <div class="profile-dropdown hidden" id="profileDropdown">
+                        <div class="profile-info">
+                            <div class="profile-name" id="profileName">Eco Warrior</div>
+                            <div class="profile-email" id="profileEmail">user@ecoquest.com</div>
+                        </div>
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <span class="material-icons">eco</span>
+                                <div>
+                                    <div class="stat-value" id="profileEcoScore">0%</div>
+                                    <div class="stat-label">Eco Score</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="profile-btn" onclick="dashboard.editProfile()">
+                                <span class="material-icons">edit</span>
+                                <span>Edit Profile</span>
+                            </button>
+                            <button class="profile-btn logout" onclick="dashboard.logout()">
+                                <span class="material-icons">logout</span>
+                                <span>Log Out</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard-main">
+        <div class="dashboard-container">
+            
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h1 class="welcome-title" id="welcomeTitle">Your Eco Journey</h1>
+                    <p class="welcome-subtitle" id="welcomeSubtitle">Track your sustainability progress and discover new ways to reduce your environmental impact</p>
+                    <div class="user-details">
+                        <div class="user-info-card">
+                            <span class="material-icons">account_circle</span>
+                            <div class="user-text">
+                                <h3 id="dashboardUserName">Eco Warrior</h3>
+                                <p id="dashboardUserEmail">user@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="achievement-badges">
+                    <div class="badge earned" title="Completed sustainability quiz">
+                        <span class="material-icons">eco</span>
+                        <span class="badge-label">Eco Aware</span>
+                    </div>
+                    <div class="badge earned" title="7-day streak">
+                        <span class="material-icons">local_fire_department</span>
+                        <span class="badge-label">Week Warrior</span>
+                    </div>
+                    <div class="badge locked" title="Complete 30 eco-actions">
+                        <span class="material-icons">star</span>
+                        <span class="badge-label">Eco Champion</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Getting Started Modal -->
+            <div class="getting-started-modal hidden" id="gettingStartedModal">
+                <div class="modal-overlay"></div>
+                <div class="getting-started-content">
+                    <div class="getting-started-header">
+                        <span class="material-icons getting-started-icon">eco</span>
+                        <h2>Welcome to Your Eco Dashboard!</h2>
+                        <button class="close-getting-started" id="closeGettingStarted">
+                            <span class="material-icons">close</span>
+                        </button>
+                    </div>
+                    <div class="getting-started-body">
+                        <p>Let's explore what you can do with EcoQuest to track and improve your sustainability!</p>
+                        <div class="tour-steps">
+                            <div class="tour-step">
+                                <div class="tour-step-icon">
+                                    <span class="material-icons">insights</span>
+                                </div>
+                                <div class="tour-step-content">
+                                    <h3>View Your Sustainability Score</h3>
+                                    <p>Check your quiz results and see how you're doing in different categories</p>
+                                </div>
+                            </div>
+                            <div class="tour-step">
+                                <div class="tour-step-icon">
+                                    <span class="material-icons">track_changes</span>
+                                </div>
+                                <div class="tour-step-content">
+                                    <h3>Track Your Progress</h3>
+                                    <p>Monitor your water conservation, waste reduction, and transport habits</p>
+                                </div>
+                            </div>
+                            <div class="tour-step">
+                                <div class="tour-step-icon">
+                                    <span class="material-icons">lightbulb</span>
+                                </div>
+                                <div class="tour-step-content">
+                                    <h3>Get Eco Tips</h3>
+                                    <p>Browse personalized tips to help reduce your environmental impact</p>
+                                </div>
+                            </div>
+                            <div class="tour-step">
+                                <div class="tour-step-icon">
+                                    <span class="material-icons">schedule</span>
+                                </div>
+                                <div class="tour-step-content">
+                                    <h3>Set Reminders</h3>
+                                    <p>Create reminders for eco-friendly habits and sync with your calendar</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="getting-started-actions">
+                            <button class="btn-primary" id="startTourBtn">
+                                <span>Start Tour</span>
+                                <span class="material-icons">arrow_forward</span>
+                            </button>
+                            <button class="btn-secondary" id="skipTourBtn">
+                                <span>Skip for Now</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Hero Image -->
+            <section class="dashboard-hero">
+                <div class="hero-image-placeholder">
+                    <img src="dashboard.png" alt="Eco Dashboard Visual" class="hero-image">
+                </div>
+            </section>
+
+            <!-- Main Content Grid -->
+            <div class="dashboard-grid">
+                
+                <!-- Top Row - Chart and Progress Side by Side -->
+                <div class="top-section">
+                    <!-- Quiz Results Chart Section -->
+                    <section class="chart-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <span class="material-icons">insights</span>
+                                Your Sustainability Score
+                            </h2>
+                        </div>
+                        
+                        <div class="chart-container">
+                            <div class="chart-wrapper">
+                                <canvas id="sustainabilityChart" aria-label="Sustainability score breakdown by category"></canvas>
+                                <div class="chart-center-text">
+                                    <div class="overall-score" id="overallScore">0%</div>
+                                    <div class="score-label" id="scoreLabel">Loading...</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Chart Legend -->
+                            <div class="chart-legend" id="chartLegend">
+                                <!-- Legend items will be generated dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Performance Chips -->
+                        <div class="performance-chips">
+                            <div class="chip best-area">
+                                <div class="chip-icon">
+                                    <span class="material-icons">trending_up</span>
+                                </div>
+                                <div class="chip-content">
+                                    <div class="chip-label">Best Area</div>
+                                    <div class="chip-value" id="bestArea">Loading...</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chip needs-work">
+                                <div class="chip-icon">
+                                    <span class="material-icons">trending_down</span>
+                                </div>
+                                <div class="chip-content">
+                                    <div class="chip-label">Needs Work</div>
+                                    <div class="chip-value" id="needsWork">Loading...</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chip weekly-trend">
+                                <div class="chip-icon">
+                                    <span class="material-icons">show_chart</span>
+                                </div>
+                                <div class="chip-content">
+                                    <div class="chip-label">Weekly Trend</div>
+                                    <div class="chip-value" id="weeklyTrend">+3% improvement</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Progress Section -->
+                    <section class="progress-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <span class="material-icons">track_changes</span>
+                                Your Progress
+                            </h2>
+                        </div>
+                        
+                        <div class="progress-cards">
+                            <div class="progress-card">
+                                <div class="progress-header">
+                                    <span class="material-icons">water_drop</span>
+                                    <span class="progress-title">Water Conservation</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                                <div class="progress-text">75% of weekly goal</div>
+                            </div>
+                            
+                            <div class="progress-card">
+                                <div class="progress-header">
+                                    <span class="material-icons">recycling</span>
+                                    <span class="progress-title">Waste Reduction</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <div class="progress-text">60% of weekly goal</div>
+                            </div>
+                            
+                            <div class="progress-card">
+                                <div class="progress-header">
+                                    <span class="material-icons">directions_walk</span>
+                                    <span class="progress-title">Sustainable Transport</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                                <div class="progress-text">90% of weekly goal</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Bottom Row - Tips and Reminders Stacked -->
+                <div class="bottom-section">
+                    <!-- Eco Tips Section -->
+                    <section class="tips-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <span class="material-icons">lightbulb</span>
+                                Eco Tips for You
+                            </h2>
+                            
+                            <!-- Category Filters -->
+                            <div class="tip-filters">
+                                <button class="filter-btn active" data-category="all">All</button>
+                                <button class="filter-btn" data-category="water">Water</button>
+                                <button class="filter-btn" data-category="food">Food</button>
+                                <button class="filter-btn" data-category="transport">Transport</button>
+                                <button class="filter-btn" data-category="energy">Energy</button>
+                                <button class="filter-btn" data-category="waste">Waste</button>
+                                <button class="filter-btn" data-category="consumer">Consumer</button>
+                                <button class="filter-btn" data-category="digital">Digital</button>
+                                <button class="filter-btn" data-category="community">Community</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Tips Grid -->
+                        <div class="tips-grid" id="tipsGrid">
+                            <!-- Tip cards will be generated dynamically -->
+                        </div>
+                    </section>
+
+                    <!-- Reminders Widget -->
+                    <section class="reminders-section">
+                        <div class="section-header">
+                            <h2 class="section-title">
+                                <span class="material-icons">schedule</span>
+                                Upcoming Reminders
+                            </h2>
+                            <button class="add-reminder-btn" id="addReminderBtn">
+                                <span class="material-icons">add</span>
+                                <span>Add Reminder</span>
+                            </button>
+                        </div>
+                        
+                        <div class="reminders-list" id="remindersList">
+                            <!-- Reminder items will be generated dynamically -->
+                        </div>
+                    </section>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Reminder Modal -->
+    <div class="reminder-modal hidden" id="reminderModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Set Eco Reminder</h3>
+                <button class="close-btn" id="closeReminderModal">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="reminderForm">
+                    <div class="form-group">
+                        <label for="reminderTitle">Reminder Title</label>
+                        <input type="text" id="reminderTitle" required placeholder="e.g., Take shorter shower">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="reminderDescription">Description</label>
+                        <textarea id="reminderDescription" placeholder="Additional notes..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reminderFrequency">Frequency</label>
+                            <select id="reminderFrequency">
+                                <option value="once">Once</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reminderTime">Time</label>
+                            <input type="time" id="reminderTime" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group weekly-options hidden" id="weeklyOptions">
+                        <label>Days of Week</label>
+                        <div class="day-selector">
+                            <label class="day-option"><input type="checkbox" value="monday"> Mon</label>
+                            <label class="day-option"><input type="checkbox" value="tuesday"> Tue</label>
+                            <label class="day-option"><input type="checkbox" value="wednesday"> Wed</label>
+                            <label class="day-option"><input type="checkbox" value="thursday"> Thu</label>
+                            <label class="day-option"><input type="checkbox" value="friday"> Fri</label>
+                            <label class="day-option"><input type="checkbox" value="saturday"> Sat</label>
+                            <label class="day-option"><input type="checkbox" value="sunday"> Sun</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelReminder">Cancel</button>
+                        <button type="submit" class="btn-primary">
+                            <span class="material-icons">schedule</span>
+                            <span>Set Reminder</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal-overlay hidden" id="editProfileModal">
+        <div class="edit-modal">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="close-btn" onclick="dashboard.closeEditModal()">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editProfileForm">
+                    <div class="form-group">
+                        <label for="editName">Name</label>
+                        <input type="text" id="editName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email</label>
+                        <input type="email" id="editEmail" name="email" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-cancel" onclick="dashboard.closeEditModal()">Cancel</button>
+                        <button type="submit" class="btn-save">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="dashboard-script.js"></script>
+</body>
+</html>

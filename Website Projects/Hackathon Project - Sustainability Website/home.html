@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoQuest - Home</title>
+    <link rel="stylesheet" href="home-styles.css">
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts for Material Design -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chart.js for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Header Navigation Section -->
+    <header class="header">
+        <div class="header-container">
+            <!-- Team Name with Logo (Left) -->
+            <div class="team-name">
+                <div class="logo">
+                    <span class="material-icons leaf-icon">eco</span>
+                </div>
+                <span class="team-text">reCAPTCHA</span>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span class="material-icons">menu</span>
+            </button>
+            
+            <!-- Navigation Menu (Center) -->
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">More About Us</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#qa" class="nav-link">Q & A</a>
+            </nav>
+            
+            <!-- Action Button (Right) -->
+            <div class="header-actions">
+                <button class="dashboard-icon" id="dashboardIcon" onclick="handleDashboardClick()">
+                    <span class="material-icons">dashboard</span>
+                    <span class="disabled-notification" id="dashboardNotification">Please log in to access your dashboard</span>
+                </button>
+                <button class="btn-header">
+                    <span>Get Started</span>
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="home-section">
+        <div class="home-overlay"></div>
+        <div class="home-content">
+            <h1 class="home-title">EcoQuest</h1>
+            <div class="auth-buttons">
+                <button class="btn-login" id="homeLoginBtn">
+                    <span>Log In</span>
+                    <span class="material-icons">login</span>
+                </button>
+                <button class="btn-signup" id="homeSignupBtn">
+                    <span>Sign Up</span>
+                    <span class="material-icons">person_add</span>
+                </button>
+            </div>
+            <p class="auth-helper-text">Please log in or sign up to take your quiz and access your dashboard</p>
+        </div>
+    </section>
+
+    <!-- More About Us Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <!-- Our Team Section -->
+            <div class="team-section">
+                <h3 class="team-section-title">Our Team</h3>
+                <p class="team-section-subtitle">Meet the passionate individuals behind EcoQuest</p>
+                <div class="team-grid">
+                    <!-- Team Member 1: Ananya Bhragava -->
+                    <div class="team-member-card">
+                        <div class="team-member-image">
+                            <img src="ananya.png" alt="Ananya Bhragava" class="team-photo">
+                        </div>
+                        <div class="team-member-info">
+                            <h4 class="team-member-name">Ananya Bhragava</h4>
+                            <p class="team-member-role">In charge of Programming</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 2: Adi Homji -->
+                    <div class="team-member-card">
+                        <div class="team-member-image">
+                            <img src="adi.png" alt="Adi Homji" class="team-photo">
+                        </div>
+                        <div class="team-member-info">
+                            <h4 class="team-member-name">Adi Homji</h4>
+                            <p class="team-member-role">In charge of Design for UI Interface</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 3: Atharva Gautam -->
+                    <div class="team-member-card">
+                        <div class="team-member-image">
+                            <img src="atharva.png" alt="Atharva Gautam" class="team-photo">
+                        </div>
+                        <div class="team-member-info">
+                            <h4 class="team-member-name">Atharva Gautam</h4>
+                            <p class="team-member-role">In charge of Research</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Title -->
+            <h2 class="section-title">About Us</h2>
+            
+            <!-- Paragraph Catcher with Image Layout -->
+            <div class="catcher-section">
+                <div class="catcher-content">
+                    <h3 class="catcher-subtitle">Transforming environmental awareness into measurable action through innovative technology solutions.</h3>
+                    <p class="catcher-text">
+                        In a world where the average person's carbon footprint is approximately <strong>7 tonnes CO₂-equivalent per year</strong>, and global freshwater use has increased nearly <strong>six-fold since 1900</strong>, the call for accessible tools to empower everyday sustainability has never been louder. Meanwhile, around <strong>30% of water is wasted annually</strong> — about 9.5 trillion litres — and more than <strong>40% of the global population</strong> is projected to face severe water shortages by 2050. The challenge isn't just awareness, it's translating intent into measurable action — and that's precisely where our app steps in.
+                    </p>
+                </div>
+                <div class="catcher-image">
+                    <!-- Placeholder for team or sustainability image -->
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3 class="chart-title">How Much Water Do We Use?</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="waterUsageChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">CO₂ Emissions Per Capita</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="co2EmissionsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Sections -->
+            <div class="content-grid">
+                <!-- Problem We're Solving -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <span class="material-icons card-icon">report_problem</span>
+                        <div>
+                            <h3 class="card-title">Problem We're Solving</h3>
+                            <p class="card-subtitle">Current Sustainability Challenges</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="professional-list">
+                            <li>Most people want to be eco-friendly but lack clear guidance on implementation strategies</li>
+                            <li>Individuals have limited awareness of their actual carbon, water, and waste consumption patterns</li>
+                            <li>Many require structured support for developing sustainable habits and tracking meaningful progress</li>
+                            <li>Eco-living often appears overwhelming or unengaging, requiring accessible and efficient solutions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Our Solution -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <span class="material-icons card-icon">eco</span>
+                        <div>
+                            <h3 class="card-title">Our Solution</h3>
+                            <p class="card-subtitle">Innovative Sustainability Platform</p>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="professional-list">
+                            <li>Comprehensive tracking application for carbon footprint, waste generation, and water usage metrics</li>
+                            <li>Personalized sustainability recommendations based on individual lifestyle assessments and data analysis</li>
+                            <li>Goal-setting framework with specific, measurable targets and milestone tracking capabilities</li>
+                            <li>Progress monitoring with achievement recognition through badges, streaks, and milestone celebrations</li>
+                            <li>Automated reminders and daily/weekly sustainability challenges for consistent user engagement</li>
+                            <li>Gamified experience that transforms environmental responsibility into an engaging, rewarding process</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="features-container">
+            <div class="features-header">
+                <h2 class="section-title">Key Features</h2>
+                <p class="features-subtitle">Comprehensive tools designed to make sustainable living accessible, engaging, and measurable for everyone.</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Quick Lifestyle Quiz -->
+                <div class="feature-card card-orange">
+                    <div class="feature-image-placeholder">
+                        <div class="image-placeholder">
+                            <span class="material-icons">quiz</span>
+                            <span class="image-label">Quiz Interface</span>
+                        </div>
+                    </div>
+                    <div class="card-background">
+                        <div class="feature-icon">
+                            <span class="material-icons">quiz</span>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Quick Lifestyle Quiz</h3>
+                        <p class="feature-description">Get started with a personalized assessment that analyzes your current habits and provides tailored sustainability recommendations.</p>
+                        <div class="feature-badge">GET STARTED</div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Tracking -->
+                <div class="feature-card card-purple">
+                    <div class="feature-image-placeholder">
+                        <div class="image-placeholder">
+                            <span class="material-icons">dashboard</span>
+                            <span class="image-label">Dashboard View</span>
+                        </div>
+                    </div>
+                    <div class="card-background">
+                        <div class="feature-icon">
+                            <span class="material-icons">dashboard</span>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Comprehensive Dashboard</h3>
+                        <p class="feature-description">Track your carbon footprint, daily water usage, and waste generation with real-time insights and detailed analytics.</p>
+                        <div class="feature-badge">TRACK IMPACT</div>
+                    </div>
+                </div>
+
+                <!-- Goal Setting -->
+                <div class="feature-card card-green">
+                    <div class="feature-image-placeholder">
+                        <div class="image-placeholder">
+                            <span class="material-icons">flag</span>
+                            <span class="image-label">Goal Tracking</span>
+                        </div>
+                    </div>
+                    <div class="card-background">
+                        <div class="feature-icon">
+                            <span class="material-icons">flag</span>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Smart Goal Setting</h3>
+                        <p class="feature-description">Set personalized short and long-term sustainability goals with milestone tracking and achievement celebrations.</p>
+                        <div class="feature-badge">SET GOALS</div>
+                    </div>
+                </div>
+
+                <!-- Smart Reminders -->
+                <div class="feature-card card-pink">
+                    <div class="card-background">
+                        <div class="feature-icon">
+                            <span class="material-icons">notifications_active</span>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Intelligent Reminders</h3>
+                        <p class="feature-description">Receive personalized notifications like "Bring reusable bags today!" or "Shorter showers = big impact" to build lasting habits.</p>
+                        <div class="feature-badge">STAY MOTIVATED</div>
+                    </div>
+                </div>
+
+                <!-- Gamified Rewards -->
+                <div class="feature-card card-blue">
+                    <div class="card-background">
+                        <div class="feature-icon">
+                            <span class="material-icons">emoji_events</span>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Gamified Rewards</h3>
+                        <p class="feature-description">Earn badges, unlock levels, and maintain streaks as you progress on your sustainability journey with engaging achievements.</p>
+                        <div class="feature-badge">EARN REWARDS</div>
+                    </div>
+                </div>
+
+                <!-- Eco-Tips Section -->
+                <div class="feature-card card-teal">
+                    <div class="card-background">
+                        <div class="feature-icon">
+                            <span class="material-icons">lightbulb</span>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Personalized Eco-Tips</h3>
+                        <p class="feature-description">Access custom sustainability advice tailored to your specific habits, lifestyle, and environmental impact patterns.</p>
+                        <div class="feature-badge">LEARN MORE</div>
+                    </div>
+                </div>
+
+                <!-- Community Board -->
+                <div class="feature-card card-coral">
+                    <div class="card-background">
+                        <div class="feature-icon">
+                            <span class="material-icons">group</span>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Community Board</h3>
+                        <p class="feature-description">Connect with friends and groups to share sustainability tips, participate in challenges, and inspire collective environmental action.</p>
+                        <div class="feature-badge">JOIN COMMUNITY</div>
+                    </div>
+                </div>
+
+                <!-- Progress Tracking -->
+                <div class="feature-card card-lime">
+                    <div class="card-background">
+                        <div class="feature-icon">
+                            <span class="material-icons">trending_up</span>
+                        </div>
+                    </div>
+                    <div class="feature-content">
+                        <h3 class="feature-title">Progress Analytics</h3>
+                        <p class="feature-description">Visualize your environmental impact over time with comprehensive graphs and detailed progress reports showing your positive changes.</p>
+                        <div class="feature-badge">VIEW PROGRESS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q & A Section -->
+    <section id="qa" class="qa-section">
+        <div class="qa-container">
+            <div class="qa-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="qa-subtitle">Everything you need to know about EcoQuest and sustainable living</p>
+            </div>
+            
+            <div class="accordion-container">
+                <!-- Question 1 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-question">
+                            What is EcoQuest and why should I use it?
+                        </h3>
+                        <span class="accordion-arrow material-icons"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-answer">
+                            <p>EcoQuest is an interactive platform that helps people measure their ecological footprint and live more sustainably. It tracks carbon, water, and waste usage, sets eco-friendly goals, and provides personalized tips with fun gamification features like streaks and badges.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-question">
+                            Who is EcoQuest designed for?
+                        </h3>
+                        <span class="accordion-arrow material-icons"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-answer">
+                            <p>Our main audience is students and young people (ages 12–25) who want to learn about sustainability in a fun and engaging way. However, anyone interested in reducing their ecological impact can use EcoQuest.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-question">
+                            How does the ecological footprint quiz work?
+                        </h3>
+                        <span class="accordion-arrow material-icons"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-answer">
+                            <p>The quiz has 16 multiple-choice questions across 8 lifestyle areas such as diet, transport, water, waste, and more. Each answer is scored between 1 (eco-friendly) and 5 (least eco-friendly). At the end, you get a footprint percentage, a category (Low, Moderate, or High), and personalized advice on how to improve.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-question">
+                            What kind of tips and challenges will I get?
+                        </h3>
+                        <span class="accordion-arrow material-icons"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-answer">
+                            <p>You'll receive eco-tips tailored to your lifestyle. Examples include "Take shorter showers," "Try a meat-free day," or "Carry a reusable bottle." You can also set challenges like "Use 50% less plastic this month," and track streaks to stay motivated.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-question">
+                            Can I track my progress over time?
+                        </h3>
+                        <span class="accordion-arrow material-icons"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-answer">
+                            <p>Yes! The dashboard shows charts and stats of your impact over time. You'll see changes in your carbon, water, and waste usage, along with progress towards your goals and comparisons to your past results.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-question">
+                            How do reminders work?
+                        </h3>
+                        <span class="accordion-arrow material-icons"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-answer">
+                            <p>When you save or "try" an eco-tip, EcoQuest can create a reminder that syncs with your Google Calendar. These reminders also appear on your dashboard so you never miss a chance to stay on track.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h3 class="accordion-question">
+                            How is EcoQuest different from other footprint calculators?
+                        </h3>
+                        <span class="accordion-arrow material-icons"></span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-answer">
+                            <p>Unlike most calculators that only give you a score once, EcoQuest combines the quiz with ongoing tracking, goal setting, gamification, and Google Calendar integration. This makes it practical, engaging, and habit-forming rather than a one-time activity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <span>Built with passion for sustainability | Powered by modern web technologies</span>
+                </div>
+                <div class="footer-section">
+                    <span>&copy; 2024 EcoQuest | All rights reserved | Made with ❤️ for the planet</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Authentication Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Welcome to EcoQuest</h2>
+                <button class="close-btn" id="closeModal">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            
+            <!-- Message Display Area -->
+            <div id="authMessage" class="auth-message" style="display: none;"></div>
+            
+            <!-- Login Form -->
+            <div class="auth-form" id="loginForm">
+                <h3>Sign In to Your Account</h3>
+                <form id="loginFormElement">
+                    <div class="input-group">
+                        <span class="material-icons">email</span>
+                        <input type="email" id="loginEmail" placeholder="Email address" required>
+                    </div>
+                    <div class="input-group">
+                        <span class="material-icons">lock</span>
+                        <input type="password" id="loginPassword" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">
+                        <span>Sign In</span>
+                        <span class="material-icons">arrow_forward</span>
+                    </button>
+                </form>
+                <p class="auth-switch">
+                    Don't have an account? 
+                    <a href="#" id="showSignup">Create one here</a>
+                    <br>
+                    <a href="#" id="showForgotPassword" class="forgot-password-link">Forgot your password?</a>
+                </p>
+            </div>
+            
+            <!-- Signup Form -->
+            <div class="auth-form hidden" id="signupForm">
+                <h3>Create Your EcoQuest Account</h3>
+                <form id="signupFormElement">
+                    <div class="input-group">
+                        <span class="material-icons">person</span>
+                        <input type="text" id="signupName" placeholder="Full name" required>
+                    </div>
+                    <div class="input-group">
+                        <span class="material-icons">email</span>
+                        <input type="email" id="signupEmail" placeholder="Email address" required>
+                    </div>
+                    <div class="input-group">
+                        <span class="material-icons">lock</span>
+                        <input type="password" id="signupPassword" placeholder="Password (min 6 characters)" required>
+                    </div>
+                    <button type="submit" class="auth-btn">
+                        <span>Create Account</span>
+                        <span class="material-icons">person_add</span>
+                    </button>
+                </form>
+                <p class="auth-switch">
+                    Already have an account? 
+                    <a href="#" id="showLogin">Sign in here</a>
+                </p>
+            </div>
+            
+            <!-- Forgot Password Form -->
+            <div class="auth-form hidden" id="forgotPasswordForm">
+                <h3>Reset Your Password</h3>
+                <p class="forgot-password-description">Enter your email address and we'll help you reset your password securely.</p>
+                <form id="forgotPasswordFormElement">
+                    <div class="input-group">
+                        <span class="material-icons">email</span>
+                        <input type="email" id="forgotPasswordEmail" placeholder="Enter your email address" required>
+                    </div>
+                    <button type="submit" class="auth-btn">
+                        <span>Send Reset Instructions</span>
+                        <span class="material-icons">send</span>
+                    </button>
+                </form>
+                <p class="auth-switch">
+                    Remember your password? 
+                    <a href="#" id="backToLogin">Sign in here</a>
+                </p>
+            </div>
+            
+            <!-- Password Reset Form -->
+            <div class="auth-form hidden" id="passwordResetForm">
+                <h3>Create New Password</h3>
+                <p class="forgot-password-description">Enter your new password below. Make sure it's at least 6 characters long.</p>
+                <form id="passwordResetFormElement">
+                    <div class="input-group">
+                        <span class="material-icons">lock_reset</span>
+                        <input type="password" id="newPassword" placeholder="New password (min 6 characters)" required>
+                    </div>
+                    <div class="input-group">
+                        <span class="material-icons">lock</span>
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+                    </div>
+                    <button type="submit" class="auth-btn">
+                        <span>Update Password</span>
+                        <span class="material-icons">check_circle</span>
+                    </button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for interactions and charts -->
+    <script src="home-script.js"></script>
+    <!-- Simple Authentication System -->
+    <script src="simple-auth.js"></script>
+    
+    <!-- Q&A Accordion JavaScript -->
+    <script>
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const content = item.querySelector('.accordion-content');
+            
+            // Close all other accordion items
+            const allItems = document.querySelectorAll('.accordion-item');
+            allItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.accordion-content').style.maxHeight = null;
+                }
+            });
+            
+            // Toggle current item
+            if (item.classList.contains('active')) {
+                item.classList.remove('active');
+                content.style.maxHeight = null;
+            } else {
+                item.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            }
+        }
+        
+        function goToDashboard() {
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>
