@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Explore More Careers | My Career Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .explore-background {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('background4.jpeg') no-repeat center center/cover;
+            z-index: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .explore-overlay {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            background: rgba(18, 22, 30, 0.82);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .explore-navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 22, 30, 0.92);
+            padding: 0 40px;
+            height: 64px;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 24px;
+        }
+        .explore-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .explore-logo-emoji {
+            font-size: 2.3rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            margin-right: 2px;
+        }
+        .explore-logo-text {
+            color: #18c0ff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .explore-nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            margin-left: auto;
+        }
+        .explore-nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 8px;
+            transition: background 0.18s, color 0.18s;
+            cursor: pointer;
+        }
+        .explore-nav-links li a.active,
+        .explore-nav-links li a:focus {
+            background: rgba(33, 150, 243, 0.18);
+            color: #18c0ff;
+        }
+        .explore-title {
+            color: #18c0ff;
+            font-size: 2.9rem;
+            font-weight: 900;
+            margin: 36px 0 18px 0;
+            text-align: center;
+            text-shadow: 0 2px 24px #18c0ff44;
+        }
+        .explore-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 36px 32px;
+            justify-content: center;
+            margin-bottom: 60px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        .explore-card {
+            background: rgba(30, 34, 40, 0.98);
+            border-radius: 28px;
+            box-shadow: 0 4px 24px #18c0ff33, 0 0px 0px #fff0;
+            padding: 0;
+            min-height: 260px;
+            min-width: 0;
+            width: 100%;
+            height: 220px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            text-align: left;
+            border: 2px solid #18c0ff33;
+            transition: 
+                transform 0.18s, 
+                box-shadow 0.18s, 
+                border-color 0.18s, 
+                background 0.18s;
+            position: relative;
+            overflow: hidden;
+        }
+        .explore-card:hover {
+            transform: translateY(-8px) scale(1.035) rotate(-0.5deg);
+            box-shadow: 0 8px 32px #18c0ff55, 0 0 0 4px #18c0ff22;
+            border-color: #18c0ff77;
+            background: linear-gradient(120deg, #232a36 60%, #18c0ff22 100%);
+        }
+        .explore-card-left {
+            flex: 1 1 0;
+            padding: 36px 28px 28px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+        }
+        .explore-card-emoji {
+            font-size: 2.4rem;
+            margin-bottom: 0;
+            margin-top: -38px;
+        }
+        .explore-card-title {
+            color: #fff;
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .explore-card-desc {
+            color: #b0bec5;
+            font-size: 1.13rem;
+            margin-bottom: 18px;
+        }
+        .explore-card-btn {
+            background: linear-gradient(90deg, #1976d2 0%, #18c0ff 100%);
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 32px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px rgba(33, 150, 243, 0.12);
+            text-decoration: none;
+            margin-top: 8px;
+            display: inline-block;
+        }
+        /* Button hover color for each collar */
+        .explore-card-btn.white:hover { background: linear-gradient(90deg, #e0e0e0 0%, #bdbdbd 100%); color: #fff; box-shadow: 0 0 0 3px #e0e0e044; }
+        .explore-card-btn.blue:hover { background: linear-gradient(90deg, #1976d2 0%, #42a5f5 100%); color: #fff; box-shadow: 0 0 0 3px #42a5f577; }
+        .explore-card-btn.pink:hover { background: linear-gradient(90deg, #e91e63 0%, #ff80ab 100%); color: #fff; box-shadow: 0 0 0 3px #e91e6344; }
+        .explore-card-btn.green:hover { background: linear-gradient(90deg, #43a047 0%, #b2ff59 100%); color: #fff; box-shadow: 0 0 0 3px #43a04744; }
+        .explore-card-btn.red:hover { background: linear-gradient(90deg, #d32f2f 0%, #ff5252 100%); color: #fff; box-shadow: 0 0 0 3px #d32f2f44; }
+        .explore-card-btn.yellow:hover { background: linear-gradient(90deg, #ffd600 0%, #fffde7 100%); color: #fff; box-shadow: 0 0 0 3px #ffd60044; }
+        .explore-card-btn.black:hover { background: linear-gradient(90deg, #232323 0%, #757575 100%); color: #fff; box-shadow: 0 0 0 3px #23232344; }
+        .explore-card-btn.brown:hover { background: linear-gradient(90deg, #795548 0%, #bcaaa4 100%); color: #fff; box-shadow: 0 0 0 3px #79554844; }
+        .explore-card-btn:hover {
+            transform: translateY(-2px) scale(1.04);
+        }
+        .explore-card-right {
+            flex: 0 0 180px;
+            width: 180px;
+            height: 100%;
+            display: flex;
+            align-items: stretch;
+            justify-content: flex-end;
+            border-radius: 0 22px 22px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .explore-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0 22px 22px 0;
+            min-height: 100%;
+            min-width: 100%;
+            filter: brightness(0.92) contrast(1.08);
+        }
+        /* Collar images for each card */
+        .explore-card-img.white { background: url('white.jpeg') no-repeat center center/cover; }
+        .explore-card-img.blue { background: url('blue.jpeg') no-repeat center center/cover; }
+        .explore-card-img.pink { background: url('pink.jpeg') no-repeat center center/cover; }
+        .explore-card-img.green { background: url('green.jpeg') no-repeat center center/cover; }
+        .explore-card-img.red { background: url('red.jpeg') no-repeat center center/cover; }
+        .explore-card-img.yellow { background: url('yellow.jpeg') no-repeat center center/cover; }
+        .explore-card-img.black { background: url('black.jpeg') no-repeat center center/cover; }
+        .explore-card-img.brown { background: url('brown.jpeg') no-repeat center center/cover; }
+        @media (max-width: 1100px) {
+            .explore-cards {
+                grid-template-columns: 1fr;
+                grid-template-rows: none;
+            }
+            .explore-card { flex-direction: column; height: auto; min-height: 320px; }
+            .explore-card-right { width: 100%; height: 120px; border-radius: 0 0 22px 22px; }
+            .explore-card-img { border-radius: 0 0 22px 22px; }
+            .explore-card-left { padding: 32px 24px 18px 24px; }
+        }
+        /* Carousel styles */
+        .job-carousel-bar {
+            width: 100vw;
+            overflow: hidden;
+            background: #111;
+            padding: 0;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        .carousel-track {
+            display: flex;
+            gap: 32px;
+            font-size: 2.5rem;
+            animation: carousel-move 18s linear infinite;
+            white-space: nowrap;
+            align-items: center;
+            padding: 18px 0;
+        }
+        @keyframes carousel-move {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @media (max-width: 900px) {
+            .explore-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="explore-background"></div>
+    <div class="explore-overlay">
+        <nav class="explore-navbar">
+            <div class="explore-nav-logo">
+                <span class="explore-logo-emoji">🧬</span>
+                <span class="explore-logo-text">MY CAREER MAP</span>
+            </div>
+            <ul class="explore-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="results.html">Results</a></li>
+                <li><a href="explore.html" class="active">Explore More</a></li>
+            </ul>
+        </nav>
+        <div class="explore-title">Explore More Career Paths</div>
+        <div class="explore-cards">
+            <div class="explore-card">
+                <div class="explore-card-left">
+                    <div class="explore-card-emoji">💼</div>
+                    <div class="explore-card-title">White Collar</div>
+                    <div class="explore-card-desc">Professional, office-based roles in business, law, and tech.</div>
+                    <a class="explore-card-btn white" href="white-collar.html">Explore White Collar</a>
+                </div>
+                <div class="explore-card-right">
+                    <div class="explore-card-img white"></div>
+                </div>
+            </div>
+            <div class="explore-card">
+                <div class="explore-card-left">
+                    <div class="explore-card-emoji">🔧</div>
+                    <div class="explore-card-title">Blue Collar</div>
+                    <div class="explore-card-desc">Skilled trades and hands-on jobs vital to infrastructure.</div>
+                    <a class="explore-card-btn blue" href="blue-collar.html">Explore Blue Collar</a>
+                </div>
+                <div class="explore-card-right">
+                    <div class="explore-card-img blue"></div>
+                </div>
+            </div>
+            <div class="explore-card">
+                <div class="explore-card-left">
+                    <div class="explore-card-emoji">🩺</div>
+                    <div class="explore-card-title">Pink Collar</div>
+                    <div class="explore-card-desc">Service and care roles in health, education, and support.</div>
+                    <a class="explore-card-btn pink" href="pink-collar.html">Explore Pink Collar</a>
+                </div>
+                <div class="explore-card-right">
+                    <div class="explore-card-img pink"></div>
+                </div>
+            </div>
+            <div class="explore-card">
+                <div class="explore-card-left">
+                    <div class="explore-card-emoji">🌱</div>
+                    <div class="explore-card-title">Green Collar</div>
+                    <div class="explore-card-desc">Sustainability, conservation, and renewable energy careers.</div>
+                    <a class="explore-card-btn green" href="green-collar.html">Explore Green Collar</a>
+                </div>
+                <div class="explore-card-right">
+                    <div class="explore-card-img green"></div>
+                </div>
+            </div>
+            <div class="explore-card">
+                <div class="explore-card-left">
+                    <div class="explore-card-emoji">🚨</div>
+                    <div class="explore-card-title">Red Collar</div>
+                    <div class="explore-card-desc">Public service and safety roles in government and health.</div>
+                    <a class="explore-card-btn red" href="red-collar.html">Explore Red Collar</a>
+                </div>
+                <div class="explore-card-right">
+                    <div class="explore-card-img red"></div>
+                </div>
+            </div>
+            <div class="explore-card">
+                <div class="explore-card-left">
+                    <div class="explore-card-emoji">🎨</div>
+                    <div class="explore-card-title">Yellow Collar</div>
+                    <div class="explore-card-desc">Creative and artistic careers in design, music, and media.</div>
+                    <a class="explore-card-btn yellow" href="yellow-collar.html">Explore Yellow Collar</a>
+                </div>
+                <div class="explore-card-right">
+                    <div class="explore-card-img yellow"></div>
+                </div>
+            </div>
+            <div class="explore-card">
+                <div class="explore-card-left">
+                    <div class="explore-card-emoji">🖤</div>
+                    <div class="explore-card-title">Black Collar</div>
+                    <div class="explore-card-desc">Heavy industry, extraction, and machinery operation jobs.</div>
+                    <a class="explore-card-btn black" href="black-collar.html">Explore Black Collar</a>
+                </div>
+                <div class="explore-card-right">
+                    <div class="explore-card-img black"></div>
+                </div>
+            </div>
+            <div class="explore-card">
+                <div class="explore-card-left">
+                    <div class="explore-card-emoji">🟤</div>
+                    <div class="explore-card-title">Brown Collar</div>
+                    <div class="explore-card-desc">Defense, security, and law enforcement careers.</div>
+                    <a class="explore-card-btn brown" href="brown-collar.html">Explore Brown Collar</a>
+                </div>
+                <div class="explore-card-right">
+                    <div class="explore-card-img brown"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer style="width:100%;background:#181c24;color:#b0bec5;text-align:center;padding:18px 0 12px 0;font-size:1.05rem;letter-spacing:0.5px;">
+        &copy; 2024 My Career Map &mdash; All rights reserved.<br>
+        Contact: <a href="mailto:info@mycareermap.com" style="color:#18c0ff;text-decoration:underline;">info@mycareermap.com</a>
+    </footer>
+    <div class="job-carousel-bar">
+        <div class="carousel-track">
+            <span>💼</span>
+            <span>🩺</span>
+            <span>🖥️</span>
+            <span>🔬</span>
+            <span>⚖️</span>
+            <span>🎨</span>
+            <span>🔧</span>
+            <span>🚜</span>
+            <span>🍳</span>
+            <span>✈️</span>
+            <span>📚</span>
+            <span>💼</span>
+            <span>🩺</span>
+            <span>🖥️</span>
+            <span>🔬</span>
+            <span>⚖️</span>
+            <span>🎨</span>
+            <span>🔧</span>
+            <span>🚜</span>
+            <span>🍳</span>
+            <span>✈️</span>
+            <span>📚</span>
+        </div>
+    </div>
+</body>
+</html>
+    </div>
+</body>
+</html>

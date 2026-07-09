@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>White Collar Jobs | My Career Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html { margin:0; padding:0; height:100%; }
+        .explore-background {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('background4.jpeg') no-repeat center center/cover;
+            z-index: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .explore-overlay {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            background: rgba(18, 22, 30, 0.82);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .white-header-bar {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 18px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            background: rgba(18,22,30,0.98);
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 2px 16px #181c2444;
+            min-height: 44px;
+        }
+        .white-header-nav {
+            display: flex;
+            gap: 18px;
+            margin-left: 18px;
+            flex-wrap: wrap;
+        }
+        .white-header-nav a {
+            color: #18c0ff;
+            background: none;
+            border: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 3px 8px;
+            border-radius: 8px;
+            transition: background 0.18s, color 0.18s;
+        }
+        .white-header-nav a:hover,
+        .white-header-nav a.active {
+            background: #18c0ff22;
+            color: #fff;
+        }
+        .white-main-title {
+            color: #fff;
+            font-size: 2.7rem;
+            font-weight: 900;
+            text-align: center;
+            margin: 36px 0 18px 0;
+            text-shadow: 0 2px 24px #18c0ff44;
+            letter-spacing: 1px;
+            animation: fadeInTitle 0.8s cubic-bezier(.4,1.4,.6,1) both;
+        }
+        @keyframes fadeInTitle {
+            0% { opacity: 0; transform: translateY(-30px) scale(0.95);}
+            100% { opacity: 1; transform: none;}
+        }
+        .white-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 18px 60px 18px;
+            z-index: 2;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+        .white-card {
+            background: rgba(30,34,40,0.97);
+            border-radius: 22px;
+            box-shadow: 0 4px 24px #18c0ff22;
+            padding: 32px 28px 28px 28px;
+            width: 100%;
+            max-width: 820px;
+            min-width: 320px;
+            color: #fff;
+            border: 2px solid #18c0ff33;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 0;
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            animation: fadeInCard 0.7s cubic-bezier(.4,1.4,.6,1) forwards;
+        }
+        .white-card:nth-child(1) { animation-delay: 0.12s; }
+        .white-card:nth-child(2) { animation-delay: 0.22s; }
+        .white-card:nth-child(3) { animation-delay: 0.32s; }
+        .white-card:nth-child(4) { animation-delay: 0.42s; }
+        .white-card:nth-child(5) { animation-delay: 0.52s; }
+        .white-card:nth-child(6) { animation-delay: 0.62s; }
+        .white-card:nth-child(7) { animation-delay: 0.72s; }
+        @keyframes fadeInCard {
+            0% { opacity: 0; transform: translateY(30px) scale(0.98);}
+            80% { opacity: 1; transform: translateY(-6px) scale(1.01);}
+            100% { opacity: 1; transform: none;}
+        }
+        .white-card:hover {
+            box-shadow: 0 8px 32px #18c0ff55, 0 0 0 4px #18c0ff22;
+            transform: scale(1.018);
+            transition: box-shadow 0.18s, transform 0.18s;
+        }
+        .white-section-title {
+            color: #18c0ff;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .white-section-content {
+            color: #fff;
+            font-size: 1.13rem;
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+        .white-proscons-table,
+        .white-careers-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 0 0;
+            border: 1.5px solid #18c0ff55;
+        }
+        .white-proscons-table th, .white-proscons-table td,
+        .white-careers-table th, .white-careers-table td {
+            padding: 10px 16px;
+            font-size: 1.08rem;
+            vertical-align: top;
+            border-bottom: 1.5px solid #18c0ff33;
+            border-right: 1.5px solid #18c0ff22;
+        }
+        .white-proscons-table th:last-child, .white-proscons-table td:last-child,
+        .white-careers-table th:last-child, .white-careers-table td:last-child {
+            border-right: none;
+        }
+        .white-proscons-table th,
+        .white-careers-table th {
+            background: #18c0ff33;
+            color: #18c0ff;
+            font-weight: 700;
+            text-align: left;
+            border-bottom: 2px solid #18c0ff55;
+        }
+        .white-proscons-table td,
+        .white-careers-table td {
+            background: rgba(255,255,255,0.03);
+            color: #fff;
+        }
+        .white-btns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 8px;
+            width: 100%;
+        }
+        .white-btn {
+            background: linear-gradient(90deg, #1976d2 0%, #18c0ff 100%);
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 32px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px rgba(33, 150, 243, 0.12);
+            text-decoration: none;
+            margin-bottom: 0;
+            display: inline-block;
+            opacity: 1;
+            transform: scale(1);
+            animation: none;
+        }
+        .white-btn:hover {
+            background: linear-gradient(90deg, #e0e0e0 0%, #bdbdbd 100%);
+            color: #232a36;
+            transform: scale(1.06);
+            box-shadow: 0 0 0 4px #18c0ff33;
+        }
+        .white-back-btn {
+            position: fixed;
+            left: 24px;
+            bottom: 24px;
+            background: linear-gradient(90deg, #1976d2 0%, #18c0ff 100%);
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 22px;
+            padding: 10px 28px 10px 18px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px rgba(33, 150, 243, 0.12);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .white-back-btn:hover {
+            background: linear-gradient(90deg, #e0e0e0 0%, #bdbdbd 100%);
+            color: #232a36;
+            transform: translateY(-2px) scale(1.04);
+        }
+        /* Remove bullet points from careers table */
+        .white-careers-table ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        .white-careers-table li {
+            margin-bottom: 0;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.white-header-nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="explore-background"></div>
+    <div class="explore-overlay">
+        <div class="white-header-bar" style="position:relative;">
+            <nav class="white-header-nav">
+                <a href="#overview">Overview</a>
+                <a href="#keychar">Key Characteristics</a>
+                <a href="#proscons">Pros & Cons</a>
+                <a href="#examples">Examples</a>
+                <a href="#careers">Career Listings</a>
+                <a href="#portals">Job Portals</a>
+            </nav>
+        </div>
+        <div class="white-main-title">White Collar Jobs</div>
+        <div class="white-content">
+            <div class="white-card" id="overview">
+                <div class="white-section-title">What Are White Collar Jobs?</div>
+                <div class="white-section-content">
+                    White collar jobs are typically professional, managerial, or administrative roles performed in an office or remote setting. These roles often require formal education, specialized skills, and involve mental or analytical work rather than physical labor.<br><br>
+                    The term "white collar" comes from the traditional attire worn by professionals in such jobs — usually dress shirts and formal business clothing.
+                </div>
+            </div>
+            <div class="white-card" id="keychar">
+                <div class="white-section-title">Key Characteristics</div>
+                <div class="white-section-content">
+                    <ul>
+                        <li><b>Work Setting:</b> Office or remote (corporate, educational, legal, tech environments)</li>
+                        <li><b>Nature of Work:</b> Analytical, clerical, strategic, communicative</li>
+                        <li><b>Requirements:</b> Often requires a college degree, certifications, or technical expertise</li>
+                        <li><b>Work Schedule:</b> Usually 9-to-5, Monday to Friday</li>
+                        <li><b>Pay Structure:</b> Salaried (often with benefits like health insurance, pension plans)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="white-card" id="proscons">
+                <div class="white-section-title">Pros & Cons of White Collar Jobs</div>
+                <table class="white-proscons-table">
+                    <tr>
+                        <th>Pros</th>
+                        <th>Cons</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Higher Earning Potential with career advancement</li>
+                                <li>Stable Work Environment and predictable hours</li>
+                                <li>Opportunities for Promotion and upskilling</li>
+                                <li>Access to Benefits like health care, vacation, and retirement plans</li>
+                                <li>Remote or Hybrid Options in modern workplaces</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Sedentary Lifestyle may lead to health issues</li>
+                                <li>High Stress Levels in some roles (e.g., finance, law)</li>
+                                <li>Work-Life Imbalance in high-responsibility positions</li>
+                                <li>Less Physical Activity compared to field jobs</li>
+                                <li>Job Competition in popular sectors</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="white-card" id="examples">
+                <div class="white-section-title">Example Careers in White Collar Sector</div>
+                <table class="white-careers-table">
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Description</th>
+                        <th>Average Salary (USD)</th>
+                    </tr>
+                    <tr>
+                        <td>Accountant</td>
+                        <td>Manages company finances, audits, and taxes.</td>
+                        <td>$55,000–$75,000</td>
+                    </tr>
+                    <tr>
+                        <td>Software Engineer</td>
+                        <td>Designs and develops apps, websites, or systems.</td>
+                        <td>$80,000–$120,000</td>
+                    </tr>
+                    <tr>
+                        <td>Lawyer</td>
+                        <td>Represents clients in legal matters and provides legal advice.</td>
+                        <td>$100,000+</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Analyst</td>
+                        <td>Analyzes markets and advises companies on investments.</td>
+                        <td>$70,000–$95,000</td>
+                    </tr>
+                    <tr>
+                        <td>Marketing Manager</td>
+                        <td>Plans and executes strategies to promote products or brands.</td>
+                        <td>$65,000–$100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Human Resources Officer</td>
+                        <td>Manages hiring, training, and employee relations.</td>
+                        <td>$50,000–$80,000</td>
+                    </tr>
+                    <tr>
+                        <td>Data Analyst</td>
+                        <td>Interprets data to help businesses make informed decisions.</td>
+                        <td>$60,000–$90,000</td>
+                    </tr>
+                    <tr>
+                        <td>UX/UI Designer</td>
+                        <td>Designs user-friendly websites and applications.</td>
+                        <td>$70,000–$100,000</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="white-card" id="careers">
+                <div class="white-section-title">Career Listings</div>
+                <table class="white-careers-table">
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Description</th>
+                        <th>Average Salary (USD)</th>
+                    </tr>
+                    <tr>
+                        <td>Accountant</td>
+                        <td>Manages company finances, audits, and taxes.</td>
+                        <td>$55,000–$75,000</td>
+                    </tr>
+                    <tr>
+                        <td>Software Engineer</td>
+                        <td>Designs and develops apps, websites, or systems.</td>
+                        <td>$80,000–$120,000</td>
+                    </tr>
+                    <tr>
+                        <td>Lawyer</td>
+                        <td>Represents clients in legal matters and provides legal advice.</td>
+                        <td>$100,000+</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Analyst</td>
+                        <td>Analyzes markets and advises companies on investments.</td>
+                        <td>$70,000–$95,000</td>
+                    </tr>
+                    <tr>
+                        <td>Marketing Manager</td>
+                        <td>Plans and executes strategies to promote products or brands.</td>
+                        <td>$65,000–$100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Human Resources Officer</td>
+                        <td>Manages hiring, training, and employee relations.</td>
+                        <td>$50,000–$80,000</td>
+                    </tr>
+                    <tr>
+                        <td>Data Analyst</td>
+                        <td>Interprets data to help businesses make informed decisions.</td>
+                        <td>$60,000–$90,000</td>
+                    </tr>
+                    <tr>
+                        <td>UX/UI Designer</td>
+                        <td>Designs user-friendly websites and applications.</td>
+                        <td>$70,000–$100,000</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="white-card" id="portals">
+                <div class="white-section-title">Job Portals for White Collar Careers</div>
+                <div class="white-btns">
+                    <a class="white-btn" href="https://www.linkedin.com/jobs/" target="_blank">LinkedIn Jobs</a>
+                    <a class="white-btn" href="https://www.indeed.com/" target="_blank">Indeed</a>
+                    <a class="white-btn" href="https://www.glassdoor.com/index.htm" target="_blank">Glassdoor</a>
+                    <a class="white-btn" href="https://www.monster.com/" target="_blank">Monster</a>
+                    <a class="white-btn" href="https://angel.co/jobs" target="_blank">AngelList Talent</a>
+                    <a class="white-btn" href="https://remote.co/remote-jobs/" target="_blank">Remote.co</a>
+                </div>
+            </div>
+        </div>
+        <button class="white-back-btn" onclick="window.location.href='explore.html'">⬅️ Back</button>
+    </div>
+</body>
+</html>

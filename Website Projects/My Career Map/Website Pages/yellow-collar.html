@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yellow Collar Jobs | My Career Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html { margin:0; padding:0; height:100%; }
+        .explore-background {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('background4.jpeg') no-repeat center center/cover;
+            z-index: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .explore-overlay {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            background: rgba(18, 22, 30, 0.82);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .yellow-header-bar {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 18px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            background: rgba(18,22,30,0.98);
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 2px 16px #ffd60044;
+            min-height: 44px;
+        }
+        .yellow-header-nav {
+            display: flex;
+            gap: 18px;
+            margin-left: 18px;
+            flex-wrap: wrap;
+        }
+        .yellow-header-nav a {
+            color: #ffd600;
+            background: none;
+            border: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 3px 8px;
+            border-radius: 8px;
+            transition: background 0.18s, color 0.18s;
+        }
+        .yellow-header-nav a:hover,
+        .yellow-header-nav a.active {
+            background: #ffd60022;
+            color: #232a36;
+        }
+        .yellow-main-title {
+            color: #fff;
+            font-size: 2.7rem;
+            font-weight: 900;
+            text-align: center;
+            margin: 36px 0 18px 0;
+            text-shadow: 0 2px 24px #ffd60044;
+            letter-spacing: 1px;
+            animation: fadeInTitle 0.8s cubic-bezier(.4,1.4,.6,1) both;
+        }
+        @keyframes fadeInTitle {
+            0% { opacity: 0; transform: translateY(-30px) scale(0.95);}
+            100% { opacity: 1; transform: none;}
+        }
+        .yellow-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 18px 60px 18px;
+            z-index: 2;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+        .yellow-card {
+            background: rgba(30,34,40,0.97);
+            border-radius: 22px;
+            box-shadow: 0 4px 24px #ffd60022;
+            padding: 32px 28px 28px 28px;
+            width: 100%;
+            max-width: 820px;
+            min-width: 320px;
+            color: #f3f6fa;
+            border: 2px solid #ffd60033;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 0;
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            animation: fadeInCard 0.7s cubic-bezier(.4,1.4,.6,1) forwards;
+        }
+        .yellow-card:nth-child(1) { animation-delay: 0.12s; }
+        .yellow-card:nth-child(2) { animation-delay: 0.22s; }
+        .yellow-card:nth-child(3) { animation-delay: 0.32s; }
+        .yellow-card:nth-child(4) { animation-delay: 0.42s; }
+        .yellow-card:nth-child(5) { animation-delay: 0.52s; }
+        .yellow-card:nth-child(6) { animation-delay: 0.62s; }
+        .yellow-card:nth-child(7) { animation-delay: 0.72s; }
+        @keyframes fadeInCard {
+            0% { opacity: 0; transform: translateY(30px) scale(0.98);}
+            80% { opacity: 1; transform: translateY(-6px) scale(1.01);}
+            100% { opacity: 1; transform: none;}
+        }
+        .yellow-card:hover {
+            box-shadow: 0 8px 32px #ffd60055, 0 0 0 4px #ffd60022;
+            transform: scale(1.018);
+            transition: box-shadow 0.18s, transform 0.18s;
+        }
+        .yellow-section-title {
+            color: #ffd600;
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .yellow-btns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 8px;
+            width: 100%;
+        }
+        .yellow-btn {
+            background: linear-gradient(90deg, #ffd600 0%, #fffde7 100%);
+            color: #232a36;
+            font-size: 1.08rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 32px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px #ffd60022;
+            text-decoration: none;
+            margin-bottom: 0;
+            display: inline-block;
+            opacity: 0;
+            transform: scale(0.96);
+            animation: fadeInBtn 0.7s forwards;
+        }
+        .yellow-btn:nth-child(1) { animation-delay: 0.1s; }
+        .yellow-btn:nth-child(2) { animation-delay: 0.2s; }
+        .yellow-btn:nth-child(3) { animation-delay: 0.3s; }
+        .yellow-btn:hover {
+            background: linear-gradient(90deg, #fffde7 0%, #ffd600 100%);
+            color: #232a36;
+            transform: scale(1.06);
+            box-shadow: 0 0 0 4px #ffd60033;
+        }
+        @keyframes fadeInBtn {
+            to { opacity: 1; transform: scale(1); }
+        }
+        .yellow-back-btn {
+            position: fixed;
+            left: 24px;
+            bottom: 24px;
+            background: linear-gradient(90deg, #ffd600 0%, #fffde7 100%);
+            color: #232a36;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 22px;
+            padding: 10px 28px 10px 18px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 12px #ffd60022;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .yellow-back-btn:hover {
+            background: linear-gradient(90deg, #fffde7 0%, #ffd600 100%);
+            color: #232a36;
+            transform: translateY(-2px) scale(1.04);
+        }
+        .yellow-section-content,
+        .yellow-card,
+        .yellow-card ul,
+        .yellow-card li,
+        .yellow-card div,
+        .yellow-card table,
+        .yellow-card th,
+        .yellow-card td {
+            color: #fff;
+        }
+        .yellow-proscons-table,
+        .yellow-careers-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 0 0;
+            border: 1.5px solid #ffd60055;
+        }
+        .yellow-proscons-table th, .yellow-proscons-table td,
+        .yellow-careers-table th, .yellow-careers-table td {
+            padding: 10px 16px;
+            font-size: 1.08rem;
+            vertical-align: top;
+            border-bottom: 1.5px solid #ffd60022;
+            border-right: 1.5px solid #ffd60022;
+        }
+        .yellow-proscons-table th:last-child, .yellow-proscons-table td:last-child,
+        .yellow-careers-table th:last-child, .yellow-careers-table td:last-child {
+            border-right: none;
+        }
+        .yellow-proscons-table th,
+        .yellow-careers-table th {
+            background: #ffd60022;
+            color: #ffd600;
+            font-weight: 700;
+            text-align: left;
+            border-bottom: 2px solid #ffd60055;
+        }
+        .yellow-proscons-table td,
+        .yellow-careers-table td {
+            background: rgba(255,255,255,0.03);
+            color: #fff;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.yellow-header-nav a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = link.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="explore-background"></div>
+    <div class="explore-overlay">
+        <div class="yellow-header-bar" style="position:relative;">
+            <nav class="yellow-header-nav">
+                <a href="#overview">Overview</a>
+                <a href="#keychar">Key Characteristics</a>
+                <a href="#proscons">Pros & Cons</a>
+                <a href="#examples">Examples</a>
+                <a href="#videos">Videos</a>
+                <a href="#portals">Job Portals</a>
+            </nav>
+        </div>
+        <div class="yellow-main-title">Yellow Collar Jobs</div>
+        <div class="yellow-content">
+            <div class="yellow-card" id="overview">
+                <div class="yellow-section-title">What Are Yellow Collar Jobs?</div>
+                <div>
+                    Yellow collar jobs are generally associated with creative and artistic professions, including designers, artists, writers, and media professionals.
+                </div>
+            </div>
+            <div class="yellow-card" id="keychar">
+                <div class="yellow-section-title">Key Characteristics</div>
+                <ul>
+                    <li>Heavily relies on imagination, design, or media production</li>
+                    <li>Project-based, freelance, or entrepreneurial formats are common</li>
+                    <li>Dynamic work environments, often online or hybrid</li>
+                </ul>
+            </div>
+            <div class="yellow-card" id="proscons">
+                <div class="yellow-section-title">Pros & Cons</div>
+                <table class="yellow-proscons-table">
+                    <tr>
+                        <th style="color:#ffd600;text-align:left;background:#ffd60022;">Pros</th>
+                        <th style="color:#ffd600;text-align:left;background:#ffd60022;">Cons</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>High creative freedom and personal expression</li>
+                                <li>Flexible work arrangements (freelance, remote)</li>
+                                <li>Impactful and fulfilling for artistic minds</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>Unstable income (especially for freelancers)</li>
+                                <li>Competitive industry</li>
+                                <li>Requires strong self-marketing and networking</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="yellow-card" id="examples">
+                <div class="yellow-section-title">Example Jobs</div>
+                <table class="yellow-careers-table">
+                    <tr>
+                        <th style="color:#ffd600;text-align:left;background:#ffd60022;">Job Title</th>
+                        <th style="color:#ffd600;text-align:left;background:#ffd60022;">Description</th>
+                        <th style="color:#ffd600;text-align:left;background:#ffd60022;">Avg Salary (USD)</th>
+                    </tr>
+                    <tr>
+                        <td>Graphic Designer</td>
+                        <td>Creates visuals for web, print, and advertising</td>
+                        <td>$45,000–$75,000</td>
+                    </tr>
+                    <tr>
+                        <td>Filmmaker</td>
+                        <td>Produces, directs, or edits films and video content</td>
+                        <td>$50,000–$100,000</td>
+                    </tr>
+                    <tr>
+                        <td>Writer/Author</td>
+                        <td>Writes books, articles, or web content</td>
+                        <td>$40,000–$85,000</td>
+                    </tr>
+                    <tr>
+                        <td>Animator</td>
+                        <td>Develops animations for film, TV, and games</td>
+                        <td>$55,000–$90,000</td>
+                    </tr>
+                    <tr>
+                        <td>Photographer</td>
+                        <td>Captures and edits photos for events, brands, or news</td>
+                        <td>$35,000–$70,000</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="yellow-card" id="portals">
+                <div class="yellow-section-title">Job Portals for Yellow Collar Careers</div>
+                <div class="yellow-btns">
+                    <a class="yellow-btn" href="https://www.behance.net/joblist" target="_blank">Behance</a>
+                    <a class="yellow-btn" href="https://dribbble.com/jobs" target="_blank">Dribbble Jobs</a>
+                    <a class="yellow-btn" href="https://www.upwork.com/" target="_blank">Upwork</a>
+                    <a class="yellow-btn" href="https://www.fiverr.com/" target="_blank">Fiverr</a>
+                </div>
+            </div>
+        </div>
+        <button class="yellow-back-btn" onclick="window.location.href='explore.html'">⬅️ Back</button>
+    </div>
+</body>
+</html>
+                </div>
+            </div>
+        </div>
+        <button class="yellow-back-btn" onclick="window.location.href='explore.html'">⬅️ Back</button>
+    </div>
+</body>
+</html>

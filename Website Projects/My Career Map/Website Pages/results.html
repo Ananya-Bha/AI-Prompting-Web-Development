@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Results | My Career Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .results-background {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('background3.jpeg') no-repeat center center/cover;
+            z-index: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .results-overlay {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            background: rgba(18, 22, 30, 0.82);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .results-navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 22, 30, 0.92);
+            padding: 0 40px;
+            height: 64px;
+            position: relative;
+            z-index: 10;
+            margin-bottom: 24px;
+        }
+        .results-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .results-logo-emoji {
+            font-size: 2.3rem;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            margin-right: 2px;
+        }
+        .results-logo-text {
+            color: #18c0ff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        .results-nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            margin-left: auto;
+        }
+        .results-nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.15rem;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 8px;
+            transition: background 0.18s, color 0.18s;
+            cursor: pointer;
+        }
+        .results-nav-links li a.active,
+        .results-nav-links li a:focus {
+            background: rgba(33, 150, 243, 0.18);
+            color: #18c0ff;
+        }
+        /* Modal Card */
+        .results-modal-card {
+            background: rgba(30, 34, 40, 0.98);
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(33, 150, 243, 0.18);
+            padding: 48px 36px 36px 36px;
+            max-width: 640px;
+            width: 98vw;
+            margin: 32px auto 0 auto;
+            margin-bottom: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInScale 0.7s;
+            border: 2px solid #18c0ff33;
+            position: relative;
+        }
+        .results-card-top-btn {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 0;
+            margin-bottom: 12px;
+            position: static;
+            top: unset;
+            right: unset;
+            z-index: 2;
+        }
+        .show-stats-btn {
+            background: linear-gradient(90deg, #1976d2 0%, #18c0ff 100%);
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 24px;
+            padding: 8px 22px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 12px rgba(33, 150, 243, 0.12);
+            margin-right: 40px;
+            margin-top: 0;
+        }
+        .show-stats-btn:hover {
+            background: linear-gradient(90deg, #1565c0 0%, #42a5f5 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+        .results-title {
+            color: #18c0ff;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .results-collar {
+            font-size: 2.6rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 24px #18c0ff44;
+        }
+        .results-desc {
+            color: #e3eaf4;
+            font-size: 1.18rem;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .results-btns {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            width: 100%;
+            margin-top: 18px;
+        }
+        .results-btn {
+            display: block;
+            width: 100%;
+            padding: 16px 0;
+            background: linear-gradient(90deg, #1976d2 0%, #18c0ff 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 32px;
+            text-decoration: none;
+            box-shadow: 0 4px 24px rgba(33, 150, 243, 0.2);
+            transition: background 0.2s, transform 0.2s;
+            cursor: pointer;
+            text-align: center;
+        }
+        .results-btn:hover {
+            background: linear-gradient(90deg, #1565c0 0%, #42a5f5 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+        /* Modal Popup */
+        .results-popup-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(18, 22, 30, 0.82);
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .results-popup-modal {
+            background: #232a36;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px #18c0ff33;
+            padding: 24px 18px 32px 18px;
+            max-width: 370px;
+            width: 96vw;
+            min-height: 370px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            animation: fadeInScale 0.7s, popupDrop 1.1s;
+            border: 2px solid #18c0ff33;
+            position: relative;
+        }
+        .results-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 1.5rem;
+            color: #18c0ff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .results-popup-exit-btn {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 16px; /* moved further down */
+            background: linear-gradient(90deg, #1976d2 0%, #18c0ff 100%);
+            color: #fff;
+            font-size: 1.28rem;
+            font-weight: 800;
+            border: none;
+            border-radius: 32px;
+            padding: 20px 64px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 12px rgba(33, 150, 243, 0.12);
+            z-index: 10;
+        }
+        .results-popup-exit-btn:hover {
+            background: linear-gradient(90deg, #1565c0 0%, #42a5f5 100%);
+            transform: translateX(-50%) translateY(-2px) scale(1.04);
+        }
+        .results-popup-title {
+            color: #18c0ff;
+            font-size: 1.45rem;
+            font-weight: 900;
+            margin-bottom: 12px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 0.8s;
+        }
+        .results-popup-collar {
+            font-size: 1.18rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 24px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 1s;
+        }
+        #popup-graph {
+            margin-top: 56px !important;
+            margin-bottom: 0 !important;
+            animation: fadeInUp 1.2s;
+        }
+        .results-popup-graph {
+            margin: 0;
+            width: 100%;
+            height: 90px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 0 8px;
+            box-sizing: border-box;
+        }
+        .results-popup-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            min-width: 32px;
+            animation: barGrow 1.2s;
+        }
+        .results-popup-bar-emoji {
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+            margin-top: 0;
+            animation: emojiBounce 1.5s infinite alternate;
+        }
+        .results-popup-bar-inner {
+            width: 18px;
+            border-radius: 6px 6px 0 0;
+            background: linear-gradient(180deg, #18c0ff 0%, #1976d2 100%);
+            margin-bottom: 4px;
+            transition: height 0.7s;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .results-popup-bar-label {
+            color: #fff;
+            font-size: 0.78rem;
+            margin-bottom: 1px;
+            margin-top: 2px;
+            text-align: center;
+        }
+        .results-popup-bar-score {
+            color: #18c0ff;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 2px;
+            text-align: center;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px);}
+            100% { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes popupDrop {
+            0% { opacity: 0; transform: translateY(-60px) scale(0.95);}
+            100% { opacity: 1; transform: translateY(0) scale(1);}
+        }
+        @keyframes barGrow {
+            0% { transform: scaleY(0.2);}
+            100% { transform: scaleY(1);}
+        }
+        @keyframes emojiBounce {
+            0% { transform: translateY(0);}
+            100% { transform: translateY(-6px);}
+        }
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.92) translateY(30px);}
+            100% { opacity: 1; transform: scale(1) translateY(0);}
+        }
+        @media (max-width: 600px) {
+            .results-modal-card {
+                padding: 18px 2vw 18px 2vw;
+                max-width: 99vw;
+            }
+            .results-popup-modal {
+                padding: 14px 2vw 14px 2vw;
+                max-width: 99vw;
+            }
+            .carousel-track {
+                font-size: 1rem;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="results-background"></div>
+    <div class="results-overlay">
+        <!-- Results Header Navigation -->
+        <nav class="results-navbar">
+            <div class="results-nav-logo">
+                <span class="results-logo-emoji">🧬</span>
+                <span class="results-logo-text">MY CAREER MAP</span>
+            </div>
+            <ul class="results-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="quiz.html">Quiz</a></li>
+                <li><a href="#" id="results-link" class="active">Results</a></li>
+                <li><a href="#" id="explore-link">Explore More</a></li>
+            </ul>
+        </nav>
+        <!-- Show Statistics Button (below nav, top right) -->
+        <div class="results-card-top-btn">
+            <button class="show-stats-btn" id="show-stats-btn">Show Statistics</button>
+        </div>
+        <div id="results-card-container"></div>
+    </div>
+    <!-- Modal Popup -->
+    <div id="results-popup-bg" class="results-popup-bg" style="display:none;">
+        <div class="results-popup-modal">
+            <button class="results-popup-close" id="close-popup-btn" title="Close">&times;</button>
+            <div class="results-popup-title">Your Collar Quiz Results</div>
+            <div class="results-popup-collar" id="popup-collar"></div>
+            <div style="height: 24px;"></div>
+            <div id="popup-graph" class="results-popup-graph"></div>
+            <button class="results-popup-exit-btn" id="exit-popup-btn">Exit</button>
+        </div>
+    </div>
+    <!-- Job Icon Carousel Bar -->
+    <div class="job-carousel-bar">
+        <div class="carousel-track">
+            <span>💼</span>
+            <span>🩺</span>
+            <span>🖥️</span>
+            <span>🔬</span>
+            <span>⚖️</span>
+            <span>🎨</span>
+            <span>🔧</span>
+            <span>🚜</span>
+            <span>🍳</span>
+            <span>✈️</span>
+            <span>📚</span>
+            <span>💼</span>
+            <span>🩺</span>
+            <span>🖥️</span>
+            <span>🔬</span>
+            <span>⚖️</span>
+            <span>🎨</span>
+            <span>🔧</span>
+            <span>🚜</span>
+            <span>🍳</span>
+            <span>✈️</span>
+            <span>📚</span>
+        </div>
+    </div>
+    <script>
+    // Collar descriptions and examples
+    const collarInfo = {
+        Blue: {
+            desc: "Blue collar jobs are typically manual labor roles in industries like construction, manufacturing, and maintenance.",
+            examples: "Examples: Electrician, Plumber, Mechanic, Construction Worker",
+            emoji: "🔧"
+        },
+        Black: {
+            desc: "Black collar jobs are often associated with manual labor in hazardous or physically demanding environments.",
+            examples: "Examples: Miner, Oil Rig Worker, Security, Firefighter",
+            emoji: "🖤"
+        },
+        Brown: {
+            desc: "Brown collar jobs are related to military, farming, forestry, and outdoor work.",
+            examples: "Examples: Farmer, Forest Ranger, Military Personnel",
+            emoji: "🌲"
+        },
+        Red: {
+            desc: "Red collar jobs are government jobs, public service, and administrative roles.",
+            examples: "Examples: Police Officer, Firefighter, Civil Servant",
+            emoji: "🚨"
+        },
+        Yellow: {
+            desc: "Yellow collar jobs are creative and artistic professions.",
+            examples: "Examples: Designer, Artist, Writer, Musician",
+            emoji: "🎨"
+        },
+        Green: {
+            desc: "Green collar jobs focus on environmental sustainability and eco-friendly industries.",
+            examples: "Examples: Environmental Engineer, Solar Technician, Conservationist",
+            emoji: "🌱"
+        },
+        White: {
+            desc: "White collar jobs are professional, managerial, or administrative work in offices.",
+            examples: "Examples: Accountant, Manager, Lawyer, Doctor",
+            emoji: "💼"
+        },
+        Pink: {
+            desc: "Pink collar jobs are service-oriented, often in healthcare, education, or hospitality.",
+            examples: "Examples: Nurse, Teacher, Chef, Social Worker",
+            emoji: "🩺"
+        }
+    };
+
+    // Collar order for graph and stats
+    const collarOrder = ["Blue", "Black", "Brown", "Red", "Yellow", "Green", "White", "Pink"];
+
+    // Get scores from localStorage
+    let collarScores = {};
+    try {
+        collarScores = JSON.parse(localStorage.getItem("collarScores")) || {};
+    } catch {
+        collarScores = {};
+    }
+
+    // Find highest scoring collar(s)
+    let maxScore = -1;
+    let maxCollars = [];
+    collarOrder.forEach(c => {
+        if ((collarScores[c] || 0) > maxScore) {
+            maxScore = collarScores[c];
+        }
+    });
+    collarOrder.forEach(c => {
+        if ((collarScores[c] || 0) === maxScore && maxScore > 0) {
+            maxCollars.push(c);
+        }
+    });
+
+    // Render main results card
+    function renderResultsCard() {
+        const container = document.getElementById('results-card-container');
+        let collarText, descText, examplesText, emojiText, learnMoreHref;
+        if (maxCollars.length === 1) {
+            const info = collarInfo[maxCollars[0]];
+            collarText = `${info.emoji} ${maxCollars[0]} Collar Jobs`;
+            descText = info.desc;
+            examplesText = info.examples;
+            emojiText = info.emoji;
+            // Set the correct page for each collar
+            switch (maxCollars[0]) {
+                case "White": learnMoreHref = "white-collar.html"; break;
+                case "Blue": learnMoreHref = "blue-collar.html"; break;
+                case "Pink": learnMoreHref = "pink-collar.html"; break;
+                case "Green": learnMoreHref = "green-collar.html"; break;
+                case "Red": learnMoreHref = "red-collar.html"; break;
+                case "Yellow": learnMoreHref = "yellow-collar.html"; break;
+                case "Black": learnMoreHref = "black-collar.html"; break;
+                case "Brown": learnMoreHref = "brown-collar.html"; break;
+                default: learnMoreHref = "#";
+            }
+        } else {
+            collarText = maxCollars.map(c => `${collarInfo[c].emoji} ${c} Collar`).join(' & ');
+            descText = maxCollars.map(c => `<b>${c}:</b> ${collarInfo[c].desc}`).join('<br>');
+            examplesText = maxCollars.map(c => `<b>${c}:</b> ${collarInfo[c].examples}`).join('<br>');
+            emojiText = maxCollars.map(c => collarInfo[c].emoji).join(' ');
+            learnMoreHref = "#"; // For ties, you may want to handle differently
+        }
+        container.innerHTML = `
+            <div class="results-modal-card">
+                <div class="results-title">You are best suited for</div>
+                <div class="results-collar">${collarText}</div>
+                <div class="results-desc">${descText}<br><span style="color:#18c0ff;">${examplesText}</span></div>
+                <div class="results-btns">
+                    <a class="results-btn" href="${learnMoreHref}">Learn More about ${maxCollars.length === 1 ? maxCollars[0] : maxCollars.join(' & ')} Collar Jobs</a>
+                    <a class="results-btn" href="explore.html">Explore More</a>
+                    <a class="results-btn" href="quiz.html" id="restart-btn">Restart Quiz</a>
+                </div>
+            </div>
+        `;
+    }
+
+    // Render popup modal with stats and graph
+    function renderResultsPopup() {
+        document.getElementById('results-popup-bg').style.display = "flex";
+        let popupCollarText;
+        if (maxCollars.length === 1) {
+            popupCollarText = `You scored highest in <b>${maxCollars[0]} Collar</b>!`;
+        } else {
+            popupCollarText = `You scored highest in <b>${maxCollars.map(c => c + " Collar").join(' & ')}</b>!`;
+        }
+        document.getElementById('popup-collar').innerHTML = popupCollarText;
+        // Line/bar graph
+        const graph = document.getElementById('popup-graph');
+        let max = Math.max(...collarOrder.map(c => collarScores[c] || 0));
+        graph.innerHTML = collarOrder.map(c => {
+            const score = collarScores[c] || 0;
+            const percent = max ? (score / max) * 100 : 0;
+            return `
+                <div class="results-popup-bar">
+                    <div class="results-popup-bar-emoji">${collarInfo[c].emoji}</div>
+                    <div class="results-popup-bar-inner" style="height:${percent}px"></div>
+                    <div class="results-popup-bar-label">${c}</div>
+                    <div class="results-popup-bar-score">${score}</div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Popup close logic and show statistics button
+    document.addEventListener("DOMContentLoaded", function() {
+        renderResultsCard();
+        renderResultsPopup();
+        document.getElementById('close-popup-btn').onclick = function() {
+            document.getElementById('results-popup-bg').style.display = "none";
+        };
+        document.getElementById('exit-popup-btn').onclick = function() {
+            document.getElementById('results-popup-bg').style.display = "none";
+        };
+        // Show statistics button
+        document.getElementById('show-stats-btn').onclick = function() {
+            document.getElementById('results-popup-bg').style.display = "flex";
+        };
+        // Show popup on page load
+        document.getElementById('results-popup-bg').style.display = "flex";
+        // Learn More and Explore More buttons
+        document.querySelector('.results-btns a:nth-child(2)').onclick = function(e) {
+            e.preventDefault();
+            window.location.href = "explore.html";
+        };
+        document.getElementById('restart-btn').onclick = function() {
+            localStorage.removeItem("collarScores");
+        };
+        // Nav Explore More link
+        var exploreNav = document.getElementById('explore-link');
+        if (exploreNav) {
+            exploreNav.onclick = function(e) {
+                e.preventDefault();
+                window.location.href = "explore.html";
+            };
+        }
+    });
+    </script>
+</body>
+</html>
