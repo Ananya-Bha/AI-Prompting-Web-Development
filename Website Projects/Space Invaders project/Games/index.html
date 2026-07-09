@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Invaders</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <section id="startScreen" class="screen-overlay" aria-label="Start screen">
+      <div id="emojiField" class="emoji-field" aria-hidden="true"></div>
+      <div class="screen-content">
+        <p class="screen-kicker">ARCADE MODE</p>
+        <h2 class="screen-title">SPACE INVADERS</h2>
+        <p class="screen-text">Defend your baseline, shoot incoming enemies, and push your profile to the top rank.</p>
+        <button id="startBtn" class="action-btn" type="button">Start Mission</button>
+        <div class="theme-switcher" aria-label="Theme switcher">
+          <p class="theme-switcher-label">Choose Theme</p>
+          <div class="theme-switcher-actions">
+            <button id="themeDefaultBtn" class="theme-btn" type="button">Default</button>
+            <button id="themePopBtn" class="theme-btn" type="button">Pop Bright</button>
+            <button id="themeCoolBtn" class="theme-btn" type="button">Cool Tone</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="game-shell">
+      <h1 class="page-title">SPACE INVADERS</h1>
+      <header class="hud">
+        <div class="hud-stats">
+          <p id="playerName">Player: -</p>
+          <p id="score">Current Score: 0</p>
+          <p id="highScore">High Score: 0</p>
+          <p id="rankBadge">Your Rank: # -</p>
+        </div>
+      </header>
+
+      <section class="game-area">
+        <canvas id="gameCanvas" width="900" height="600" aria-label="Space Invaders game area"></canvas>
+        <div id="waveModal" class="wave-modal hidden" aria-live="polite">
+          <p id="waveModalTitle" class="wave-modal-title">Wave 1 Incoming</p>
+          <p id="waveModalTimer" class="wave-modal-timer">Starts in: 5</p>
+        </div>
+        <div id="gameOver" class="game-over hidden" aria-live="polite">
+          <h2>GAME OVER</h2>
+          <p id="finalScore">Final Score: 0</p>
+          <div class="game-over-actions">
+            <button id="restartBtn" class="action-btn" type="button">Restart Game</button>
+            <button id="switchProfileBtn" class="action-btn" type="button">Switch Profile</button>
+            <button id="leaderboardBtn" class="action-btn" type="button">See Leaderboard</button>
+          </div>
+        </div>
+      </section>
+
+      <p class="hint">Move: ← / → &nbsp;|&nbsp; Shoot: Space</p>
+    </main>
+
+    <section id="leaderboardModal" class="modal-backdrop hidden" aria-label="Leaderboard">
+      <div class="modal-card">
+        <div class="modal-header">
+          <div>
+            <h3>Leaderboard</h3>
+            <p id="leaderboardMeta" class="leaderboard-meta">Top 5 Profiles</p>
+          </div>
+          <button id="closeLeaderboardBtn" class="text-btn" type="button">Close</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Profile</th>
+                <th>High Score</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
