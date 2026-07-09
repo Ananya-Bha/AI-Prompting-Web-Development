@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISSION LABORATORY - Image Link Challenge</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e2e8f0;
+            padding: 1.5rem;
+        }
+        .container {
+            background: #1e293b;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            max-width: 700px;
+            width: 100%;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 0.5rem;
+        }
+        .mission-id {
+            color: #818cf8;
+            font-size: 0.8125rem;
+            font-weight: 500;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        .image-container {
+            text-align: center;
+            width: 100%;
+        }
+        img {
+            max-width: 100%;
+            height: 300px;
+            border: 2px solid #475569;
+            border-radius: 0.5rem;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain;
+            background: #0f172a;
+        }
+        .reveal-button {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            font-family: 'Courier New', monospace;
+        }
+        .reveal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+        .reveal-button:active {
+            transform: translateY(0);
+        }
+        .reveal-button:disabled {
+            background: linear-gradient(135deg, #475569 0%, #334155 100%);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .password-display {
+            width: 100%;
+            padding: 2rem;
+            background: #0f172a;
+            border-radius: 0.5rem;
+            border: 2px solid #10b981;
+            text-align: center;
+            display: none;
+        }
+        .password-display.show {
+            display: block;
+            animation: reveal 0.5s ease;
+        }
+        @keyframes reveal {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .password-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .password-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #10b981;
+            letter-spacing: 0.2em;
+            font-family: 'Monaco', 'Courier New', monospace;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔐 Mission Laboratory</h1>
+            <div class="mission-id">MISSION-ID: mission-laboratory</div>
+        </div>
+
+        <div class="main-content">
+            <div class="image-container">
+                <img id="challengeImage" src="#LINK-IMAGE-HERE" alt="Link rat.png to reveal the password">
+            </div>
+
+            <button class="reveal-button" id="revealButton" disabled>
+                🔓 Reveal Password
+            </button>
+
+            <div class="password-display" id="passwordDisplay">
+                <div class="password-label">Password</div>
+                <div class="password-value" id="passwordValue"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="helper.js"></script>
+</body>
+</html>
