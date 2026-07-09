@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Hero section -->
+    <section class="hero">
+        <h1>Font Explorer</h1>
+        <h2>Discover the world of fonts</h2>
+    </section>
+
+    <!-- Interactive fonts section -->
+    <section class="fonts-section">
+        <!-- Font family selector -->
+        <select id="fontFamilySelector">
+            <option value="serif">Serif</option>
+            <option value="sans-serif">Sans-serif</option>
+            <option value="monospace">Monospace</option>
+            <option value="cursive">Cursive</option>
+            <option value="fantasy">Fantasy</option>
+        </select>
+
+        <!-- Container for font cards -->
+        <div id="fontCards"></div>
+    </section>
+
+    <!-- Modal for font details -->
+    <div id="fontModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalFontName"></h2>
+            <p id="modalFontSample">The quick brown fox jumps over the lazy dog.</p>
+            <p id="modalFontReview"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

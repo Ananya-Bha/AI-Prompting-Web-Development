@@ -1,0 +1,107 @@
+/* General styles for all pages */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Content container styles */
+.content {
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+/* Paragraph styles */
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Button styles */
+.cta-button, button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    text-decoration: none;
+    background-color: #ff9900;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover, button:hover {
+    background-color: #e68a00;
+}
+
+/* Form styles */
+form {
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1em;
+    width: 60%;
+    margin-right: 10px;
+}
+
+/* Hidden class for hint text */
+.hidden {
+    display: none;
+}
+
+/* Intro page specific styles */
+.intro-page {
+    background-image: url('https://example.com/pirate-ship.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
+
+/* Riddle page specific styles */
+.riddle-page {
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+.riddle-1 {
+    background-image: url('https://example.com/tropical-island.jpg');
+}
+
+.riddle-2 {
+    background-image: url('https://example.com/treasure-map.jpg');
+}
+
+.riddle-3 {
+    background-image: url('https://example.com/stormy-sea.jpg');
+}
+
+/* Congratulations page specific styles */
+.congrats-page {
+    background-image: url('https://example.com/treasure-chest.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
