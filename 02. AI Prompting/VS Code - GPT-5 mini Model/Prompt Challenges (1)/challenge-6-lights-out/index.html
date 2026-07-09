@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="page">
+  <div id="app">
+    <p id="stats">Clicks: <span id="click-count">0</span> &middot; Best: <span id="best-count">&mdash;</span></p>
+    <h1 id="title">Lights Out</h1>
+    <p id="tagline">Click a lamp — it toggles itself and its neighbours. End lamps only have one neighbour. Match all five (all ON, or all OFF) — and you win. Fewer clicks = better.</p>
+
+    <button id="lamp-1" onclick="clickLamp1()">ON</button>
+    <button id="lamp-2" onclick="clickLamp2()">OFF</button>
+    <button id="lamp-3" onclick="clickLamp3()">ON</button>
+    <button id="lamp-4" onclick="clickLamp4()">OFF</button>
+    <button id="lamp-5" onclick="clickLamp5()">ON</button>
+
+    <button id="reset-btn" onclick="resetGame()">RESET</button>
+    <div id="verdict"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
