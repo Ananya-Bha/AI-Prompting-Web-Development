@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- 
+    The HEAD section contains information ABOUT the page, but doesn't show on screen
+    Think of this like the cover of a book - it has the title and important details
+    -->
+    
+    <!-- This tells the browser what character set to use (letters, numbers, symbols) -->
+    <meta charset="UTF-8">
+    
+    <!-- This makes the page work well on mobile phones and tablets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- This is the title that appears in the browser tab -->
+    <title>Robot Factory🤖</title>
+    
+    <!-- This connects our CSS file to style how everything looks -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="landing-background"></div>
+    <div class="landing-overlay"></div>
+    <!-- 
+    The BODY section contains everything the player will see and interact with
+    Think of this like the pages inside a book - this is the actual content
+    -->
+    
+    <!-- 
+    H1 is a "heading" - the biggest, most important text on the page
+    This is like the title of a chapter in a book
+    -->
+    <h1>Alien Invasion👽</h1>
+
+    <!--
+    P is a "paragraph" - regular text that explains something
+    This gives players a simple description of what the game is about
+    -->
+    <p>Test your Survival skills! Whack the Aliens, but be careful for any challenges that come your way!</p>
+
+    <!-- 
+    BUTTON is something players can click to do something
+    The "id" is like a name tag - it helps our JavaScript find this button
+    The "class" connects it to our CSS styling to make it look nice
+    -->
+    <button id="start-game-button" class="game-button">Start Whacking!</button>
+    
+    <!-- 
+    This connects our JavaScript file - the code that makes the game work
+    We put it at the end so the HTML loads first, then the JavaScript runs
+    Think of this like reading the instructions before playing a board game
+    -->
+    <script src="game.js"></script>
+</body>
+</html>
+
+<!-- 
+STUDENTS: This is the intro page of your game!
+
+You can customize this page by changing:
+1. The title "Clicker Game" to whatever you want to call your game
+2. The description text to explain your theme
+3. The button text from "Start Game" to something that fits your theme
+
+For example, if you make a space theme:
+- Title: "Alien Invasion"  
+- Description: "Defend Earth! Click the aliens before they escape!"
+- Button: "Launch Defense"
+
+Remember: Keep it simple and exciting!
+-->

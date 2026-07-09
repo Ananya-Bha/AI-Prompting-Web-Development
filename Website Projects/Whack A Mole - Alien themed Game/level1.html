@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1 - Clicker Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- 
+    This is the actual gameplay page for Level 1
+    This is where all the action happens - the moles appear and disappear here!
+    -->
+    
+    <!-- 
+    HUD = Heads Up Display
+    This bar shows important game information at the top of the screen
+    -->
+    <div class="hud">
+        <!-- Score display - shows how many moles the player has caught -->
+        <div>Score: <span id="score">0</span></div>
+        
+        <!-- Level display - shows what level the player is on -->
+        <div>Level: <span id="level">1</span></div>
+        
+        <!-- Lives display - shows remaining lives as heart icons -->
+        <div id="lives" class="lives">
+            <span>Lives:</span>
+            <!-- Hearts will be added here by JavaScript -->
+        </div>
+        
+        <!-- Restart button - lets players start over completely -->
+        <button id="restart-button" class="game-button" style="font-size: 14px; padding: 8px 15px;">Restart Game</button>
+    </div>
+    
+    <!-- 
+    GAME GRID: The 3x3 playing field where moles appear
+    This is the main part of the game - 9 squares arranged in 3 rows and 3 columns
+    -->
+    <div class="game-grid">
+        <!-- 
+        Each grid-square represents one position where a mole can appear
+        They're numbered 0-8 (like apartment numbers) so JavaScript can find them
+        -->
+        <div class="grid-square" id="square-0"></div>
+        <div class="grid-square" id="square-1"></div>
+        <div class="grid-square" id="square-2"></div>
+        <div class="grid-square" id="square-3"></div>
+        <div class="grid-square" id="square-4"></div>
+        <div class="grid-square" id="square-5"></div>
+        <div class="grid-square" id="square-6"></div>
+        <div class="grid-square" id="square-7"></div>
+        <div class="grid-square" id="square-8"></div>
+    </div>
+    
+    <!-- Connect the JavaScript file that makes everything work -->
+    <script src="game.js"></script>
+</body>
+</html>
+
+<!-- 
+STUDENTS: This is Level 1 - the actual playing field!
+
+The cool thing is that ALL levels use the same HTML structure.
+The JavaScript file automatically makes each level have different difficulty settings.
+
+You can customize this page by:
+1. Changing the styling in styles.css to match your theme
+2. Adding background images or colors
+3. Changing the heart icons to match your theme (lives could be stars, shields, etc.)
+4. Adding sound effects (you'll learn this later!)
+
+The grid itself should stay the same - 9 squares in a 3x3 layout.
+But you can make those squares look like anything:
+- Ocean theme: Blue squares with coral borders
+- Space theme: Dark squares with glowing borders  
+- Farm theme: Green grass squares with fence borders
+
+Remember: The JavaScript handles all the game logic, so you just need to style it to look amazing!
+-->

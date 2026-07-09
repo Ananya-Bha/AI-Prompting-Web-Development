@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 - Clicker Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- HUD - Game information display -->
+    <div class="hud">
+        <div>Score: <span id="score">0</span></div>
+        <div>Level: <span id="level">2</span></div>
+        <div id="lives" class="lives">
+            <span>Lives:</span>
+        </div>
+        <button id="restart-button" class="game-button" style="font-size: 14px; padding: 8px 15px;">Restart Game</button>
+    </div>
+    
+    <!-- The 3x3 game grid where moles appear -->
+    <div class="game-grid">
+        <div class="grid-square" id="square-0"></div>
+        <div class="grid-square" id="square-1"></div>
+        <div class="grid-square" id="square-2"></div>
+        <div class="grid-square" id="square-3"></div>
+        <div class="grid-square" id="square-4"></div>
+        <div class="grid-square" id="square-5"></div>
+        <div class="grid-square" id="square-6"></div>
+        <div class="grid-square" id="square-7"></div>
+        <div class="grid-square" id="square-8"></div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
+
+<!-- 
+STUDENTS: Level 2 gameplay page!
+
+Notice this looks exactly the same as Level 1 - that's intentional!
+The JavaScript automatically makes this level faster and require more catches.
+
+This is where you can start making levels look different:
+1. Add a different background color or image
+2. Change the grid square colors  
+3. Make the borders look different
+4. Add theme-specific decorations
+
+Examples of customization:
+- Level 1: Farm theme (green background, barn-like squares)
+- Level 2: Ocean theme (blue background, coral-like squares)  
+- Level 3: Space theme (dark background, glowing squares)
+- Level 4: Volcano theme (red/orange background, lava-like squares)
+
+The structure stays the same, but the LOOK can be completely different!
+-->

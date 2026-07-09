@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 3 - Clicker Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- HUD - Game information display -->
+    <div class="hud">
+        <div>Score: <span id="score">0</span></div>
+        <div>Level: <span id="level">3</span></div>
+        <div id="lives" class="lives">
+            <span>Lives:</span>
+        </div>
+        <button id="restart-button" class="game-button" style="font-size: 14px; padding: 8px 15px;">Restart Game</button>
+    </div>
+    
+    <!-- The 3x3 game grid where moles appear -->
+    <div class="game-grid">
+        <div class="grid-square" id="square-0"></div>
+        <div class="grid-square" id="square-1"></div>
+        <div class="grid-square" id="square-2"></div>
+        <div class="grid-square" id="square-3"></div>
+        <div class="grid-square" id="square-4"></div>
+        <div class="grid-square" id="square-5"></div>
+        <div class="grid-square" id="square-6"></div>
+        <div class="grid-square" id="square-7"></div>
+        <div class="grid-square" id="square-8"></div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
+
+<!-- 
+STUDENTS: Level 3 - things are getting intense!
+
+The JavaScript makes this level much faster than Level 1 and 2.
+This is a great place to make the visual design more dramatic:
+
+Ideas for Level 3 customization:
+- Darker colors to show increased difficulty
+- More dramatic borders or effects
+- Flashing or glowing elements
+- Warning colors like red or orange
+
+You could even add CSS animations:
+- Pulsing grid squares
+- Animated backgrounds  
+- Glowing borders that change color
+- Particle effects (advanced)
+
+Remember: The harder the level, the more dramatic it should look!
+-->

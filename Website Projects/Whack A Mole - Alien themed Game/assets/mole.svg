@@ -1,0 +1,8 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- This is the mole that students will click on -->
+  <!-- It's a white circle with a cross in the middle -->
+  <circle cx="30" cy="30" r="25" fill="white" stroke="white" stroke-width="2"/>
+  <!-- The cross lines that make up the "X" in the middle -->
+  <line x1="18" y1="18" x2="42" y2="42" stroke="black" stroke-width="3" stroke-linecap="round"/>
+  <line x1="42" y1="18" x2="18" y2="42" stroke="black" stroke-width="3" stroke-linecap="round"/>
+</svg>

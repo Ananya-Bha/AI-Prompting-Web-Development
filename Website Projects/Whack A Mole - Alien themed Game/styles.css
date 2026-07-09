@@ -1,0 +1,369 @@
+/* 
+=== WHACK-A-MOLE GAME STYLES ===
+This file controls how everything LOOKS on the screen
+Think of CSS like instructions for painting a picture - it tells the browser
+what colors, sizes, and positions to use for every element
+*/
+
+/* 
+BODY: This affects the ENTIRE webpage background and setup
+Think of <body> like the canvas that everything else gets painted on
+*/
+body {
+    /* This makes the background completely black - like turning off the lights */
+    background-color: black;
+    
+    /* This chooses what type of letters to use - Arial is clean and easy to read */
+    font-family: Arial, sans-serif;
+    
+    /* This removes the automatic white border that browsers usually add */
+    margin: 0;
+    padding: 0;
+    
+    /* This makes text white so it shows up against the black background */
+    color: white;
+    
+    /* This makes sure our game fills the entire screen */
+    height: 100vh;
+    
+    /* These next two lines center everything on the page */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 
+TITLE: This styles the big heading text at the top of pages
+Like "Clicker Game" or "Level 1"
+*/
+h1 {
+    /* This makes the text really big - 48 pixels tall */
+    font-size: 48px;
+    
+    /* This adds space around the title so it's not cramped */
+    margin: 20px 0;
+    
+    /* This makes the text centered on the page */
+    text-align: center;
+    
+    /* This makes the letters thick and bold */
+    font-weight: bold;
+}
+
+/* 
+SMALLER HEADINGS: For instructions and level descriptions
+*/
+h2 {
+    font-size: 24px;
+    text-align: center;
+    margin: 15px 0;
+}
+
+/* 
+PARAGRAPH TEXT: For instructions and explanations
+*/
+p {
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 0;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* 
+BUTTONS: This makes all buttons look the same throughout the game
+Every button (Start Game, Start Level, Restart) will use these rules
+*/
+.game-button {
+    /* Button colors - white background with black text */
+    background-color: rgb(111, 44, 255);
+    color: rgb(255, 255, 255);
+    
+    /* Button size and spacing */
+    padding: 15px 30px;  /* Space inside the button around the text */
+    font-size: 20px;     /* Text size inside the button */
+    margin: 20px;        /* Space around the button */
+    
+    /* Border and shape */
+    border: 3px solid white;  /* White outline around the button */
+    border-radius: 10px;      /* Rounded corners - makes it look modern */
+    
+    /* Cursor changes to a pointing hand when you hover over it */
+    cursor: pointer;
+    
+    /* Font styling */
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    
+    /* This makes the button change smoothly when you hover */
+    transition: all 0.2s;
+}
+
+/* 
+BUTTON HOVER: What happens when you move your mouse over a button
+This gives visual feedback that the button is clickable
+*/
+.game-button:hover {
+    /* Colors flip - button becomes black with white text */
+    background-color: rgb(75, 52, 255);
+    color: white;
+    
+    /* This makes the button slightly bigger when hovered */
+    transform: scale(1.05);
+}
+
+/* 
+HUD: Heads Up Display - the information bar at the top during gameplay
+Shows Score, Level, and Lives
+*/
+.hud {
+    /* Position at the very top of the screen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    /* Styling */
+    background-color: rgba(255, 255, 255, 0.8);  /* Semi-transparent black */
+    color: rgb(0, 0, 0);
+    padding: 15px;
+
+    /* Layout - spread items across the width */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* Make sure it appears above everything else */
+    z-index: 1000;
+    
+    /* Typography */
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 
+GAME GRID: The 3x3 grid where moles appear
+This is the main playing area
+*/
+.game-grid {
+    /* Layout: 3 columns, 3 rows */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;  /* Three equal columns */
+    grid-template-rows: 1fr 1fr 1fr;     /* Three equal rows */
+    gap: 10px;  /* Space between grid squares */
+    
+    /* Size of the entire grid */
+    width: 400px;   /* Total width - bigger for easier clicking */
+    height: 400px;  /* Total height - bigger for easier clicking */
+    
+    /* Positioning */
+    margin: 60px auto 50px;  /* Less top space to keep above fold */
+}
+
+/* 
+GRID SQUARE: Each individual square in the 3x3 grid
+There are 9 of these total - one mole can appear in each
+*/
+.grid-square {
+    /* Visual appearance */
+    background-color: white;      /* White background */
+    border: 2px solid #ccc;      /* Light gray border */
+    border-radius: 5px;          /* Slightly rounded corners */
+    
+    /* Layout and alignment */
+    display: flex;
+    align-items: center;         /* Center content vertically */
+    justify-content: center;     /* Center content horizontally */
+    
+    /* Size */
+    width: 120px;
+    height: 120px;
+    
+    /* Cursor changes to pointer when hovering over squares */
+    cursor: pointer;
+    
+    /* Smooth transition for any changes */
+    transition: all 0.1s;
+    
+    /* Position for placing moles */
+    position: relative;
+}
+
+/* 
+GRID SQUARE HOVER: Visual feedback when hovering over empty squares
+*/
+.grid-square:hover {
+    background-color: #f0f0f0;  /* Slightly gray when hovered */
+}
+
+/* 
+MOLE: The actual mole that appears in grid squares
+This positions the SVG mole image
+*/
+.mole {
+    /* Size of the mole image */
+    width: 80px;
+    height: 80px;
+    
+    /* Position it in the center of the grid square */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /* Cursor changes to pointer when over a mole */
+    cursor: pointer;
+    
+    /* No transition - moles appear and disappear instantly for perfect click reliability */
+}
+
+/* 
+MOLE HOVER: Makes the mole slightly bigger when you hover over it
+This gives feedback that it's clickable
+*/
+.mole:hover {
+    transform: translate(-50%, -50%) scale(1.1);  /* 10% bigger */
+}
+
+/* 
+LIVES DISPLAY: Shows the heart icons representing remaining lives
+*/
+.lives {
+    display: flex;
+    align-items: center;
+    gap: 5px;  /* Small space between hearts */
+}
+
+.lives span {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+/* 
+HEART: Individual heart icons
+*/
+.heart {
+    width: 25px;
+    height: 25px;
+    margin: 0 2px;
+}
+
+/* 
+DEV DROPDOWN: Special menu for testing (only shows when dev mode is on)
+This lets students jump between levels for testing
+*/
+.dev-dropdown {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 5px;
+    z-index: 1001;
+}
+
+.dev-dropdown select {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    padding: 5px;
+    font-size: 14px;
+}
+
+/* 
+RESPONSIVE DESIGN: Makes the game work on smaller screens like phones
+*/
+@media (max-width: 400px) {
+    /* Make the grid smaller on small screens but still bigger than before */
+    .game-grid {
+        width: 320px;
+        height: 320px;
+        margin: 40px auto 50px;  /* Less top margin on mobile */
+    }
+    
+    .grid-square {
+        width: 95px;
+        height: 95px;
+    }
+    
+    .mole {
+        width: 65px;
+        height: 65px;
+    }
+    
+    /* Make text smaller on small screens */
+    h1 {
+        font-size: 36px;
+    }
+    
+    .hud {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* 
+CENTER ALIEN SQUARE: Special styles for the enlarged center box in Level 1
+*/
+.center-alien-square {
+    width: 220px !important;
+    height: 220px !important;
+    background-color: #f8f8ff !important;
+    border: 3px solid #4b9cd3 !important;
+    box-shadow: 0 0 30px #4b9cd333;
+    z-index: 2;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 120px;
+    margin-bottom: 0;
+    transition: all 0.2s;
+    position: relative;
+    left: 60px;
+}
+
+/* 
+ALIEN EMOJI: Styles for the alien emoji used in the center square
+*/
+.alien-emoji {
+    font-size: 120px !important;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+    filter: drop-shadow(0 0 10px #4b9cd3aa);
+    transition: transform 0.1s;
+}
+
+.alien-emoji:hover {
+    transform: scale(1.12);
+}
+
+/* 
+LANDING PAGE STYLES: For the initial landing page before the game starts
+*/
+
+/* Full screen background image for the landing page */
+.landing-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    background: url('assets/main-back.jpeg') no-repeat center center/cover;
+}
+
+/* Translucent black overlay on the landing page */
+.landing-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+}
