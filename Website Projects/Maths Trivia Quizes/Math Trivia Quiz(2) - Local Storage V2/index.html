@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧮 Math Trivia Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🧠 Do you have the capability to be a mathematician? 🎯</h1>
+        </header>
+
+        <!-- Topic Selection Bar -->
+        <div class="topic-bar">
+            <div class="current-topic">
+                <span>📚 Current Topic: </span>
+                <span id="currentTopicDisplay">None Selected</span>
+            </div>
+            <button id="moreTopicsBtn" class="btn btn-topics">📋 More Topics</button>
+        </div>
+
+        <!-- Game Area -->
+        <div class="game-area">
+            <div class="game-info">
+                <div class="difficulty-display">
+                    <span>⚡ Difficulty: </span>
+                    <span id="difficultyDisplay">Easy</span>
+                </div>
+                <div class="timer-display">
+                    <span>⏱️ Time Remaining: </span>
+                    <span id="timerDisplay">60s</span>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <h2 id="questionText">Select a topic and press Start to begin! 🚀</h2>
+            </div>
+
+            <div class="choices-container" id="choicesContainer">
+                <button class="btn btn-choice" data-choice="0">-</button>
+                <button class="btn btn-choice" data-choice="1">-</button>
+                <button class="btn btn-choice" data-choice="2">-</button>
+                <button class="btn btn-choice" data-choice="3">-</button>
+            </div>
+        </div>
+
+        <!-- Score Display -->
+        <div class="score-area">
+            <div class="score-item">
+                <span>📝 No of Q's done:</span>
+                <span id="questionsDone">0</span>
+            </div>
+            <div class="score-item">
+                <span>✅ No of Q's correct:</span>
+                <span id="questionsCorrect">0</span>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button id="startBtn" class="btn btn-start" disabled>▶️ START GAME</button>
+            <button id="tryAgainBtn" class="btn btn-restart">🔄 TRY AGAIN</button>
+            <button id="leaderboardBtn" class="btn btn-leaderboard">🏆 LEADERBOARD</button>
+        </div>
+    </div>
+
+    <!-- Topics Modal -->
+    <div id="topicsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeTopicsModal">&times;</span>
+            <h2>📚 Choose Your Topic</h2>
+            <div class="topics-grid">
+                <button class="btn btn-topic-select" data-topic="addition">➕ Addition & Subtraction</button>
+                <button class="btn btn-topic-select" data-topic="multiplication">✖️ Multiplication & Division</button>
+                <button class="btn btn-topic-select" data-topic="indices">🔢 Indices (Powers)</button>
+                <button class="btn btn-topic-select" data-topic="percentages">💯 Percentages</button>
+                <button class="btn btn-topic-select" data-topic="fractions">🍕 Fractions</button>
+                <button class="btn btn-topic-select" data-topic="squareroots">√ Square Roots</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content results-modal">
+            <span class="close-btn" id="closeResultsModal">&times;</span>
+            <h2>🎉 Game Over! Here are your results:</h2>
+            
+            <div class="results-summary">
+                <div class="result-stat">
+                    <span class="stat-number" id="totalAnswered">0</span>
+                    <span class="stat-label">Total Questions</span>
+                </div>
+                <div class="result-stat correct">
+                    <span class="stat-number" id="totalCorrect">0</span>
+                    <span class="stat-label">Correct ✅</span>
+                </div>
+                <div class="result-stat wrong">
+                    <span class="stat-number" id="totalWrong">0</span>
+                    <span class="stat-label">Wrong ❌</span>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="resultsChart"></canvas>
+            </div>
+
+            <div class="results-details">
+                <div class="results-column">
+                    <h3>✅ Correct Answers</h3>
+                    <ul id="correctList"></ul>
+                </div>
+                <div class="results-column">
+                    <h3>❌ Wrong Answers</h3>
+                    <ul id="wrongList"></ul>
+                </div>
+            </div>
+
+            <div class="high-score-message" id="highScoreMessage"></div>
+
+            <button id="closeResultsBtn" class="btn btn-close-results">🏠 Close Results</button>
+        </div>
+    </div>
+
+    <!-- Leaderboard Modal -->
+    <div id="leaderboardModal" class="modal">
+        <div class="modal-content leaderboard-modal">
+            <span class="close-btn" id="closeLeaderboardModal">&times;</span>
+            <h2>🏆 Leaderboard</h2>
+            
+            <div class="leaderboard-tabs">
+                <button class="tab-btn active" data-tab="overall">🌟 Overall Top Scores</button>
+                <button class="tab-btn" data-tab="byTopic">📊 By Topic</button>
+            </div>
+
+            <div id="overallLeaderboard" class="leaderboard-content active">
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Topic</th>
+                            <th>Score</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="overallScores"></tbody>
+                </table>
+            </div>
+
+            <div id="byTopicLeaderboard" class="leaderboard-content">
+                <div id="topicScoresContainer"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
