@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>If Statements in Functions</title>
+</head>
+
+<body>
+
+  <h1>If Statements in Functions</h1>
+  <p>Click each button to explore conditional logic!</p>
+
+  <button onclick ="challenge_1()">Challenge 1</button>
+  <button onclick="challenge_2()"> Challenge 2</button>
+  <button onclick="challenge_3()"> Challenge 3</button>
+  <button onclick="challenge_4()"> Challenge 4</button>
+  <button onclick="challenge_5()"> Challenge 5</button>
+  <button onclick="challenge_6()"> Challenge 6</button>
+
+
+  <script>
+    function challenge_1(){
+      userChoice= prompt("Cake or death?");
+      if (userChoice==="cake"){
+        alert("One chocolate cake coming right up!");
+      }
+      else if (userChoice==="death"){
+        alert("Now, thats a bit morbid!");
+      }
+      else{
+        alert("That's not a valid choice. Try again please!");
+      }
+    }
+    function challenge_2(){
+      userChoice= prompt("Would you like to listen to a joke about a deer or a fish?").toLowerCase();
+      if (userChoice==="fish"){
+        alert("What do you call a fish with no eyes?");
+        alert("Fsh")
+      }
+      else if (userChoice==="deer"){
+        aler("What do you call a deer with no eyes?");
+        alert("No idea!")
+      }
+      else{
+        alert("That's not a valid choice. Try again!");
+      }
+    }
+    function challenge_3(){
+      const name=prompt("What is your name?");
+      const password=prompt("What is the secret password?");
+      if (password==="thereIsNoPassword"){
+        alert("Well done "+name+" you got the password correct!");
+      }
+      else{
+        alert(name+" "+name+" "+name+" ,I am so sorry, but that was not the secret password!");
+      }
+    }
+    function challenge_4(){
+      const number_of_pairs = prompt("How many pairs of shoes do you have?");
+      alert("Each moment writes our numbered track,");
+      alert("Some we add, ans some subtract,");
+      alert("Frome these 2 options you must choose");
+      alert("Would you like to add or subtract?");
+      const choice=prompt("Add or Subtract?").toLowerCase();
+      if (choice==="add"){
+        alert("You now have "+number_of_pairs+"2 pairs now!");
+      }
+      else if(choice==="subtract"){
+        number_of_pairs=number_of_pairs-2
+        alert("You now have "+number_of_pairs+" left!");
+      }
+      else{
+        alert("Invalid input!");
+      }
+    }
+    function challenge_5(){
+      const goats=prompt("How many goats do you have?")
+      const no_goats= parseInt(goats)
+      const wolves=prompt("How many wolves do you have?")
+      const no_wolves= parseInt(wolves)
+      const seperated=prompt("Do you keep them seperated?").toLowerCase()
+      if (seperated==="yes"){
+        alert("Well done! No wolves ate your goats!")
+        const total= no_goats+no_wolves
+        alert("You have "+total+" animals left!")
+      }
+      else if (seperated==="no"){
+        alert("Not a good idea! Your wolves ate your goats!")
+        total= no_wolves
+        alert("You have "+total+" animals left!")
+      }
+      else{
+        alert("Invalid Input!")
+      }
+
+    }
+    function challenge_6(){
+      const h =prompt("What is the height of your cuboid(in cm)?")
+      const height=parseInt(h)
+      const l =prompt("What is the length of your cuboid(in cm)?")
+      const length=parseInt(l)
+      const w =prompt("What is the width of your cuboid(in cm)?")
+      const width=parseInt(w)
+      const choice=prompt("Would you liek to calculate the volume or surface area of your cuboid?").toLowerCase()
+      if (choice==="volume"){
+        volume=height*length*width
+        alert("The volume of your cuboid is "+volume+" cm^3.")
+      }
+      else if(choice==="surface area"){
+        surface_area= (((height*length)*2)+((width*length)*2)+((height*width)*2))
+        alert("The surface area of your cuboid is "+surface_area+" cm^2")
+      }
+      else{
+        alert("Invalid Input!")
+      }
+    }
+  </script>
+
+</body>
+</html>
