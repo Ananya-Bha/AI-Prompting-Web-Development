@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Maths Trivia Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- High Score Display -->
+        <div class="high-score-container">
+            <div class="high-score-card">
+                <h3>🏆 High Score</h3>
+                <p class="high-score-value" id="highScore">0</p>
+            </div>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="main-title">Do you have the potential to be a mathematician?</h1>
+
+        <!-- Topic Selection Buttons -->
+        <div class="topic-buttons">
+            <button class="topic-display-btn" id="currentTopicBtn">
+                <span class="topic-label">Current Topic:</span>
+                <span class="topic-name" id="currentTopicName">Select a Topic</span>
+            </button>
+            <button class="choose-topic-btn" id="chooseTopicBtn">
+                📚 Choose Topic
+            </button>
+        </div>
+
+        <!-- Topic Selection Modal -->
+        <div class="modal" id="topicModal">
+            <div class="modal-content topic-modal">
+                <h2>Choose Your Math Topic</h2>
+                <div class="topics-grid">
+                    <button class="topic-option" data-topic="addition">➕ Addition</button>
+                    <button class="topic-option" data-topic="subtraction">➖ Subtraction</button>
+                    <button class="topic-option" data-topic="multiplication">✖️ Multiplication</button>
+                    <button class="topic-option" data-topic="division">➗ Division</button>
+                    <button class="topic-option" data-topic="mixed">🔀 Mixed Operations</button>
+                    <button class="topic-option" data-topic="fractions">🍕 Fractions</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Answer Panel -->
+        <div class="answer-panel">
+            <div class="panel-header">
+                <div class="difficulty-badge" id="difficultyBadge">
+                    <span class="badge-label">Difficulty:</span>
+                    <span class="badge-value" id="difficultyLevel">Easy</span>
+                </div>
+                <div class="timer-display" id="timerDisplay">
+                    <span class="timer-icon">⏱️</span>
+                    <span class="timer-value" id="timerValue">60</span>
+                    <span class="timer-unit">seconds</span>
+                </div>
+            </div>
+
+            <div class="question-container" id="questionContainer">
+                <p class="question-text" id="questionText">Select a topic to begin!</p>
+            </div>
+
+            <div class="answers-grid" id="answersGrid">
+                <button class="answer-btn" data-answer="0">A</button>
+                <button class="answer-btn" data-answer="1">B</button>
+                <button class="answer-btn" data-answer="2">C</button>
+                <button class="answer-btn" data-answer="3">D</button>
+            </div>
+        </div>
+
+        <!-- Stats Card -->
+        <div class="stats-card">
+            <div class="stat-item">
+                <span class="stat-label">Total Questions:</span>
+                <span class="stat-value" id="totalQuestions">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Correct Answers:</span>
+                <span class="stat-value correct" id="correctAnswers">0</span>
+            </div>
+        </div>
+
+        <!-- Try Again Button -->
+        <button class="try-again-btn" id="tryAgainBtn">🔄 Try Again</button>
+
+        <!-- Results Modal -->
+        <div class="modal" id="resultsModal">
+            <div class="modal-content results-modal">
+                <h2>🎉 Game Over!</h2>
+                <div class="results-summary">
+                    <div class="result-item">
+                        <span class="result-label">Total Questions:</span>
+                        <span class="result-value" id="resultTotal">0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Correct Answers:</span>
+                        <span class="result-value correct" id="resultCorrect">0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Incorrect Answers:</span>
+                        <span class="result-value incorrect" id="resultIncorrect">0</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Your Score:</span>
+                        <span class="result-value score" id="resultScore">0</span>
+                    </div>
+                </div>
+
+                <!-- Results Chart -->
+                <div class="chart-container">
+                    <canvas id="resultsChart"></canvas>
+                </div>
+
+                <button class="close-modal-btn" id="closeModalBtn">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
