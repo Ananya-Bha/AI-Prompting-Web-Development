@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Carbon Footprint Calculator - EcoBytes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <span class="logo-text">EcoBytes</span>
+            </div>
+            
+            <nav class="nav">
+                <a href="index.html#home" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#features" class="nav-link">Features</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- CALCULATOR SECTION -->
+    <section class="calculator-section">
+        <div class="calculator-container">
+            <!-- Page Title -->
+            <div class="calculator-header">
+                <h1 class="calculator-title">Calculate Your Digital Carbon Footprint</h1>
+                <p class="calculator-subtitle">Enter your daily digital habits to see your environmental impact</p>
+            </div>
+
+            <!-- Calculator Form -->
+            <form id="calculator-form" class="calculator-form">
+                <!-- Emails Sent -->
+                <div class="form-group">
+                    <label for="emails" class="form-label">
+                        Emails sent (per day)
+                        <button type="button" class="help-button" data-modal="emails-modal" aria-label="Help">
+                            <span class="help-icon">?</span>
+                            <span class="help-hover-text">Don't know how?</span>
+                        </button>
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="number" id="emails" name="emails" class="form-input" min="0" step="1" placeholder="e.g., 20" required>
+                    </div>
+                    <div class="emission-fact">
+                        <span class="fact-icon">💡</span>
+                        <span class="fact-text">4 g CO₂ per email (Source: ADEME, Carbon Literacy Project)</span>
+                    </div>
+                </div>
+
+                <!-- Streaming Hours -->
+                <div class="form-group">
+                    <label for="streaming" class="form-label">
+                        Streaming hours (per day)
+                        <button type="button" class="help-button" data-modal="streaming-modal" aria-label="Help">
+                            <span class="help-icon">?</span>
+                            <span class="help-hover-text">Don't know how?</span>
+                        </button>
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="number" id="streaming" name="streaming" class="form-input" min="0" step="0.1" placeholder="e.g., 2.5" required>
+                    </div>
+                    <div class="emission-fact">
+                        <span class="fact-icon">💡</span>
+                        <span class="fact-text">55 g CO₂ per hour (Source: IEA, Carbon Trust)</span>
+                    </div>
+                </div>
+
+                <!-- Gaming Hours -->
+                <div class="form-group">
+                    <label for="gaming" class="form-label">
+                        Gaming hours (per day)
+                        <button type="button" class="help-button" data-modal="gaming-modal" aria-label="Help">
+                            <span class="help-icon">?</span>
+                            <span class="help-hover-text">Don't know how?</span>
+                        </button>
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="number" id="gaming" name="gaming" class="form-input" min="0" step="0.1" placeholder="e.g., 1.5" required>
+                    </div>
+                    <div class="emission-fact">
+                        <span class="fact-icon">💡</span>
+                        <span class="fact-text">35 g CO₂ per hour (Source: IEA, NRDC, Microsoft Energy Research)</span>
+                    </div>
+                </div>
+
+                <!-- Cloud Storage -->
+                <div class="form-group">
+                    <label for="cloud" class="form-label">
+                        Cloud storage used (in GB)
+                        <button type="button" class="help-button" data-modal="cloud-modal" aria-label="Help">
+                            <span class="help-icon">?</span>
+                            <span class="help-hover-text">Don't know how?</span>
+                        </button>
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="number" id="cloud" name="cloud" class="form-input" min="0" step="0.1" placeholder="e.g., 50" required>
+                    </div>
+                    <div class="emission-fact">
+                        <span class="fact-icon">💡</span>
+                        <span class="fact-text">2 g CO₂ per GB per month (Source: Greenpeace, AWS/Google cloud energy reports)</span>
+                    </div>
+                </div>
+
+                <!-- Data Transfer -->
+                <div class="form-group">
+                    <label for="transfer" class="form-label">
+                        Data uploaded/downloaded (in GB per day)
+                        <button type="button" class="help-button" data-modal="transfer-modal" aria-label="Help">
+                            <span class="help-icon">?</span>
+                            <span class="help-hover-text">Don't know how?</span>
+                        </button>
+                    </label>
+                    <div class="input-wrapper">
+                        <input type="number" id="transfer" name="transfer" class="form-input" min="0" step="0.1" placeholder="e.g., 1" required>
+                    </div>
+                    <div class="emission-fact">
+                        <span class="fact-icon">💡</span>
+                        <span class="fact-text">5 g CO₂ per GB transferred (Source: Carbon Trust, IEA)</span>
+                    </div>
+                </div>
+
+
+                <!-- Submit Button -->
+                <button type="submit" class="calculate-button">
+                    <span>Calculate My Footprint</span>
+                    <span class="button-icon">→</span>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Help Modals -->
+    <!-- Emails Modal -->
+    <div class="help-modal" id="emails-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">How to Find Your Daily Emails Sent</h2>
+            <div class="modal-body">
+                <div class="app-buttons-grid">
+                    <button class="app-button" data-app-modal="gmail-modal">
+                        <span class="app-icon">📧</span>
+                        <span class="app-name">Gmail</span>
+                    </button>
+                    <button class="app-button" data-app-modal="outlook-modal">
+                        <span class="app-icon">📧</span>
+                        <span class="app-name">Outlook</span>
+                    </button>
+                    <button class="app-button" data-app-modal="other-email-modal">
+                        <span class="app-icon">📧</span>
+                        <span class="app-name">Other Email</span>
+                    </button>
+                </div>
+                <div class="modal-tip">
+                    <strong>💡 Tip:</strong> If you're unsure, estimate based on your typical work or personal email habits. Most people send 10-30 emails per day.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Streaming Modal -->
+    <div class="help-modal" id="streaming-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">How to Find Your Daily Streaming Hours</h2>
+            <div class="modal-body">
+                <div class="app-buttons-grid">
+                    <button class="app-button" data-app-modal="netflix-modal">
+                        <span class="app-icon">📺</span>
+                        <span class="app-name">Netflix</span>
+                    </button>
+                    <button class="app-button" data-app-modal="youtube-modal">
+                        <span class="app-icon">📺</span>
+                        <span class="app-name">YouTube</span>
+                    </button>
+                    <button class="app-button" data-app-modal="spotify-modal">
+                        <span class="app-icon">🎵</span>
+                        <span class="app-name">Spotify / Apple Music</span>
+                    </button>
+                    <button class="app-button" data-app-modal="screentime-modal">
+                        <span class="app-icon">📱</span>
+                        <span class="app-name">Device Screen Time</span>
+                    </button>
+                </div>
+                <div class="modal-tip">
+                    <strong>💡 Tip:</strong> Include all video and music streaming: Netflix, YouTube, Hulu, Disney+, Spotify, Apple Music, etc.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gaming Modal -->
+    <div class="help-modal" id="gaming-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">How to Find Your Daily Gaming Hours</h2>
+            <div class="modal-body">
+                <div class="app-buttons-grid">
+                    <button class="app-button" data-app-modal="pc-gaming-modal">
+                        <span class="app-icon">💻</span>
+                        <span class="app-name">PC Gaming</span>
+                    </button>
+                    <button class="app-button" data-app-modal="xbox-modal">
+                        <span class="app-icon">🎮</span>
+                        <span class="app-name">Xbox</span>
+                    </button>
+                    <button class="app-button" data-app-modal="playstation-modal">
+                        <span class="app-icon">🎮</span>
+                        <span class="app-name">PlayStation</span>
+                    </button>
+                    <button class="app-button" data-app-modal="mobile-gaming-modal">
+                        <span class="app-icon">📱</span>
+                        <span class="app-name">Mobile Gaming</span>
+                    </button>
+                </div>
+                <div class="modal-tip">
+                    <strong>💡 Tip:</strong> Include all gaming: PC games, console games, mobile games, and online gaming.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cloud Storage Modal -->
+    <div class="help-modal" id="cloud-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">How to Find Your Cloud Storage Used (GB)</h2>
+            <div class="modal-body">
+                <div class="app-buttons-grid">
+                    <button class="app-button" data-app-modal="googledrive-modal">
+                        <span class="app-icon">☁️</span>
+                        <span class="app-name">Google Drive</span>
+                    </button>
+                    <button class="app-button" data-app-modal="onedrive-modal">
+                        <span class="app-icon">☁️</span>
+                        <span class="app-name">OneDrive</span>
+                    </button>
+                    <button class="app-button" data-app-modal="icloud-modal">
+                        <span class="app-icon">☁️</span>
+                        <span class="app-name">iCloud</span>
+                    </button>
+                    <button class="app-button" data-app-modal="dropbox-modal">
+                        <span class="app-icon">☁️</span>
+                        <span class="app-name">Dropbox</span>
+                    </button>
+                    <button class="app-button" data-app-modal="other-cloud-modal">
+                        <span class="app-icon">☁️</span>
+                        <span class="app-name">Other Cloud</span>
+                    </button>
+                </div>
+                <div class="modal-tip">
+                    <strong>💡 Tip:</strong> If you use multiple cloud services, add up the GB used from each one (Google Drive + OneDrive + iCloud, etc.).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Transfer Modal -->
+    <div class="help-modal" id="transfer-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">How to Find Your Daily Data Uploaded/Downloaded (GB)</h2>
+            <div class="modal-body">
+                <div class="app-buttons-grid">
+                    <button class="app-button" data-app-modal="browser-modal">
+                        <span class="app-icon">🌐</span>
+                        <span class="app-name">Browser Downloads</span>
+                    </button>
+                    <button class="app-button" data-app-modal="cloud-uploads-modal">
+                        <span class="app-icon">☁️</span>
+                        <span class="app-name">Cloud Uploads</span>
+                    </button>
+                    <button class="app-button" data-app-modal="mobile-data-modal">
+                        <span class="app-icon">📱</span>
+                        <span class="app-name">Mobile Data</span>
+                    </button>
+                    <button class="app-button" data-app-modal="windows-network-modal">
+                        <span class="app-icon">💻</span>
+                        <span class="app-name">Windows Network</span>
+                    </button>
+                    <button class="app-button" data-app-modal="mac-network-modal">
+                        <span class="app-icon">💻</span>
+                        <span class="app-name">Mac Network</span>
+                    </button>
+                </div>
+                <div class="modal-tip">
+                    <strong>💡 Tip:</strong> For most users, daily data transfer is small (under 1 GB/day) unless you regularly upload large files, download media, or sync large cloud folders.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nested App Modals -->
+    <!-- Email App Modals -->
+    <div class="help-modal app-detail-modal" id="gmail-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">📧 Gmail Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open Gmail in your web browser or app</li>
+                        <li>Click on "Sent" in the left sidebar</li>
+                        <li>Look at the date range - count emails sent in the last 7 days</li>
+                        <li>Divide that number by 7 to get your daily average</li>
+                        <li>Alternatively, check your "Sent" folder and estimate based on recent activity</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="outlook-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">📧 Outlook Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open Outlook (web, desktop, or mobile app)</li>
+                        <li>Navigate to "Sent Items" folder</li>
+                        <li>Filter by date to see emails sent in the past week</li>
+                        <li>Count the total and divide by 7 for daily average</li>
+                        <li>Or check your sent folder and estimate based on your typical usage</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="other-email-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">📧 Other Email Clients</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open your email app (Apple Mail, Yahoo Mail, etc.)</li>
+                        <li>Go to your "Sent" or "Sent Items" folder</li>
+                        <li>Review emails sent in the past week</li>
+                        <li>Count and divide by 7, or make a reasonable estimate</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Streaming App Modals -->
+    <div class="help-modal app-detail-modal" id="netflix-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">📺 Netflix Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open Netflix in your browser or app</li>
+                        <li>Click on your profile icon (top right)</li>
+                        <li>Go to "Account" → "Viewing Activity"</li>
+                        <li>Review your watch history for the past week</li>
+                        <li>Add up total hours and divide by 7 for daily average</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="youtube-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">📺 YouTube Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open YouTube and sign in</li>
+                        <li>Click on your profile icon (top right)</li>
+                        <li>Go to "Time watched" or check "History"</li>
+                        <li>YouTube shows your weekly watch time</li>
+                        <li>Divide weekly hours by 7 for daily average</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="spotify-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">🎵 Spotify / Apple Music Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open your music streaming app</li>
+                        <li>Check "Recently Played" or listening history</li>
+                        <li>Estimate hours spent listening per day</li>
+                        <li>Or use your device's Screen Time (iOS) or Digital Wellbeing (Android)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="screentime-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">📱 Using Device Screen Time</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li><strong>iOS:</strong> Settings → Screen Time → See All Activity</li>
+                        <li><strong>Android:</strong> Settings → Digital Wellbeing → Dashboard</li>
+                        <li>Look for streaming apps (Netflix, YouTube, Spotify, etc.)</li>
+                        <li>Add up daily hours across all streaming apps</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gaming App Modals -->
+    <div class="help-modal app-detail-modal" id="pc-gaming-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">💻 PC Gaming (Steam, Epic Games, etc.)</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open Steam (or your gaming platform)</li>
+                        <li>Go to your profile → "Games" tab</li>
+                        <li>Check "Playtime" for each game</li>
+                        <li>Review your recent gaming sessions</li>
+                        <li>Estimate daily hours based on weekly playtime</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="xbox-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">🎮 Xbox Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open Xbox app or go to xbox.com</li>
+                        <li>Sign in and go to your profile</li>
+                        <li>Check "Achievements" or "Game Activity"</li>
+                        <li>Review your gaming history for the past week</li>
+                        <li>Calculate daily average from weekly hours</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="playstation-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">🎮 PlayStation Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open PlayStation app or sign in to playstation.com</li>
+                        <li>Go to your profile → "Games"</li>
+                        <li>Check "Trophies" or gaming activity</li>
+                        <li>Review recent gaming sessions</li>
+                        <li>Estimate daily hours from weekly activity</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="mobile-gaming-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">📱 Mobile Gaming Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li><strong>iOS:</strong> Settings → Screen Time → See All Activity</li>
+                        <li><strong>Android:</strong> Settings → Digital Wellbeing → Dashboard</li>
+                        <li>Look for gaming apps in your screen time</li>
+                        <li>Add up hours across all gaming apps</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cloud Storage App Modals -->
+    <div class="help-modal app-detail-modal" id="googledrive-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">☁️ Google Drive Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Go to drive.google.com or open Google Drive app</li>
+                        <li>Click on "Storage" in the left sidebar (or bottom on mobile)</li>
+                        <li>You'll see "X GB of 15 GB used" (or your plan limit)</li>
+                        <li>The number shown is your total storage used in GB</li>
+                        <li>This includes Google Drive, Gmail, and Google Photos</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="onedrive-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">☁️ OneDrive (Microsoft) Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Go to onedrive.live.com or open OneDrive app</li>
+                        <li>Click on your profile icon (top right)</li>
+                        <li>Go to "Settings" → "Storage"</li>
+                        <li>You'll see "X GB of Y GB used"</li>
+                        <li>Note the GB used number</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="icloud-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">☁️ iCloud Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>On iPhone/iPad: Settings → [Your Name] → iCloud</li>
+                        <li>On Mac: System Preferences → Apple ID → iCloud</li>
+                        <li>On web: icloud.com → Account Settings</li>
+                        <li>Look for "Storage" section showing "X GB of Y GB"</li>
+                        <li>The first number is your total storage used</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="dropbox-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">☁️ Dropbox Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Go to dropbox.com or open Dropbox app</li>
+                        <li>Click on your profile icon (top right)</li>
+                        <li>Go to "Settings" → "Plan"</li>
+                        <li>You'll see storage usage: "X GB of Y GB used"</li>
+                        <li>Note the GB used</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="other-cloud-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">☁️ Other Cloud Services</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open your cloud storage app or website</li>
+                        <li>Look for "Storage", "Account", or "Settings"</li>
+                        <li>Find the storage usage information</li>
+                        <li>Note the total GB used (not the limit)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Transfer App Modals -->
+    <div class="help-modal app-detail-modal" id="browser-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">🌐 Browser Downloads Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li><strong>Chrome:</strong> Press Ctrl+Shift+J (Windows) or Cmd+Option+J (Mac) → Network tab</li>
+                        <li><strong>Firefox:</strong> Press F12 → Network tab → Check data transferred</li>
+                        <li>Check your browser's download history</li>
+                        <li>Estimate total GB downloaded in the past week, divide by 7</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="cloud-uploads-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">☁️ Cloud Drive Uploads Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Check your Google Drive, OneDrive, or Dropbox activity</li>
+                        <li>Look for recent file uploads</li>
+                        <li>Add up file sizes (photos, videos, documents)</li>
+                        <li>Estimate daily uploads: weekly total ÷ 7</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="mobile-data-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">📱 Mobile Data Usage Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li><strong>iOS:</strong> Settings → Cellular → Scroll to see app data usage</li>
+                        <li><strong>Android:</strong> Settings → Network & Internet → Data Usage</li>
+                        <li>Check upload/download data for apps</li>
+                        <li>Divide monthly data by 30 for daily average</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="windows-network-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">💻 Network Settings (Windows) Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open Settings → Network & Internet</li>
+                        <li>Click "Data usage"</li>
+                        <li>View data usage by app</li>
+                        <li>Check upload/download statistics</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="help-modal app-detail-modal" id="mac-network-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close">&times;</button>
+            <h2 class="modal-title">💻 Network Settings (Mac) Instructions</h2>
+            <div class="modal-body">
+                <div class="instruction-section">
+                    <ol>
+                        <li>Open Activity Monitor (Applications → Utilities)</li>
+                        <li>Go to "Network" tab</li>
+                        <li>Check "Data sent" and "Data received"</li>
+                        <li>Estimate daily usage from weekly totals</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-copyright">© 2025 EcoBytes – Digital Carbon Footprint Calculator. All rights reserved.</p>
+            <p class="footer-disclaimer">Emissions values are estimates based on published averages and can vary by country, device and electricity mix.</p>
+            <div class="footer-links">
+                <a href="index.html#about" class="footer-link">Sources & Methodology</a>
+                <a href="index.html#contact" class="footer-link">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="calculator.js"></script>
+</body>
+</html>
