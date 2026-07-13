@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- This tells the browser what character set and language we're using -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The viewport meta tag makes the website work properly on mobile devices -->
+    
+    <title>EcoBytes - Measure Your Digital Carbon Footprint</title>
+    
+    <!-- Link to our CSS file that styles everything -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- HEADER SECTION: This stays fixed at the top when you scroll -->
+    <header class="header">
+        <!-- This is the container that holds our logo, navigation, and CTA -->
+        <div class="header-container">
+            <!-- Left side: Logo and site name -->
+            <div class="logo">
+                <span class="logo-icon">🌱</span>
+                <span class="logo-text">EcoBytes</span>
+            </div>
+            
+            <!-- Center: Navigation links -->
+            <nav class="nav">
+                <!-- Each link uses an anchor (#) to jump to a section on the same page -->
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            
+            <!-- Right side: CTA Button -->
+            <div class="header-cta">
+                <a href="calculator.html" class="header-cta-button">Start Calculation</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION: Split layout with text on left and visual on right -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <!-- Left side: Text content -->
+            <div class="hero-left">
+                <!-- Label/Tag above title -->
+                <div class="hero-label">The Digital Impact Calculator</div>
+                
+                <!-- Main title with gradient highlight -->
+                <h1 class="hero-title">
+                    Measure Your <span class="gradient-text">Digital Carbon Footprint</span>
+                </h1>
+                
+                <!-- Subtitle - gives more context -->
+                <p class="hero-subtitle">
+                    Discover how your streaming, emails and cloud storage add up – and how to cut your digital emissions. 
+                    A simple tool that turns your online habits into clear CO₂ insights.
+                </p>
+                
+                <!-- Call-to-Action Button -->
+                <div class="cta-container">
+                    <a href="calculator.html" class="cta-button">Start Calculation</a>
+                </div>
+            </div>
+            
+            <!-- Right side: Visual element (network graphic or data visualization) -->
+            <div class="hero-right">
+                <div class="hero-visual">
+                    <!-- Network/Data visualization graphic -->
+                    <div class="network-graph">
+                        <!-- Central hub -->
+                        <div class="network-hub">
+                            <div class="hub-icon">🌱</div>
+                            <div class="hub-label">EcoBytes</div>
+                        </div>
+                        
+                        <!-- Network nodes -->
+                        <div class="network-node node-1">
+                            <div class="node-icon">📊</div>
+                            <div class="node-text">Calculator</div>
+                        </div>
+                        
+                        <div class="network-node node-2">
+                            <div class="node-icon">📈</div>
+                            <div class="node-text">Dashboard</div>
+                        </div>
+                        
+                        <div class="network-node node-3">
+                            <div class="node-icon">💡</div>
+                            <div class="node-text">Eco Tips</div>
+                        </div>
+                        
+                        <div class="network-node node-4">
+                            <div class="node-icon">🔬</div>
+                            <div class="node-text">Research</div>
+                        </div>
+                        
+                        <!-- Connection lines -->
+                        <svg class="network-lines" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                            <line x1="200" y1="200" x2="100" y2="100" stroke="rgba(100, 217, 255, 0.4)" stroke-width="2"/>
+                            <line x1="200" y1="200" x2="300" y2="100" stroke="rgba(100, 217, 255, 0.4)" stroke-width="2"/>
+                            <line x1="200" y1="200" x2="100" y2="300" stroke="rgba(100, 217, 255, 0.4)" stroke-width="2"/>
+                            <line x1="200" y1="200" x2="300" y2="300" stroke="rgba(100, 217, 255, 0.4)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPLANATION SECTION: Why does it matter? -->
+    <section class="explanation-section">
+        <div class="container">
+            <div class="explanation-header">
+                <h2 class="section-title">Why Does It Matter?</h2>
+                <div class="feature-highlights">
+                    <div class="highlight-point">
+                        <div class="highlight-dot"></div>
+                        <span>Digital Impact</span>
+                    </div>
+                    <div class="highlight-line"></div>
+                    <div class="highlight-point active">
+                        <div class="highlight-dot active"></div>
+                        <span>Global Scale</span>
+                    </div>
+                    <div class="highlight-line"></div>
+                    <div class="highlight-point">
+                        <div class="highlight-dot"></div>
+                        <span>Real Solutions</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="explanation-content">
+                <!-- Left side: Graph (swapped from About section) -->
+                <div class="explanation-visual">
+                    <!-- Interactive Graph Section -->
+                    <div class="carbon-footprint-graph">
+                        <h3 class="graph-title">The Carbon Footprint of Your Devices</h3>
+                        <p class="graph-subtitle">Estimated life-cycle greenhouse gas emissions of electronic devices in 2020 (in kg of CO₂ equivalent)</p>
+                        
+                        <div class="graph-legend">
+                            <div class="legend-item">
+                                <div class="legend-color production"></div>
+                                <span>Production phase</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="legend-color use"></div>
+                                <span>Use phase</span>
+                            </div>
+                        </div>
+                        
+                        <div class="graph-container">
+                            <svg class="pie-chart" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <filter id="shadow">
+                                        <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+                                    </filter>
+                                </defs>
+                                
+                                <!-- Pie chart slices (will be calculated by JavaScript) -->
+                                <!-- Smartphone: 58kg (2.54%) -->
+                                <path class="pie-slice" d="M 200 200 L 200 50 A 150 150 0 0 1 200 50 Z" fill="#06b6d4" data-device="Smartphone" data-total="58" data-production="50" data-use="8" data-lifetime="3" data-percentage="2.5" filter="url(#shadow)"/>
+                                
+                                <!-- Tablet: 96kg (4.20%) -->
+                                <path class="pie-slice" d="M 200 200 L 200 50 A 150 150 0 0 1 200 50 Z" fill="#3b82f6" data-device="Tablet" data-total="96" data-production="76" data-use="20" data-lifetime="4" data-percentage="4.2" filter="url(#shadow)"/>
+                                
+                                <!-- Laptop: 287kg (12.56%) -->
+                                <path class="pie-slice" d="M 200 200 L 200 50 A 150 150 0 0 1 200 50 Z" fill="#8b5cf6" data-device="Laptop" data-total="287" data-production="202" data-use="85" data-lifetime="4" data-percentage="12.6" filter="url(#shadow)"/>
+                                
+                                <!-- TV: 897kg (39.24%) -->
+                                <path class="pie-slice" d="M 200 200 L 200 50 A 150 150 0 0 1 200 50 Z" fill="#ec4899" data-device="TV" data-total="897" data-production="302" data-use="595" data-lifetime="7" data-percentage="39.2" filter="url(#shadow)"/>
+                                
+                                <!-- Desktop: 948kg (41.46%) -->
+                                <path class="pie-slice" d="M 200 200 L 200 50 A 150 150 0 0 1 200 50 Z" fill="#f59e0b" data-device="Desktop" data-total="948" data-production="403" data-use="545" data-lifetime="5" data-percentage="41.5" filter="url(#shadow)"/>
+                                
+                                <!-- Center circle for donut effect -->
+                                <circle cx="200" cy="200" r="80" fill="#ffffff" filter="url(#shadow)"/>
+                                
+                                <!-- Center text -->
+                                <text x="200" y="195" text-anchor="middle" class="pie-center-text" font-size="18" fill="#ffffff" font-weight="700">Total</text>
+                                <text x="200" y="215" text-anchor="middle" class="pie-center-text" font-size="16" fill="#64d9ff" font-weight="700">2,286 kg</text>
+                                <text x="200" y="230" text-anchor="middle" class="pie-center-text" font-size="13" fill="#cbd5e1">CO₂</text>
+                            </svg>
+                            
+                            <!-- Legend -->
+                            <div class="pie-legend">
+                                <div class="legend-item-pie" data-device="Smartphone">
+                                    <div class="legend-color-pie" style="background: #06b6d4;"></div>
+                                    <div class="legend-text-pie">
+                                        <span class="legend-name">Smartphone</span>
+                                        <span class="legend-value">58 kg (2.5%)</span>
+                                    </div>
+                                </div>
+                                <div class="legend-item-pie" data-device="Tablet">
+                                    <div class="legend-color-pie" style="background: #3b82f6;"></div>
+                                    <div class="legend-text-pie">
+                                        <span class="legend-name">Tablet</span>
+                                        <span class="legend-value">96 kg (4.2%)</span>
+                                    </div>
+                                </div>
+                                <div class="legend-item-pie" data-device="Laptop">
+                                    <div class="legend-color-pie" style="background: #8b5cf6;"></div>
+                                    <div class="legend-text-pie">
+                                        <span class="legend-name">Laptop</span>
+                                        <span class="legend-value">287 kg (12.6%)</span>
+                                    </div>
+                                </div>
+                                <div class="legend-item-pie" data-device="TV">
+                                    <div class="legend-color-pie" style="background: #ec4899;"></div>
+                                    <div class="legend-text-pie">
+                                        <span class="legend-name">TV</span>
+                                        <span class="legend-value">897 kg (39.2%)</span>
+                                    </div>
+                                </div>
+                                <div class="legend-item-pie" data-device="Desktop">
+                                    <div class="legend-color-pie" style="background: #f59e0b;"></div>
+                                    <div class="legend-text-pie">
+                                        <span class="legend-name">Desktop</span>
+                                        <span class="legend-value">948 kg (41.5%)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="graph-footer">
+                            <p class="graph-source">Source: UN Trade and Development based on Malmodin and Lundén (2018)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right side: Text content -->
+                <div class="explanation-text-content">
+                    <p class="explanation-text">
+                        Every click, stream and message uses electricity in data centres, networks and devices, 
+                        and most of that electricity still comes from fossil fuels. This creates a 
+                        <strong>digital carbon footprint</strong> – the greenhouse gas emissions from producing, 
+                        powering and connecting our phones, laptops and online services.
+                    </p>
+                    
+                    <p class="explanation-text">
+                        Global internet use consumes more than <strong>400 terawatt-hours of electricity every year</strong>, 
+                        which is more than the entire annual electricity use of some countries.
+                    </p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">36-55g</div>
+                            <div class="stat-label">CO₂ per hour of streaming</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">4g</div>
+                            <div class="stat-label">CO₂ per email</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">400TWh</div>
+                            <div class="stat-label">Annual global internet use</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US SECTION: Explains who built this and why -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-split">
+                <!-- Left side: Title and text -->
+                <div class="about-left">
+                    <h2 class="about-main-title">Digital Carbon Footprint Calculator. Innovation.</h2>
+                    <p class="about-description">
+                        EcoBytes is a student-built web project designed to make the invisible impact of our 
+                        online lives visible. Using published averages from organisations like the Carbon Trust, 
+                        ADEME, the International Energy Agency and others, we estimate CO₂ emissions from 
+                        everyday digital habits.
+                    </p>
+                    <p class="about-description">
+                        The goal is not to scare people, but to give them clear information and simple actions 
+                        they can take – like reducing unnecessary emails, lowering video quality when it's not 
+                        needed, or cleaning up old files.
+                    </p>
+                    <a href="#features" class="about-link">LEARN MORE</a>
+                    
+                    <!-- The Hidden Cost of Digital Life Card (swapped from Explanation section) -->
+                    <div class="visual-content">
+                        <div class="visual-header">
+                            <h3 class="visual-title">The Hidden Cost of Digital Life</h3>
+                        </div>
+                        <div class="visual-stats">
+                            <div class="visual-stat-item">
+                                <div class="visual-stat-icon">📧</div>
+                                <div class="visual-stat-info">
+                                    <div class="visual-stat-number">293 billion</div>
+                                    <div class="visual-stat-label">Emails sent daily worldwide</div>
+                                </div>
+                            </div>
+                            <div class="visual-stat-item">
+                                <div class="visual-stat-icon">📺</div>
+                                <div class="visual-stat-info">
+                                    <div class="visual-stat-number">1 billion</div>
+                                    <div class="visual-stat-label">Hours of video streamed daily</div>
+                                </div>
+                            </div>
+                            <div class="visual-stat-item">
+                                <div class="visual-stat-icon">☁️</div>
+                                <div class="visual-stat-info">
+                                    <div class="visual-stat-number">2.5 quintillion</div>
+                                    <div class="visual-stat-label">Bytes of data created daily</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="visual-footer">
+                            <p class="visual-note">Every digital action has a carbon cost</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right side: Two blocks -->
+                <div class="about-right">
+                    <div class="about-block">
+                        <div class="about-block-visual">
+                            <img src="image1_home.jpg" alt="Our Mission" class="about-block-image">
+                        </div>
+                        <h3 class="about-block-title">OUR MISSION</h3>
+                        <p class="about-block-text">
+                            Raise awareness about digital pollution and help users understand their digital carbon footprint through research-based calculations.
+                        </p>
+                        <div class="block-dot"></div>
+                    </div>
+                    
+                    <div class="about-block">
+                        <div class="about-block-visual">
+                            <img src="image2_home.png" alt="Our Approach" class="about-block-image">
+                        </div>
+                        <h3 class="about-block-title">OUR APPROACH</h3>
+                        <p class="about-block-text">
+                            Provide clear information and simple, realistic actions that students and users can take to reduce their digital emissions.
+                        </p>
+                        <div class="block-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION: Shows what the website can do -->
+    <section id="features" class="features">
+        <div class="container">
+            <!-- Title on top -->
+            <div class="features-header">
+                <h2 class="features-main-title">Unmatched Features. Unmatched Excellence.</h2>
+                <div class="features-dot"></div>
+            </div>
+            
+            <!-- Table-like layout with 3 columns -->
+            <div class="features-table">
+                <!-- Column 1: Measure your Digital Footprint -->
+                <div class="features-column">
+                    <div class="step-header">
+                        <div class="step-number">STEP 1</div>
+                        <h3 class="features-column-title">Measure your Digital Footprint</h3>
+                    </div>
+                    <div class="features-column-cards">
+                        <!-- Digital Footprint Calculator -->
+                        <div class="feature-box feature-box-1">
+                            <div class="feature-box-header">
+                                <div class="feature-box-icon">📊</div>
+                                <h4 class="feature-box-title">Digital Footprint Calculator</h4>
+                            </div>
+                            <p class="feature-box-description">
+                                Enter your daily emails, streaming, gaming, cloud storage and data transfer. We use research-based carbon factors to estimate your total digital CO₂ footprint.
+                            </p>
+                        </div>
+                        
+                        <!-- Daily Digital Activity Input -->
+                        <div class="feature-box feature-box-1">
+                            <div class="feature-box-header">
+                                <div class="feature-box-icon">📝</div>
+                                <h4 class="feature-box-title">Daily Digital Activity Input</h4>
+                            </div>
+                            <p class="feature-box-description">
+                                Easily input your daily digital activities including emails sent, hours of streaming, gaming sessions, and cloud storage usage.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Column 2: Understand your impact -->
+                <div class="features-column">
+                    <div class="step-header">
+                        <div class="step-number">STEP 2</div>
+                        <h3 class="features-column-title">Understand your impact</h3>
+                    </div>
+                    <div class="features-column-cards">
+                        <!-- Visual Results Dashboard (highlighted) -->
+                        <div class="feature-box feature-box-2 featured-card">
+                            <div class="feature-box-header">
+                                <div class="feature-box-icon">📈</div>
+                                <h4 class="feature-box-title">Visual Results Dashboard</h4>
+                            </div>
+                            <p class="feature-box-description">
+                                See your total footprint in kilograms of CO₂, broken down by activity. Charts and colours make it easy to spot your biggest digital emitters.
+                            </p>
+                        </div>
+                        
+                        <!-- Detailed CO₂ Breakdown -->
+                        <div class="feature-box feature-box-2">
+                            <div class="feature-box-header">
+                                <div class="feature-box-icon">📊</div>
+                                <h4 class="feature-box-title">Detailed CO₂ Breakdown</h4>
+                            </div>
+                            <p class="feature-box-description">
+                                Get a comprehensive breakdown of your carbon emissions by activity type, device, and time period to understand where you can make the biggest impact.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Column 3: Improve your footprint -->
+                <div class="features-column">
+                    <div class="step-header">
+                        <div class="step-number">STEP 3</div>
+                        <h3 class="features-column-title">Improve your footprint</h3>
+                    </div>
+                    <div class="features-column-cards">
+                        <!-- Personalised Eco Tips -->
+                        <div class="feature-box feature-box-3">
+                            <div class="feature-box-header">
+                                <div class="feature-box-icon">💡</div>
+                                <h4 class="feature-box-title">Personalised Eco Tips</h4>
+                            </div>
+                            <p class="feature-box-description">
+                                Get practical suggestions based on your results – from deleting old emails to reducing streaming resolution.
+                            </p>
+                        </div>
+                        
+                        <!-- Research, Sources & Educational Resources -->
+                        <div class="feature-box feature-box-4">
+                            <div class="feature-box-header">
+                                <div class="feature-box-icon">🔬</div>
+                                <h4 class="feature-box-title">Research, Sources & Educational Resources</h4>
+                            </div>
+                            <p class="feature-box-description">
+                                All calculations are based on published estimates from organisations like Carbon Trust, ADEME, IEA and others. Learn more about digital pollution and how to make sustainable choices in your online activities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS/TRUST SECTION: Shows credibility -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="partners-header">
+                <span class="partners-label">EcoBytes Research Partners</span>
+            </div>
+            <div class="partners-logos">
+                <!-- Partner logos - you can replace these with actual logos later -->
+                <div class="partner-logo">Carbon Trust</div>
+                <div class="partner-logo">ADEME</div>
+                <div class="partner-logo">IEA</div>
+                <div class="partner-logo">MIT</div>
+                <div class="partner-logo">UN Climate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION: Copyright, disclaimer, and links -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <!-- Copyright line -->
+            <p class="copyright">
+                © 2025 EcoBytes – Digital Carbon Footprint Calculator. All rights reserved.
+            </p>
+            
+            <!-- Disclaimer -->
+            <p class="disclaimer">
+                Emissions values are estimates based on published averages and can vary by country, 
+                device and electricity mix.
+            </p>
+            
+            <!-- Links -->
+            <div class="footer-links">
+                <a href="#about" class="footer-link">Sources & Methodology</a>
+                <a href="mailto:contact@ecobytes.com" class="footer-link">Contact</a>
+            </div>
+            
+            <!-- Social icons placeholder - you'll add real links later -->
+            <div class="social-icons">
+                <!-- Placeholder icons - you can replace these with real social media links later -->
+                <span class="social-icon">📱</span>
+                <span class="social-icon">📧</span>
+                <span class="social-icon">🌐</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link to our JavaScript file for smooth scrolling -->
+    <script src="script.js"></script>
+</body>
+</html>
+
